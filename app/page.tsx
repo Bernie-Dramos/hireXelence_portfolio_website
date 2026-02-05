@@ -150,10 +150,10 @@ export default function HireXelencePage() {
             </div>
 
             {/* Right Side - Hero Image */}
-            <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <div className="relative w-auto animate-fade-in mx-auto lg:mx-0" style={{ animationDelay: '0.3s' }}>
               {/* Light Green Background Container */}
-              <div className="relative w-full h-[300px] md:h-[380px] lg:h-[450px] rounded-2xl overflow-hidden bg-[#00B140]/10 flex items-end justify-center shadow-2xl">
-                <div className="relative w-full h-[500px] md:h-[650px] lg:h-[800px] flex items-end justify-center">
+              <div className="relative h-[300px] md:h-[380px] lg:h-[450px] rounded-2xl overflow-visible bg-[#00B140]/10 flex items-end justify-center shadow-2xl" style={{ width: 'fit-content' }}>
+                <div className="relative w-[400px] md:w-[480px] lg:w-[600px] h-[500px] md:h-[650px] lg:h-[800px] flex items-end justify-center overflow-visible">
                   <Image
                     src="/images/hero-support.png"
                     alt="Customer support representative"
@@ -165,19 +165,19 @@ export default function HireXelencePage() {
                 </div>
 
                 {/* Trusted Partner Badge - Left Side */}
-                <div className="absolute -left-6 top-1/4 bg-[#00B140] hover:bg-[#009635] text-white px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 group z-10 animate-fade-in">
+                <div className="absolute -left-8 -top-12 bg-[#00B140] text-white px-6 py-4 rounded-full shadow-lg z-20 animate-fade-in">
                   <p className="text-sm md:text-base font-semibold whitespace-nowrap">Trusted Partner</p>
                 </div>
 
                 {/* Reliable Excellence Badge - Right Side */}
-                <div className="absolute -right-6 top-2/3 bg-[#00B140] hover:bg-[#009635] text-white px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 group z-10 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                <div className="absolute -right-8 top-1/3 bg-[#00B140] text-white px-6 py-4 rounded-full shadow-lg z-20 animate-fade-in" style={{ animationDelay: '0.4s' }}>
                   <p className="text-sm md:text-base font-semibold whitespace-nowrap">Reliable Excellence</p>
                 </div>
               </div>
 
               {/* Decorative Element */}
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#00B140] rounded-full opacity-20 blur-3xl" />
-              <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#001F54] rounded-full opacity-20 blur-2xl" />
+              <div className="absolute -top-8 -left-4 w-24 h-24 bg-[#001F54] rounded-full opacity-20 blur-2xl" />
             </div>
           </div>
         </div>
