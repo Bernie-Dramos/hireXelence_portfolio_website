@@ -77,11 +77,10 @@ export default function HireXelencePage() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-md ${
-                    activeSection === item.id
-                      ? 'text-[#00B140] bg-[#00B140]/10'
-                      : 'text-[#001F54]/70 hover:text-[#001F54] hover:bg-gray-100'
-                  }`}
+                  className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-md ${activeSection === item.id
+                    ? 'text-[#00B140] bg-[#00B140]/10'
+                    : 'text-[#001F54]/70 hover:text-[#001F54] hover:bg-gray-100'
+                    }`}
                 >
                   {item.label}
                 </button>
@@ -107,11 +106,10 @@ export default function HireXelencePage() {
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`px-4 py-3 text-left text-base font-medium transition-colors rounded-md ${
-                      activeSection === item.id
-                        ? 'text-white bg-white/20'
-                        : 'text-white/90 hover:text-white hover:bg-white/10'
-                    }`}
+                    className={`px-4 py-3 text-left text-base font-medium transition-colors rounded-md ${activeSection === item.id
+                      ? 'text-white bg-white/20'
+                      : 'text-white/90 hover:text-white hover:bg-white/10'
+                      }`}
                   >
                     {item.label}
                   </button>
@@ -129,11 +127,11 @@ export default function HireXelencePage() {
           <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-br from-[#00B140]/30 via-white to-transparent" />
           <div className="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-tl from-[#001F54]/30 via-white to-transparent" />
         </div>
-        
+
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center justify-items-end">
             {/* Left Side - Text Content */}
-            <div className="text-left">
+            <div className="text-left justify-self-start">
               <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#001F54] mb-6 text-balance animate-fade-in">
                 Faster, Smarter Talent Acquisition
               </h1>
@@ -150,9 +148,9 @@ export default function HireXelencePage() {
             </div>
 
             {/* Right Side - Hero Image */}
-            <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <div className="relative animate-fade-in justify-self-end" style={{ animationDelay: '0.3s' }}>
               {/* Light Green Background Container */}
-              <div className="relative w-[400px] md:w-[480px] lg:w-[600px] h-[300px] md:h-[380px] lg:h-[450px] rounded-2xl overflow-visible bg-[#00B140]/10 flex items-end justify-center shadow-2xl">
+              <div className="relative w-[420px] h-[300px] md:h-[380px] lg:h-[450px] rounded-2xl overflow-visible bg-[#00B140]/10 flex items-end justify-center shadow-2xl">
                 <div className="relative w-full h-[500px] md:h-[650px] lg:h-[800px] flex items-end justify-center overflow-visible">
                   <Image
                     src="/images/hero-support.png"
@@ -165,13 +163,13 @@ export default function HireXelencePage() {
                 </div>
 
                 {/* Trusted Partner Badge - Left Side */}
-                <div className="absolute -left-8 -top-4 bg-[#00B140] text-white px-6 py-4 rounded-full shadow-lg z-20 animate-pulse-slow">
-                  <p className="text-sm md:text-base font-semibold whitespace-nowrap">Trusted Partner</p>
+                <div className="absolute -left-8 -top-4 bg-gradient-to-b from-[#00B140] to-black text-white px-5 py-3 rounded-full shadow-lg z-20 animate-pulse-slow text-xs md:text-sm">
+                  <p className="font-semibold whitespace-nowrap">Trusted Partner</p>
                 </div>
 
                 {/* Reliable Excellence Badge - Right Side */}
-                <div className="absolute -right-8 top-1/3 bg-[#00B140] text-white px-6 py-4 rounded-full shadow-lg z-20 animate-pulse-slow" style={{ animationDelay: '0.4s' }}>
-                  <p className="text-sm md:text-base font-semibold whitespace-nowrap">Reliable Excellence</p>
+                <div className="absolute -right-8 top-1/3 bg-gradient-to-b from-[#001F54] to-black text-white px-5 py-3 rounded-full shadow-lg z-20 animate-pulse-slow text-xs md:text-sm" style={{ animationDelay: '0.4s' }}>
+                  <p className="font-semibold whitespace-nowrap">Reliable Excellence</p>
                 </div>
               </div>
 
@@ -429,7 +427,7 @@ export default function HireXelencePage() {
       <section id="contact" className="py-20 md:py-28 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#001F54] via-[#001F54]/95 to-white/50" />
         <div className="absolute top-0 right-0 w-1/2 h-full bg-white/90 diagonal-clip" />
-        
+
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Left Side - Thank You */}
