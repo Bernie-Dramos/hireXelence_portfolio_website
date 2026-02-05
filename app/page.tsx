@@ -14,7 +14,7 @@ export default function HireXelencePage() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
-      const sections = ['home', 'about', 'mission', 'differentiators', 'why-us', 'strengths', 'engagement', 'contact']
+      const sections = ['home', 'about', 'mission', 'differentiators', 'strengths', 'why-us', 'engagement', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -48,13 +48,9 @@ export default function HireXelencePage() {
 
   const navItems = [
     { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About The Company' },
-    { id: 'mission', label: 'Our Mission & Vision' },
-    { id: 'differentiators', label: 'Strategic Differentiators' },
-    { id: 'why-us', label: 'Why Partner with HireXelence?' },
-    { id: 'strengths', label: 'Our Core Strengths' },
-    { id: 'engagement', label: 'Flexible Engagement & Delivery Models' },
-    { id: 'contact', label: 'Thank You' }
+    { id: 'about', label: 'About Us' },
+    { id: 'why-us', label: 'Why Us' },
+    { id: 'contact', label: 'Contact Us' }
   ]
 
   return (
@@ -75,19 +71,36 @@ export default function HireXelencePage() {
               />
             </div>
 
-            {/* Menu Button */}
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-md ${
+                    activeSection === item.id
+                      ? 'text-[#00B140] bg-[#00B140]/10'
+                      : 'text-[#001F54]/70 hover:text-[#001F54] hover:bg-gray-100'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[#00B140] hover:bg-[#00B140]/10 rounded-lg transition-colors"
+              className="md:hidden p-2 text-[#00B140] hover:bg-[#00B140]/10 rounded-lg transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
 
-          {/* Menu Dropdown */}
+          {/* Mobile Menu Dropdown */}
           {mobileMenuOpen && (
-            <div className="py-4 border-t bg-gradient-to-br from-[#00B140] to-[#001F54] relative overflow-hidden">
+            <div className="md:hidden py-4 border-t bg-gradient-to-br from-[#00B140] to-[#001F54] relative overflow-hidden">
               <div className="absolute inset-0 bg-[#001F54] opacity-40 diagonal-clip" />
               <div className="flex flex-col gap-2 relative z-10">
                 {navItems.map((item) => (
@@ -267,40 +280,6 @@ export default function HireXelencePage() {
         </div>
       </section>
 
-      {/* Why Us Section - Slide 5 */}
-      <section id="why-us" className="py-20 md:py-28 bg-[#00B140] relative overflow-hidden">
-        <div className="absolute top-8 right-32 w-24 h-24 opacity-20">
-          <div className="grid grid-cols-3 gap-2">
-            {[...Array(9)].map((_, i) => (
-              <div key={i} className="w-2 h-2 bg-white rounded-full" />
-            ))}
-          </div>
-        </div>
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-2xl">
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#001F54] text-balance">
-                Why Partner with HireXelence?
-              </h2>
-              <div className="h-1 w-32 bg-[#00B140]" />
-              <p className="text-lg text-[#001F54] leading-relaxed">
-                Choosing HireXelence means partnering with recruitment technology experts who offer a complete, strategic solution for your human capital needs. Beyond full recruitment enterprise services, we provide specialized advisory in HR Strategy Consulting and HR Automation, supported by HR Service and Payroll Management.
-              </p>
-              <p className="text-lg text-[#001F54] leading-relaxed">
-                Our cross-border techno-functional recruitment expertise is backed by a commitment to flexible business models, ensuring a tailored and efficient approach to acquiring top talent and driving your business success.
-              </p>
-              <Button
-                onClick={() => scrollToSection('contact')}
-                size="lg"
-                className="bg-[#00B140] hover:bg-[#009635] text-white px-8 py-3 text-base font-semibold mt-4 shadow-lg hover:shadow-xl transition-all hover:scale-105 group"
-              >
-                Schedule a Session <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Core Strengths Section - Slide 6 */}
       <section id="strengths" className="py-20 md:py-28 bg-white relative overflow-hidden">
         {/* Background Image with Overlay */}
@@ -346,6 +325,40 @@ export default function HireXelencePage() {
                 </p>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Us Section - Slide 5 */}
+      <section id="why-us" className="py-20 md:py-28 bg-[#00B140] relative overflow-hidden">
+        <div className="absolute top-8 right-32 w-24 h-24 opacity-20">
+          <div className="grid grid-cols-3 gap-2">
+            {[...Array(9)].map((_, i) => (
+              <div key={i} className="w-2 h-2 bg-white rounded-full" />
+            ))}
+          </div>
+        </div>
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-2xl">
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#001F54] text-balance">
+                Why Partner with HireXelence?
+              </h2>
+              <div className="h-1 w-32 bg-[#00B140]" />
+              <p className="text-lg text-[#001F54] leading-relaxed">
+                Choosing HireXelence means partnering with recruitment technology experts who offer a complete, strategic solution for your human capital needs. Beyond full recruitment enterprise services, we provide specialized advisory in HR Strategy Consulting and HR Automation, supported by HR Service and Payroll Management.
+              </p>
+              <p className="text-lg text-[#001F54] leading-relaxed">
+                Our cross-border techno-functional recruitment expertise is backed by a commitment to flexible business models, ensuring a tailored and efficient approach to acquiring top talent and driving your business success.
+              </p>
+              <Button
+                onClick={() => scrollToSection('contact')}
+                size="lg"
+                className="bg-[#00B140] hover:bg-[#009635] text-white px-8 py-3 text-base font-semibold mt-4 shadow-lg hover:shadow-xl transition-all hover:scale-105 group"
+              >
+                Schedule a Session <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -483,7 +496,7 @@ export default function HireXelencePage() {
             <div>
               <h4 className="font-semibold mb-4 text-[#00B140]">Quick Links</h4>
               <div className="flex flex-col gap-2">
-                {navItems.slice(0, 4).map((item) => (
+                {navItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
