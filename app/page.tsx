@@ -132,24 +132,18 @@ export default function HireXelencePage() {
         
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-8 flex justify-center animate-fade-in">
-              <Image
-                src="/images/hirexelence-logo.png"
-                alt="HireXelence Logo"
-                width={500}
-                height={140}
-                className="h-32 md:h-36 w-auto"
-              />
-            </div>
-            <p className="text-xl md:text-2xl text-[#001F54] mb-12 leading-relaxed max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              HireXelence is a trusted human resource partner, connecting top talent with leading companies across various industries. We provide comprehensive recruitment services specifically tailored to the dynamic needs of organizations and different sectors.
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#001F54] mb-8 text-balance animate-fade-in">
+              Faster, Smarter Talent Acquisition
+            </h1>
+            <p className="text-xl md:text-2xl text-[#001F54]/80 mb-12 leading-relaxed max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              Comprehensive recruitment services tailored to your sector's demands, delivering strategic placements and global support for long-term impact.
             </p>
             <Button
-              onClick={() => scrollToSection('contact')}
+              onClick={() => window.open('https://wa.me/919022374098', '_blank')}
               size="lg"
               className="bg-[#00B140] hover:bg-[#009635] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse-slow group"
             >
-              Get in Touch <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              Schedule a Session <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
         </div>
@@ -352,7 +346,7 @@ export default function HireXelencePage() {
                 Our cross-border techno-functional recruitment expertise is backed by a commitment to flexible business models, ensuring a tailored and efficient approach to acquiring top talent and driving your business success.
               </p>
               <Button
-                onClick={() => scrollToSection('contact')}
+                onClick={() => window.open('https://wa.me/919022374098', '_blank')}
                 size="lg"
                 className="bg-[#00B140] hover:bg-[#009635] text-white px-8 py-3 text-base font-semibold mt-4 shadow-lg hover:shadow-xl transition-all hover:scale-105 group"
               >
@@ -422,55 +416,79 @@ export default function HireXelencePage() {
               </div>
             </div>
 
-            {/* Right Side - Connect */}
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-3xl md:text-4xl font-bold text-[#001F54] mb-6">
-                  Connect with Us:
-                </h3>
-                <div className="space-y-4">
-                  <a
-                    href="tel:+919022374098"
-                    className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 group border border-[#001F54]/10"
-                  >
-                    <div className="w-12 h-12 bg-[#00B140] rounded-full flex items-center justify-center group-hover:animate-pulse">
-                      <Phone className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-[#001F54]/70 font-medium">Phone</p>
-                      <p className="text-lg font-bold text-[#001F54]">+91 90223 74098</p>
-                    </div>
-                  </a>
-
-                  <a
-                    href="mailto:applyHireXelence@gmail.com"
-                    className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 group border border-[#001F54]/10"
-                  >
-                    <div className="w-12 h-12 bg-[#00B140] rounded-full flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="overflow-hidden">
-                      <p className="text-sm text-[#001F54]/70 font-medium">Email</p>
-                      <p className="text-lg font-bold text-[#001F54] break-all">applyHireXelence@gmail.com</p>
-                    </div>
-                  </a>
-
-                  <a
-                    href="https://wa.me/919022374098"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 group border border-[#001F54]/10"
-                  >
-                    <div className="w-12 h-12 bg-[#00B140] rounded-full flex items-center justify-center group-hover:animate-bounce">
-                      <MessageCircle className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-[#001F54]/70 font-medium">WhatsApp</p>
-                      <p className="text-lg font-bold text-[#001F54]">Chat with Us</p>
-                    </div>
-                  </a>
+            {/* Right Side - Contact Form */}
+            <div className="bg-white rounded-2xl p-8 shadow-2xl">
+              <h3 className="text-3xl md:text-4xl font-bold text-[#001F54] mb-6">
+                Get in Touch
+              </h3>
+              <form
+                action="https://formsubmit.co/applyHireXelence@gmail.com"
+                method="POST"
+                className="space-y-4"
+              >
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-[#001F54] mb-2">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-[#001F54]/20 focus:border-[#00B140] focus:ring-2 focus:ring-[#00B140]/20 outline-none transition-all"
+                    placeholder="Your name"
+                  />
                 </div>
-              </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-[#001F54] mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-[#001F54]/20 focus:border-[#00B140] focus:ring-2 focus:ring-[#00B140]/20 outline-none transition-all"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-[#001F54] mb-2">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-[#001F54]/20 focus:border-[#00B140] focus:ring-2 focus:ring-[#00B140]/20 outline-none transition-all"
+                    placeholder="How can we help?"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-[#001F54] mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-lg border border-[#001F54]/20 focus:border-[#00B140] focus:ring-2 focus:ring-[#00B140]/20 outline-none transition-all resize-none"
+                    placeholder="Your message..."
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  className="w-full bg-[#00B140] hover:bg-[#009635] text-white py-3 text-base font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                >
+                  Send Message
+                </Button>
+              </form>
             </div>
           </div>
         </div>
@@ -510,9 +528,30 @@ export default function HireXelencePage() {
 
             <div>
               <h4 className="font-semibold mb-4 text-[#00B140]">Contact</h4>
-              <div className="space-y-2 text-sm text-white/70">
-                <p>+91 90223 74098</p>
-                <p>applyHireXelence@gmail.com</p>
+              <div className="space-y-3">
+                <a
+                  href="tel:+919022374098"
+                  className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors group"
+                >
+                  <Phone className="w-4 h-4 text-[#00B140] group-hover:scale-110 transition-transform" />
+                  <span>+91 90223 74098</span>
+                </a>
+                <a
+                  href="mailto:applyHireXelence@gmail.com"
+                  className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors group"
+                >
+                  <Mail className="w-4 h-4 text-[#00B140] group-hover:scale-110 transition-transform" />
+                  <span>applyHireXelence@gmail.com</span>
+                </a>
+                <a
+                  href="https://wa.me/919022374098"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors group"
+                >
+                  <MessageCircle className="w-4 h-4 text-[#00B140] group-hover:scale-110 transition-transform" />
+                  <span>Chat With Us</span>
+                </a>
               </div>
             </div>
           </div>
