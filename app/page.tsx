@@ -163,12 +163,12 @@ export default function HireXelencePage() {
                 </div>
 
                 {/* Trusted Partner Badge - Left Side */}
-                <div className="absolute -left-8 -top-4 bg-gradient-to-b from-[#00B140] to-black text-white px-5 py-3 rounded-full shadow-lg z-20 animate-pulse-slow text-xs md:text-sm">
+                <div className="absolute -left-8 -top-4 bg-gradient-to-b from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs">
                   <p className="font-semibold whitespace-nowrap">Trusted Partner</p>
                 </div>
 
                 {/* Reliable Excellence Badge - Right Side */}
-                <div className="absolute -right-8 top-1/3 bg-gradient-to-b from-[#001F54] to-black text-white px-5 py-3 rounded-full shadow-lg z-20 animate-pulse-slow text-xs md:text-sm" style={{ animationDelay: '0.4s' }}>
+                <div className="absolute -right-8 top-1/3 bg-gradient-to-b from-[#001F54] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs" style={{ animationDelay: '0.4s' }}>
                   <p className="font-semibold whitespace-nowrap">Reliable Excellence</p>
                 </div>
               </div>
