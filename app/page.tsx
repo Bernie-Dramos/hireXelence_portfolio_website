@@ -143,22 +143,22 @@ export default function HireXelencePage() {
               <Button
                 onClick={() => window.open('https://wa.me/919022374098', '_blank')}
                 size="lg"
-                className="bg-[#00B140] hover:bg-[#009635] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse-slow group"
+                className="bg-[#00B140] text-white px-8 py-6 text-lg font-semibold shadow-lg"
               >
-                Schedule a Session <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Schedule a Session <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
 
             {/* Right Side - Hero Image */}
             <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
               {/* Light Green Background Container */}
-              <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-visible bg-[#00B140]/10 p-8 md:p-12 flex items-end justify-center shadow-2xl">
-                <div className="relative w-full h-full flex items-end justify-center">
+              <div className="relative w-full h-[300px] md:h-[380px] lg:h-[450px] rounded-2xl overflow-hidden bg-[#00B140]/10 flex items-end justify-center shadow-2xl">
+                <div className="relative w-full h-[500px] md:h-[650px] lg:h-[800px] flex items-end justify-center">
                   <Image
                     src="/images/hero-support.png"
                     alt="Customer support representative"
                     width={500}
-                    height={600}
+                    height={800}
                     className="object-contain object-bottom h-full w-auto"
                     priority
                   />
