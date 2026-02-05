@@ -150,10 +150,10 @@ export default function HireXelencePage() {
             </div>
 
             {/* Right Side - Hero Image */}
-            <div className="relative w-auto animate-fade-in mx-auto lg:mx-0" style={{ animationDelay: '0.3s' }}>
+            <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
               {/* Light Green Background Container */}
-              <div className="relative h-[300px] md:h-[380px] lg:h-[450px] rounded-2xl overflow-visible bg-[#00B140]/10 flex items-end justify-center shadow-2xl" style={{ width: 'fit-content' }}>
-                <div className="relative w-[400px] md:w-[480px] lg:w-[600px] h-[500px] md:h-[650px] lg:h-[800px] flex items-end justify-center overflow-visible">
+              <div className="relative w-[400px] md:w-[480px] lg:w-[600px] h-[300px] md:h-[380px] lg:h-[450px] rounded-2xl overflow-visible bg-[#00B140]/10 flex items-end justify-center shadow-2xl">
+                <div className="relative w-full h-[500px] md:h-[650px] lg:h-[800px] flex items-end justify-center overflow-visible">
                   <Image
                     src="/images/hero-support.png"
                     alt="Customer support representative"
