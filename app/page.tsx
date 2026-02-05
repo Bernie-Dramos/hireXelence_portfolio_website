@@ -131,20 +131,40 @@ export default function HireXelencePage() {
         </div>
         
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#001F54] mb-8 text-balance animate-fade-in">
-              Faster, Smarter Talent Acquisition
-            </h1>
-            <p className="text-xl md:text-2xl text-[#001F54]/80 mb-12 leading-relaxed max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Comprehensive recruitment services tailored to your sector's demands, delivering strategic placements and global support for long-term impact.
-            </p>
-            <Button
-              onClick={() => window.open('https://wa.me/919022374098', '_blank')}
-              size="lg"
-              className="bg-[#00B140] hover:bg-[#009635] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse-slow group"
-            >
-              Schedule a Session <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Text Content */}
+            <div className="text-left">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#001F54] mb-6 text-balance animate-fade-in">
+                Faster, Smarter Talent Acquisition
+              </h1>
+              <p className="text-lg md:text-xl lg:text-2xl text-[#001F54]/80 mb-8 leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                Comprehensive recruitment services tailored to your sector's demands, delivering strategic placements and global support for long-term impact.
+              </p>
+              <Button
+                onClick={() => window.open('https://wa.me/919022374098', '_blank')}
+                size="lg"
+                className="bg-[#00B140] hover:bg-[#009635] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse-slow group"
+              >
+                Schedule a Session <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </div>
+
+            {/* Right Side - Hero Image */}
+            <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
+              <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/hero-talent-acquisition.jpg"
+                  alt="Futuristic talent acquisition technology"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#001F54]/30 to-transparent" />
+              </div>
+              {/* Decorative Element */}
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#00B140] rounded-full opacity-20 blur-3xl" />
+              <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#001F54] rounded-full opacity-20 blur-2xl" />
+            </div>
           </div>
         </div>
       </section>
