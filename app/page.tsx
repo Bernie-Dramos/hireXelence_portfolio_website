@@ -151,16 +151,30 @@ export default function HireXelencePage() {
 
             {/* Right Side - Hero Image */}
             <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/hero-talent-acquisition.jpg"
-                  alt="Futuristic talent acquisition technology"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#001F54]/30 to-transparent" />
+              {/* Light Green Background Container */}
+              <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-visible bg-[#00B140]/10 p-8 md:p-12 flex items-end justify-center shadow-2xl">
+                <div className="relative w-full h-full flex items-end justify-center">
+                  <Image
+                    src="/images/hero-support.png"
+                    alt="Customer support representative"
+                    width={500}
+                    height={600}
+                    className="object-contain object-bottom h-full w-auto"
+                    priority
+                  />
+                </div>
+
+                {/* Trusted Partner Badge - Left Side */}
+                <div className="absolute -left-6 top-1/4 bg-[#00B140] hover:bg-[#009635] text-white px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 group z-10 animate-fade-in">
+                  <p className="text-sm md:text-base font-semibold whitespace-nowrap">Trusted Partner</p>
+                </div>
+
+                {/* Reliable Excellence Badge - Right Side */}
+                <div className="absolute -right-6 top-2/3 bg-[#00B140] hover:bg-[#009635] text-white px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 group z-10 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                  <p className="text-sm md:text-base font-semibold whitespace-nowrap">Reliable Excellence</p>
+                </div>
               </div>
+
               {/* Decorative Element */}
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#00B140] rounded-full opacity-20 blur-3xl" />
               <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#001F54] rounded-full opacity-20 blur-2xl" />
