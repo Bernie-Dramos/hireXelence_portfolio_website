@@ -165,12 +165,12 @@ export default function HireXelencePage() {
                 </div>
 
                 {/* Trusted Partner Badge - Left Side */}
-                <div className="absolute -left-8 -top-12 bg-[#00B140] text-white px-6 py-4 rounded-full shadow-lg z-20 animate-fade-in">
+                <div className="absolute -left-8 -top-4 bg-[#00B140] text-white px-6 py-4 rounded-full shadow-lg z-20 animate-pulse-slow">
                   <p className="text-sm md:text-base font-semibold whitespace-nowrap">Trusted Partner</p>
                 </div>
 
                 {/* Reliable Excellence Badge - Right Side */}
-                <div className="absolute -right-8 top-1/3 bg-[#00B140] text-white px-6 py-4 rounded-full shadow-lg z-20 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                <div className="absolute -right-8 top-1/3 bg-[#00B140] text-white px-6 py-4 rounded-full shadow-lg z-20 animate-pulse-slow" style={{ animationDelay: '0.4s' }}>
                   <p className="text-sm md:text-base font-semibold whitespace-nowrap">Reliable Excellence</p>
                 </div>
               </div>
