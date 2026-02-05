@@ -150,8 +150,8 @@ export default function HireXelencePage() {
             {/* Right Side - Hero Image */}
             <div className="relative animate-fade-in justify-self-end" style={{ animationDelay: '0.3s' }}>
               {/* Light Green Background Container */}
-              <div className="relative w-[420px] h-[200px] md:h-[280px] lg:h-[350px] rounded-2xl overflow-visible bg-[#00B140]/10 flex items-end justify-center shadow-2xl">
-                <div className="relative w-full h-[500px] md:h-[650px] lg:h-[800px] flex items-end justify-center overflow-visible">
+              <div className="relative w-[420px] h-[380px] rounded-2xl overflow-visible bg-[#00B140]/10 flex items-end justify-center shadow-2xl">
+                <div className="relative w-full h-[350px] md:h-[650px] lg:h-[800px] flex items-end justify-center overflow-visible">
                   <Image
                     src="/images/hero-support.png"
                     alt="Customer support representative"
@@ -163,12 +163,12 @@ export default function HireXelencePage() {
                 </div>
 
                 {/* Trusted Partner Badge - Left Side */}
-                <div className="absolute -left-8 -top-4 bg-gradient-to-b from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs">
+                <div className="absolute -left-8 -top-16 bg-gradient-to-r from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs">
                   <p className="font-semibold whitespace-nowrap">Trusted Partner</p>
                 </div>
 
                 {/* Reliable Excellence Badge - Right Side */}
-                <div className="absolute -right-8 top-1/3 bg-gradient-to-b from-[#001F54] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs" style={{ animationDelay: '0.4s' }}>
+                <div className="absolute -right-8 top-1/3 bg-gradient-to-r from-[#001F54] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs" style={{ animationDelay: '0.4s' }}>
                   <p className="font-semibold whitespace-nowrap">Reliable Excellence</p>
                 </div>
               </div>
