@@ -75,43 +75,26 @@ export default function HireXelencePage() {
               />
             </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 text-sm font-medium transition-all duration-200 rounded-md ${
-                    activeSection === item.id
-                      ? 'text-[#00B140] bg-[#00B140]/10'
-                      : 'text-[#001F54]/70 hover:text-[#001F54] hover:bg-gray-100'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Mobile Menu Button */}
+            {/* Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-[#00B140]"
+              className="p-2 text-[#00B140] hover:bg-[#00B140]/10 rounded-lg transition-colors"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Menu Dropdown */}
           {mobileMenuOpen && (
-            <div className="lg:hidden py-4 border-t bg-gradient-to-br from-[#00B140] to-[#001F54] relative overflow-hidden">
+            <div className="py-4 border-t bg-gradient-to-br from-[#00B140] to-[#001F54] relative overflow-hidden">
               <div className="absolute inset-0 bg-[#001F54] opacity-40 diagonal-clip" />
               <div className="flex flex-col gap-2 relative z-10">
                 {navItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`px-4 py-2 text-left text-sm font-medium transition-colors rounded-md ${
+                    className={`px-4 py-3 text-left text-base font-medium transition-colors rounded-md ${
                       activeSection === item.id
                         ? 'text-white bg-white/20'
                         : 'text-white/90 hover:text-white hover:bg-white/10'
@@ -161,9 +144,6 @@ export default function HireXelencePage() {
 
       {/* About Section - Slide 2 */}
       <section id="about" className="py-20 md:py-28 bg-[#001F54] text-white relative overflow-hidden diagonal-clip">
-        <div className="absolute top-4 right-8 w-16 h-16 bg-white rounded-full flex items-center justify-center text-[#001F54] font-bold text-2xl">
-          02
-        </div>
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-slide-in-left">
@@ -197,9 +177,6 @@ export default function HireXelencePage() {
       {/* Mission & Vision Section - Slide 3 */}
       <section id="mission" className="py-20 md:py-28 bg-[#00B140] text-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-20 bg-white diagonal-clip" />
-        <div className="absolute top-4 right-8 w-16 h-16 bg-white rounded-full flex items-center justify-center text-[#001F54] font-bold text-2xl z-10">
-          03
-        </div>
         <div className="container mx-auto px-4 lg:px-8 pt-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-[450px] rounded-2xl overflow-hidden shadow-2xl animate-slide-in-left">
@@ -236,9 +213,6 @@ export default function HireXelencePage() {
       {/* Differentiators Section - Slide 4 */}
       <section id="differentiators" className="py-20 md:py-28 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#001F54]/5 diagonal-clip" />
-        <div className="absolute top-4 right-8 w-16 h-16 bg-[#001F54] rounded-full flex items-center justify-center text-white font-bold text-2xl z-10">
-          04
-        </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#001F54] mb-4 text-balance">
@@ -295,9 +269,6 @@ export default function HireXelencePage() {
 
       {/* Why Us Section - Slide 5 */}
       <section id="why-us" className="py-20 md:py-28 bg-[#00B140] relative overflow-hidden">
-        <div className="absolute top-4 right-8 w-16 h-16 bg-white rounded-full flex items-center justify-center text-[#001F54] font-bold text-2xl z-20">
-          05
-        </div>
         <div className="absolute top-8 right-32 w-24 h-24 opacity-20">
           <div className="grid grid-cols-3 gap-2">
             {[...Array(9)].map((_, i) => (
@@ -332,9 +303,6 @@ export default function HireXelencePage() {
 
       {/* Core Strengths Section - Slide 6 */}
       <section id="strengths" className="py-20 md:py-28 bg-white relative overflow-hidden">
-        <div className="absolute top-4 right-8 w-16 h-16 bg-[#001F54] rounded-full flex items-center justify-center text-white font-bold text-2xl z-20">
-          06
-        </div>
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <Image
@@ -385,9 +353,6 @@ export default function HireXelencePage() {
       {/* Engagement Models Section - Slide 7 */}
       <section id="engagement" className="py-20 md:py-28 bg-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-20 bg-[#00B140] diagonal-clip" />
-        <div className="absolute top-4 right-8 w-16 h-16 bg-[#001F54] rounded-full flex items-center justify-center text-white font-bold text-2xl z-10">
-          07
-        </div>
         <div className="container mx-auto px-4 lg:px-8 pt-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#001F54] mb-4 text-balance">
@@ -422,9 +387,6 @@ export default function HireXelencePage() {
       {/* Contact Section - Slide 8 */}
       <section id="contact" className="py-20 md:py-28 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#001F54] via-[#001F54]/95 to-white/50" />
-        <div className="absolute top-4 right-8 w-16 h-16 bg-white rounded-full flex items-center justify-center text-[#001F54] font-bold text-2xl z-20">
-          08
-        </div>
         <div className="absolute top-0 right-0 w-1/2 h-full bg-white/90 diagonal-clip" />
         
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
