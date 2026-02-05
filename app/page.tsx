@@ -150,7 +150,7 @@ export default function HireXelencePage() {
             {/* Right Side - Hero Image */}
             <div className="relative animate-fade-in justify-self-end" style={{ animationDelay: '0.3s' }}>
               {/* Light Green Background Container */}
-              <div className="relative w-[420px] h-[300px] md:h-[380px] lg:h-[450px] rounded-2xl overflow-visible bg-[#00B140]/10 flex items-end justify-center shadow-2xl">
+              <div className="relative w-[420px] h-[200px] md:h-[280px] lg:h-[350px] rounded-2xl overflow-visible bg-[#00B140]/10 flex items-end justify-center shadow-2xl">
                 <div className="relative w-full h-[500px] md:h-[650px] lg:h-[800px] flex items-end justify-center overflow-visible">
                   <Image
                     src="/images/hero-support.png"
