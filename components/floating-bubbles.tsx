@@ -21,7 +21,7 @@ const getRandomPosition = () => ({
   y: Math.random() * (95 - 80) + 80, // 80% to 95% height (bottom area)
 })
 
-export function FloatingBubbles() {
+export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | null) => void }) {
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedRole, setSelectedRole] = useState<string | null>(null)
   const [visibleBubbles, setVisibleBubbles] = useState<number[]>([1, 2, 3])
@@ -56,13 +56,19 @@ export function FloatingBubbles() {
         }
         return nextSet
       })
-    }, 6000) // 3 seconds visible + 3 seconds fade
+    }, 3000) // 3 seconds visible
 
     return () => clearInterval(interval)
   }, [isMobile])
 
   const handleBubbleClick = (text: string) => {
-    setSelectedRole(text === 'Various Positions' ? null : text)
+    const role = text === 'Various Positions' ? null : text
+    setSelectedRole(role)
+    setModalOpen(true)
+  }
+
+  const openFormModal = (role: string | null = null) => {
+    setSelectedRole(role)
     setModalOpen(true)
   }
 

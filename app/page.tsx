@@ -6,11 +6,14 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Menu, X, Phone, Mail, MessageCircle, Rocket, Target, Globe, ArrowRight, TrendingUp, Users2, Handshake } from 'lucide-react'
 import Image from 'next/image'
 import { FloatingBubbles } from '@/components/floating-bubbles'
+import { motion, AnimatePresence } from 'framer-motion'
+import { JobApplicationForm } from '@/components/job-application-form'
 
 export default function HireXelencePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [scrolled, setScrolled] = useState(false)
+  const [showApplicationForm, setShowApplicationForm] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,7 +60,7 @@ export default function HireXelencePage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Floating Bubbles */}
-      <FloatingBubbles />
+      <FloatingBubbles onOpenForm={() => setShowApplicationForm(true)} />
       
       {/* Fixed Header */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur shadow-md' : 'bg-white'}`}>
@@ -172,14 +175,14 @@ export default function HireXelencePage() {
                 </div>
 
                 {/* Reliable Excellence Badge - Right Side */}
-                <div className="absolute -right-8 top-1/3 bg-gradient-to-r from-[#001F54] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs" style={{ animationDelay: '0.4s' }}>
+                <div className="absolute -right-8 top-1/3 bg-gradient-to-r from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs" style={{ animationDelay: '0.4s' }}>
                   <p className="font-semibold whitespace-nowrap">Reliable Excellence</p>
                 </div>
               </div>
 
               {/* Decorative Element */}
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#00B140] rounded-full opacity-20 blur-3xl" />
-              <div className="absolute -top-8 -left-4 w-24 h-24 bg-[#001F54] rounded-full opacity-20 blur-2xl" />
+              <div className="absolute -top-8 -left-4 w-24 h-24 bg-[#00B140] rounded-full opacity-20 blur-2xl" />
             </div>
           </div>
         </div>
@@ -265,7 +268,7 @@ export default function HireXelencePage() {
           </div>
 
           <div className="max-w-3xl mx-auto space-y-6">
-            <Card className="bg-[#001F54] text-white border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+            <Card className="bg-[#00B140] text-white border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
               <CardContent className="p-8 md:p-10 flex gap-6 items-start">
                 <div className="w-16 h-16 bg-[#00B140] rounded-full flex items-center justify-center flex-shrink-0">
                   <Rocket className="w-8 h-8 text-white" />
@@ -279,7 +282,7 @@ export default function HireXelencePage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-[#001F54] text-white border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+            <Card className="bg-[#00B140] text-white border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
               <CardContent className="p-8 md:p-10 flex gap-6 items-start">
                 <div className="w-16 h-16 bg-[#00B140] rounded-full flex items-center justify-center flex-shrink-0">
                   <Handshake className="w-8 h-8 text-white" />
@@ -293,7 +296,7 @@ export default function HireXelencePage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-[#001F54] text-white border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+            <Card className="bg-[#00B140] text-white border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
               <CardContent className="p-8 md:p-10 flex gap-6 items-start">
                 <div className="w-16 h-16 bg-[#00B140] rounded-full flex items-center justify-center flex-shrink-0">
                   <Globe className="w-8 h-8 text-white" />
@@ -332,7 +335,7 @@ export default function HireXelencePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
-            <Card className="bg-[#001F54] text-white border-none shadow-xl transform md:translate-y-0 hover:-translate-y-2 transition-all duration-300">
+            <Card className="bg-[#00B140] text-white border-none shadow-xl transform md:translate-y-0 hover:-translate-y-2 transition-all duration-300">
               <CardContent className="p-8 md:p-10">
                 <p className="text-lg leading-relaxed">
                   HireXelence provides comprehensive, on-demand talent acquisition solutions designed to support your most critical enterprise projects.
@@ -340,7 +343,7 @@ export default function HireXelencePage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-[#001F54] text-white border-none shadow-xl transform md:translate-y-5 hover:-translate-y-2 transition-all duration-300">
+            <Card className="bg-[#00B140] text-white border-none shadow-xl transform md:translate-y-5 hover:-translate-y-2 transition-all duration-300">
               <CardContent className="p-8 md:p-10">
                 <p className="text-lg leading-relaxed">
                   We specialize in sourcing highly skilled professionals across multiple business verticals, delivering talent aligned with both technical requirements and industry-specific needs.
@@ -348,7 +351,7 @@ export default function HireXelencePage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-[#001F54] text-white border-none shadow-xl transform md:translate-y-0 hover:-translate-y-2 transition-all duration-300">
+            <Card className="bg-[#00B140] text-white border-none shadow-xl transform md:translate-y-0 hover:-translate-y-2 transition-all duration-300">
               <CardContent className="p-8 md:p-10">
                 <p className="text-lg leading-relaxed">
                   Our expertise is hyper-focused on delivering the talent required to support tomorrow's rapidly evolving technology landscapes.
@@ -384,9 +387,17 @@ export default function HireXelencePage() {
               <Button
                 onClick={() => window.open('https://wa.me/919022374098', '_blank')}
                 size="lg"
-                className="bg-[#00B140] hover:bg-[#009635] text-white px-8 py-3 text-base font-semibold mt-4 shadow-lg hover:shadow-xl transition-all hover:scale-105 group"
+                className="bg-[#00B140] hover:bg-[#009635] text-white px-8 py-3 text-base font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 group"
               >
                 Schedule a Session <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button
+                onClick={() => setShowApplicationForm(true)}
+                size="lg"
+                variant="outline"
+                className="ml-4 border-[#00B140] text-[#00B140] hover:bg-[#00B140]/10 px-8 py-3 text-base font-semibold"
+              >
+                Apply Now
               </Button>
             </div>
           </div>
@@ -597,6 +608,47 @@ export default function HireXelencePage() {
           </div>
         </div>
       </footer>
+
+      {/* Application Form Modal */}
+      <AnimatePresence>
+        {showApplicationForm && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+              onClick={() => setShowApplicationForm(false)}
+            />
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl z-50 p-6 md:p-8"
+            >
+              <button
+                onClick={() => setShowApplicationForm(false)}
+                className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X className="w-5 h-5 text-gray-600" />
+              </button>
+
+              <h2 className="text-2xl md:text-3xl font-bold text-[#001F54] mb-6">
+                Job Application Form
+              </h2>
+
+              <JobApplicationForm 
+                preselectedRole={null} 
+                onSuccess={() => {
+                  setTimeout(() => setShowApplicationForm(false), 2000)
+                }}
+              />
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
