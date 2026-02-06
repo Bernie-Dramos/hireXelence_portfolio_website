@@ -6,35 +6,63 @@ import { X } from 'lucide-react'
 import { JobApplicationForm } from './job-application-form'
 
 const bubbles = [
-  { id: 1, text: 'Various Positions Available', large: true, x: '50%', y: '90%', size: 67 },
-  { id: 2, text: 'Business Analyst', large: false, x: '15%', y: '88%', size: 40 },
-  { id: 3, text: 'Web Developer', large: false, x: '80%', y: '92%', size: 43 },
-  { id: 4, text: 'Sales Manager', large: false, x: '10%', y: '94%', size: 37 },
-  { id: 5, text: 'Social Media Manager', large: false, x: '85%', y: '85%', size: 47 },
-  { id: 6, text: 'Data Scientist', large: false, x: '30%', y: '93%', size: 42 },
-  { id: 7, text: 'Marketing Specialist', large: false, x: '70%', y: '87%', size: 45 },
-  { id: 8, text: 'UI/UX Designer', large: false, x: '25%', y: '90%', size: 38 },
+  { id: 1, text: 'Various Positions', large: true, size: 67 },
+  { id: 2, text: 'Business Analyst', large: false, size: 67 },
+  { id: 3, text: 'Web Developer', large: false, size: 67 },
+  { id: 4, text: 'Sales Manager', large: false, size: 67 },
+  { id: 5, text: 'Social Media Manager', large: false, size: 67 },
+  { id: 6, text: 'Data Scientist', large: false, size: 67 },
+  { id: 7, text: 'Marketing Specialist', large: false, size: 67 },
+  { id: 8, text: 'UI/UX Designer', large: false, size: 67 },
 ]
+
+const getRandomPosition = () => ({
+  x: Math.random() * (100 - 15) + 5, // 5% to 85% width
+  y: Math.random() * (95 - 80) + 80, // 80% to 95% height (bottom area)
+})
 
 export function FloatingBubbles() {
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedRole, setSelectedRole] = useState<string | null>(null)
   const [visibleBubbles, setVisibleBubbles] = useState<number[]>([1, 2, 3])
+  const [isMobile, setIsMobile] = useState(false)
+  const [bubblePositions, setBubblePositions] = useState<Record<number, { x: number; y: number }>>({})
 
   useEffect(() => {
+    // Check if mobile
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  useEffect(() => {
+    // Initialize random positions for all bubbles
+    const positions: Record<number, { x: number; y: number }> = {}
+    bubbles.forEach((bubble) => {
+      positions[bubble.id] = getRandomPosition()
+    })
+    setBubblePositions(positions)
+  }, [])
+
+  useEffect(() => {
+    const bubblesPerCycle = isMobile ? 2 : 3
     const interval = setInterval(() => {
       setVisibleBubbles((prev) => {
         const current = prev[0]
-        const nextSet = [(current + 3 - 1) % 8 + 1, (current + 3) % 8 + 1, (current + 4) % 8 + 1]
+        const nextSet: number[] = []
+        for (let i = 0; i < bubblesPerCycle; i++) {
+          nextSet.push(((current + bubblesPerCycle - 1 + i) % 8) + 1)
+        }
         return nextSet
       })
     }, 6000) // 3 seconds visible + 3 seconds fade
 
     return () => clearInterval(interval)
-  }, [])
+  }, [isMobile])
 
   const handleBubbleClick = (text: string) => {
-    setSelectedRole(text === 'Various Positions Available' ? null : text)
+    setSelectedRole(text === 'Various Positions' ? null : text)
     setModalOpen(true)
   }
 
@@ -45,17 +73,17 @@ export function FloatingBubbles() {
           {bubbles.map((bubble) => (
             visibleBubbles.includes(bubble.id) && (
               <motion.div
-                key={bubble.id}
+                key={`${bubble.id}-${Math.random()}`}
                 className="absolute pointer-events-auto cursor-pointer"
                 initial={{ 
-                  left: bubble.x, 
-                  top: bubble.y,
+                  left: `${bubblePositions[bubble.id]?.x || 50}%`,
+                  top: `${bubblePositions[bubble.id]?.y || 90}%`,
                   scale: 0,
                   opacity: 0
                 }}
                 animate={{
-                  left: bubble.x,
-                  top: bubble.y,
+                  left: `${bubblePositions[bubble.id]?.x || 50}%`,
+                  top: `${bubblePositions[bubble.id]?.y || 90}%`,
                   scale: 1,
                   opacity: 1,
                   x: [0, 20, -15, 10, -5, 0],
@@ -84,17 +112,22 @@ export function FloatingBubbles() {
                 onClick={() => handleBubbleClick(bubble.text)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
+                onAnimationComplete={() => {
+                  // Generate new position for next cycle
+                  setBubblePositions((prev) => ({
+                    ...prev,
+                    [bubble.id]: getRandomPosition(),
+                  }))
+                }}
               >
                 <div className={`w-full h-full rounded-full flex items-center justify-center text-center p-2 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl ${
                   bubble.large 
                     ? 'bg-[#001F54]/80 text-white font-bold border-2 border-white/30' 
                     : 'bg-[#00B140]/70 text-white font-semibold border border-white/20'
                 }`}>
-                  <span className={`leading-tight ${
-                    bubble.large 
-                      ? 'text-[10px] md:text-xs' 
-                      : 'text-[6px] md:text-[7px]'
-                  }`}>{bubble.text}</span>
+                  <span className="text-[8px] md:text-[10px] leading-tight">
+                    {bubble.text}
+                  </span>
                 </div>
               </motion.div>
             )
