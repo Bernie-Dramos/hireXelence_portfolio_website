@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Menu, X, Phone, Mail, MessageCircle, Rocket, Target, Globe, ArrowRight, TrendingUp, Users2, Handshake } from 'lucide-react'
 import Image from 'next/image'
+import { FloatingBubbles } from '@/components/floating-bubbles'
 
 export default function HireXelencePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -55,6 +56,9 @@ export default function HireXelencePage() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Floating Bubbles */}
+      <FloatingBubbles />
+      
       {/* Fixed Header */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur shadow-md' : 'bg-white'}`}>
         <nav className="container mx-auto px-4 lg:px-8">
@@ -150,17 +154,15 @@ export default function HireXelencePage() {
             {/* Right Side - Hero Image */}
             <div className="relative animate-fade-in justify-self-end" style={{ animationDelay: '0.3s' }}>
               {/* Light Green Background Container */}
-              <div className="relative w-[420px] h-[380px] rounded-2xl overflow-visible bg-[#00B140]/10 flex items-end justify-center shadow-2xl">
-                <div className="relative w-full h-[350px] md:h-[650px] lg:h-[800px] flex items-end justify-center overflow-visible">
-                  <Image
-                    src="/images/hero-support.png"
-                    alt="Customer support representative"
-                    width={500}
-                    height={800}
-                    className="object-contain object-bottom h-full w-auto"
-                    priority
-                  />
-                </div>
+              <div className="relative w-[420px] h-[380px] rounded-2xl overflow-hidden bg-[#00B140]/10 shadow-2xl">
+                <Image
+                  src="/images/hero-talent-acquisition.jpg"
+                  alt="Talent acquisition technology"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#001F54]/20 to-transparent" />
 
                 {/* Trusted Partner Badge - Left Side */}
                 <div className="absolute -left-8 -top-16 bg-gradient-to-r from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs">
