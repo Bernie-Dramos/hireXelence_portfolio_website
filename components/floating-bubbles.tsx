@@ -6,14 +6,14 @@ import { X } from 'lucide-react'
 import { JobApplicationForm } from './job-application-form'
 
 const bubbles = [
-  { id: 1, text: 'Various Positions Available', large: true, x: '50%', y: '50%', size: 200 },
-  { id: 2, text: 'Business Analyst', large: false, x: '15%', y: '20%', size: 120 },
-  { id: 3, text: 'Web Developer', large: false, x: '80%', y: '15%', size: 130 },
-  { id: 4, text: 'Sales Manager', large: false, x: '10%', y: '70%', size: 110 },
-  { id: 5, text: 'Social Media Manager', large: false, x: '85%', y: '75%', size: 140 },
-  { id: 6, text: 'Data Scientist', large: false, x: '30%', y: '85%', size: 125 },
-  { id: 7, text: 'Marketing Specialist', large: false, x: '70%', y: '45%', size: 135 },
-  { id: 8, text: 'UI/UX Designer', large: false, x: '25%', y: '35%', size: 115 },
+  { id: 1, text: 'Various Positions Available', large: true, x: '50%', y: '90%', size: 67 },
+  { id: 2, text: 'Business Analyst', large: false, x: '15%', y: '88%', size: 40 },
+  { id: 3, text: 'Web Developer', large: false, x: '80%', y: '92%', size: 43 },
+  { id: 4, text: 'Sales Manager', large: false, x: '10%', y: '94%', size: 37 },
+  { id: 5, text: 'Social Media Manager', large: false, x: '85%', y: '85%', size: 47 },
+  { id: 6, text: 'Data Scientist', large: false, x: '30%', y: '93%', size: 42 },
+  { id: 7, text: 'Marketing Specialist', large: false, x: '70%', y: '87%', size: 45 },
+  { id: 8, text: 'UI/UX Designer', large: false, x: '25%', y: '90%', size: 38 },
 ]
 
 export function FloatingBubbles() {

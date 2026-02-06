@@ -154,15 +154,17 @@ export default function HireXelencePage() {
             {/* Right Side - Hero Image */}
             <div className="relative animate-fade-in justify-self-end" style={{ animationDelay: '0.3s' }}>
               {/* Light Green Background Container */}
-              <div className="relative w-[420px] h-[380px] rounded-2xl overflow-hidden bg-[#00B140]/10 shadow-2xl">
-                <Image
-                  src="/images/hero-talent-acquisition.jpg"
-                  alt="Talent acquisition technology"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#001F54]/20 to-transparent" />
+              <div className="relative w-[420px] h-[380px] rounded-2xl overflow-visible bg-[#00B140]/10 shadow-2xl">
+                <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                  <Image
+                    src="/images/hero-talent-acquisition.jpg"
+                    alt="Talent acquisition technology"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#001F54]/20 to-transparent" />
+                </div>
 
                 {/* Trusted Partner Badge - Left Side */}
                 <div className="absolute -left-8 -top-16 bg-gradient-to-r from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs">
