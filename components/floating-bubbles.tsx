@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { JobApplicationForm } from './job-application-form'
@@ -19,6 +19,19 @@ const bubbles = [
 export function FloatingBubbles() {
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedRole, setSelectedRole] = useState<string | null>(null)
+  const [visibleBubbles, setVisibleBubbles] = useState<number[]>([1, 2, 3])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisibleBubbles((prev) => {
+        const current = prev[0]
+        const nextSet = [(current + 3 - 1) % 8 + 1, (current + 3) % 8 + 1, (current + 4) % 8 + 1]
+        return nextSet
+      })
+    }, 6000) // 3 seconds visible + 3 seconds fade
+
+    return () => clearInterval(interval)
+  }, [])
 
   const handleBubbleClick = (text: string) => {
     setSelectedRole(text === 'Various Positions Available' ? null : text)
@@ -28,52 +41,65 @@ export function FloatingBubbles() {
   return (
     <>
       <div className="fixed inset-0 pointer-events-none z-30 overflow-hidden">
-        {bubbles.map((bubble) => (
-          <motion.div
-            key={bubble.id}
-            className="absolute pointer-events-auto cursor-pointer"
-            initial={{ 
-              left: bubble.x, 
-              top: bubble.y,
-              scale: 0,
-              opacity: 0
-            }}
-            animate={{
-              left: bubble.x,
-              top: bubble.y,
-              scale: 1,
-              opacity: 1,
-              x: [0, 20, -15, 10, -5, 0],
-              y: [0, -15, 20, -10, 15, 0],
-            }}
-            transition={{
-              duration: 15 + Math.random() * 10,
-              repeat: Infinity,
-              repeatType: 'reverse',
-              ease: 'easeInOut',
-              delay: Math.random() * 2,
-              scale: { duration: 0.5 },
-              opacity: { duration: 0.5 },
-            }}
-            style={{
-              width: bubble.size,
-              height: bubble.size,
-              marginLeft: -bubble.size / 2,
-              marginTop: -bubble.size / 2,
-            }}
-            onClick={() => handleBubbleClick(bubble.text)}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <div className={`w-full h-full rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl ${
-              bubble.large 
-                ? 'bg-[#001F54]/80 text-white text-base md:text-lg font-bold border-2 border-white/30' 
-                : 'bg-[#00B140]/70 text-white text-xs md:text-sm font-semibold border border-white/20'
-            }`}>
-              <span className="leading-tight">{bubble.text}</span>
-            </div>
-          </motion.div>
-        ))}
+        <AnimatePresence>
+          {bubbles.map((bubble) => (
+            visibleBubbles.includes(bubble.id) && (
+              <motion.div
+                key={bubble.id}
+                className="absolute pointer-events-auto cursor-pointer"
+                initial={{ 
+                  left: bubble.x, 
+                  top: bubble.y,
+                  scale: 0,
+                  opacity: 0
+                }}
+                animate={{
+                  left: bubble.x,
+                  top: bubble.y,
+                  scale: 1,
+                  opacity: 1,
+                  x: [0, 20, -15, 10, -5, 0],
+                  y: [0, -15, 20, -10, 15, 0],
+                }}
+                exit={{
+                  scale: 0,
+                  opacity: 0,
+                  transition: { duration: 0.5 }
+                }}
+                transition={{
+                  duration: 15 + Math.random() * 10,
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                  ease: 'easeInOut',
+                  delay: Math.random() * 2,
+                  scale: { duration: 0.5 },
+                  opacity: { duration: 0.5 },
+                }}
+                style={{
+                  width: bubble.size,
+                  height: bubble.size,
+                  marginLeft: -bubble.size / 2,
+                  marginTop: -bubble.size / 2,
+                }}
+                onClick={() => handleBubbleClick(bubble.text)}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className={`w-full h-full rounded-full flex items-center justify-center text-center p-2 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl ${
+                  bubble.large 
+                    ? 'bg-[#001F54]/80 text-white font-bold border-2 border-white/30' 
+                    : 'bg-[#00B140]/70 text-white font-semibold border border-white/20'
+                }`}>
+                  <span className={`leading-tight ${
+                    bubble.large 
+                      ? 'text-[10px] md:text-xs' 
+                      : 'text-[6px] md:text-[7px]'
+                  }`}>{bubble.text}</span>
+                </div>
+              </motion.div>
+            )
+          ))}
+        </AnimatePresence>
       </div>
 
       <AnimatePresence>
