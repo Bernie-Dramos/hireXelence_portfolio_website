@@ -628,31 +628,33 @@ export default function HireXelencePage() {
               onClick={() => setShowApplicationForm(false)}
             />
             
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-white rounded-2xl shadow-2xl z-50 p-6 md:p-8 mx-4"
-            >
-              <button
-                onClick={() => setShowApplicationForm(false)}
-                className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+                className="w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-white rounded-2xl shadow-2xl pointer-events-auto p-6 md:p-8 relative"
               >
-                <X className="w-5 h-5 text-gray-600" />
-              </button>
+                <button
+                  onClick={() => setShowApplicationForm(false)}
+                  className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+                >
+                  <X className="w-5 h-5 text-gray-600" />
+                </button>
 
-              <h2 className="text-2xl md:text-3xl font-bold text-[#001F54] mb-6">
-                Job Application Form
-              </h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-[#001F54] mb-6">
+                  Job Application Form
+                </h2>
 
-              <JobApplicationForm 
-                preselectedRole={null} 
-                onSuccess={() => {
-                  setTimeout(() => setShowApplicationForm(false), 2000)
-                }}
-              />
-            </motion.div>
+                <JobApplicationForm 
+                  preselectedRole={null} 
+                  onSuccess={() => {
+                    setTimeout(() => setShowApplicationForm(false), 2000)
+                  }}
+                />
+              </motion.div>
+            </div>
           </>
         )}
       </AnimatePresence>
