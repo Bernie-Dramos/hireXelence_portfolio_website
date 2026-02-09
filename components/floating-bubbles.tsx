@@ -6,60 +6,32 @@ import { X } from 'lucide-react'
 import { JobApplicationForm } from './job-application-form'
 
 const bubbles = [
-  { id: 1, text: 'Various Positions', large: true, size: 67 },
-  { id: 2, text: 'Business Analyst', large: false, size: 67 },
-  { id: 3, text: 'Web Developer', large: false, size: 67 },
-  { id: 4, text: 'Sales Manager', large: false, size: 67 },
-  { id: 5, text: 'Social Media Manager', large: false, size: 67 },
-  { id: 6, text: 'Data Scientist', large: false, size: 67 },
-  { id: 7, text: 'Marketing Specialist', large: false, size: 67 },
-  { id: 8, text: 'UI/UX Designer', large: false, size: 67 },
+  { id: 1, text: 'Various Positions', large: true },
+  { id: 2, text: 'Business Analyst', large: false },
+  { id: 3, text: 'Web Developer', large: false },
+  { id: 4, text: 'Sales Manager', large: false },
+  { id: 5, text: 'Social Media Manager', large: false },
+  { id: 6, text: 'Data Scientist', large: false },
+  { id: 7, text: 'Marketing Specialist', large: false },
+  { id: 8, text: 'UI/UX Designer', large: false },
 ]
-
-const getRandomPosition = () => ({
-  x: Math.random() * (100 - 15) + 5, // 5% to 85% width
-  y: Math.random() * (95 - 80) + 80, // 80% to 95% height (bottom area)
-})
 
 export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | null) => void }) {
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedRole, setSelectedRole] = useState<string | null>(null)
-  const [visibleBubbles, setVisibleBubbles] = useState<number[]>([1, 2, 3])
-  const [isMobile, setIsMobile] = useState(false)
-  const [bubblePositions, setBubblePositions] = useState<Record<number, { x: number; y: number }>>({})
+  const [currentBubbleIndex, setCurrentBubbleIndex] = useState(0)
+  const [fromLeft, setFromLeft] = useState(true)
 
   useEffect(() => {
-    // Check if mobile
-    const checkMobile = () => setIsMobile(window.innerWidth < 768)
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-
-  useEffect(() => {
-    // Initialize random positions for all bubbles
-    const positions: Record<number, { x: number; y: number }> = {}
-    bubbles.forEach((bubble) => {
-      positions[bubble.id] = getRandomPosition()
-    })
-    setBubblePositions(positions)
-  }, [])
-
-  useEffect(() => {
-    const bubblesPerCycle = isMobile ? 2 : 3
     const interval = setInterval(() => {
-      setVisibleBubbles((prev) => {
-        const current = prev[0]
-        const nextSet: number[] = []
-        for (let i = 0; i < bubblesPerCycle; i++) {
-          nextSet.push(((current + bubblesPerCycle - 1 + i) % 8) + 1)
-        }
-        return nextSet
-      })
-    }, 3000) // 3 seconds visible
+      setCurrentBubbleIndex((prev) => (prev + 1) % bubbles.length)
+      setFromLeft((prev) => !prev) // Alternate left and right
+    }, 6000) // 3 seconds visible + 0.5s fade in + 0.5s fade out + buffer
 
     return () => clearInterval(interval)
-  }, [isMobile])
+  }, [])
+
+  const currentBubble = bubbles[currentBubbleIndex]
 
   const handleBubbleClick = (text: string) => {
     const role = text === 'Various Positions' ? null : text
@@ -67,80 +39,50 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
     setModalOpen(true)
   }
 
-  const openFormModal = (role: string | null = null) => {
-    setSelectedRole(role)
-    setModalOpen(true)
-  }
-
   return (
     <>
-      <div className="fixed inset-0 pointer-events-none z-30 overflow-hidden">
-        <AnimatePresence>
-          {bubbles.map((bubble) => (
-            visibleBubbles.includes(bubble.id) && (
-              <motion.div
-                key={`${bubble.id}-${Math.random()}`}
-                className="absolute pointer-events-auto cursor-pointer"
-                initial={{ 
-                  left: `${bubblePositions[bubble.id]?.x || 50}%`,
-                  top: `${bubblePositions[bubble.id]?.y || 90}%`,
-                  scale: 0,
-                  opacity: 0
-                }}
-                animate={{
-                  left: `${bubblePositions[bubble.id]?.x || 50}%`,
-                  top: `${bubblePositions[bubble.id]?.y || 90}%`,
-                  scale: 1,
-                  opacity: 1,
-                  x: [0, 20, -15, 10, -5, 0],
-                  y: [0, -15, 20, -10, 15, 0],
-                }}
-                exit={{
-                  scale: 0,
-                  opacity: 0,
-                  transition: { duration: 0.5 }
-                }}
-                transition={{
-                  duration: 15 + Math.random() * 10,
-                  repeat: Infinity,
-                  repeatType: 'reverse',
-                  ease: 'easeInOut',
-                  delay: Math.random() * 2,
-                  scale: { duration: 0.5 },
-                  opacity: { duration: 0.5 },
-                }}
-                style={{
-                  width: bubble.size,
-                  height: bubble.size,
-                  marginLeft: -bubble.size / 2,
-                  marginTop: -bubble.size / 2,
-                }}
-                onClick={() => handleBubbleClick(bubble.text)}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onAnimationComplete={() => {
-                  // Generate new position for next cycle
-                  setBubblePositions((prev) => ({
-                    ...prev,
-                    [bubble.id]: getRandomPosition(),
-                  }))
-                }}
-              >
-                <div className={`w-full h-full rounded-full flex items-center justify-center text-center p-2 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl ${
-                  bubble.large 
-                    ? 'bg-[#001F54]/80 text-white font-bold border-2 border-white/30' 
-                    : 'bg-[#00B140]/70 text-white font-semibold border border-white/20'
-                }`}>
-                  <span className="text-[8px] md:text-[10px] leading-tight">
-                    {bubble.text}
-                  </span>
-                </div>
-              </motion.div>
-            )
-          ))}
+      {/* SMS-Style Bubble Notification */}
+      <div className="fixed bottom-0 left-0 right-0 pointer-events-none z-30 h-screen flex items-center px-4 md:px-8">
+        <AnimatePresence mode="wait">
+          {currentBubble && (
+            <motion.div
+              key={currentBubble.id}
+              className="pointer-events-auto cursor-pointer"
+              initial={{
+                x: fromLeft ? -400 : 400,
+                y: 300,
+                opacity: 0,
+              }}
+              animate={{
+                x: 0,
+                y: 0,
+                opacity: 1,
+              }}
+              exit={{
+                x: fromLeft ? 400 : -400,
+                y: -300,
+                opacity: 0,
+              }}
+              transition={{
+                type: 'spring',
+                stiffness: 300,
+                damping: 30,
+              }}
+              onClick={() => handleBubbleClick(currentBubble.text)}
+            >
+              <div className={`px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm transition-all hover:shadow-xl ${
+                currentBubble.large
+                  ? 'bg-[#001F54]/90 text-white font-bold border-2 border-white/30 text-lg'
+                  : 'bg-[#00B140]/80 text-white font-semibold border border-white/20 text-base'
+              }`}>
+                <p className="whitespace-nowrap">{currentBubble.text}</p>
+              </div>
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
 
+      {/* Application Form Modal */}
       <AnimatePresence>
         {modalOpen && (
           <>
@@ -152,7 +94,7 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
               className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
               onClick={() => setModalOpen(false)}
             />
-            
+
             {/* Modal */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -172,8 +114,8 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
                 Job Application Form
               </h2>
 
-              <JobApplicationForm 
-                preselectedRole={selectedRole} 
+              <JobApplicationForm
+                preselectedRole={selectedRole}
                 onSuccess={() => {
                   setTimeout(() => setModalOpen(false), 2000)
                 }}

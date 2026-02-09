@@ -152,6 +152,13 @@ export default function HireXelencePage() {
               >
                 Schedule a Session <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
+              <Button
+                onClick={() => setShowApplicationForm(true)}
+                size="lg"
+                className="mt-4 bg-[#001F54] hover:bg-[#001F54]/90 text-white px-8 py-6 text-lg font-semibold shadow-lg transition-all"
+              >
+                Apply For Your Dream Job Now !
+              </Button>
             </div>
 
             {/* Right Side - Hero Image */}
