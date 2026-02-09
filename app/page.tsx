@@ -8,7 +8,6 @@ import Image from 'next/image'
 import { FloatingBubbles } from '@/components/floating-bubbles'
 import { motion, AnimatePresence } from 'framer-motion'
 import { JobApplicationForm } from '@/components/job-application-form'
-import { FloatingLines } from '@/components/floating-lines' // Import FloatingLines component
 
 export default function HireXelencePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
