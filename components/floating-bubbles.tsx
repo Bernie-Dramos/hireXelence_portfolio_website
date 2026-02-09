@@ -42,12 +42,12 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
   return (
     <>
       {/* SMS-Style Bubble Notification */}
-      <div className={`fixed bottom-1/3 pointer-events-none z-30 ${fromLeft ? 'left-4 md:left-8' : 'right-4 md:right-8'}`}>
+      <div className={`fixed top-1/3 pointer-events-none z-30 ${fromLeft ? 'left-4 md:left-8' : 'right-4 md:right-8'}`}>
         <AnimatePresence mode="wait">
           {currentBubble && (
             <motion.div
               key={currentBubble.id}
-              className="pointer-events-auto cursor-pointer max-w-xs md:max-w-md"
+              className="max-w-xs md:max-w-md"
               initial={{
                 y: 100,
                 opacity: 0,
@@ -66,9 +66,8 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
                 damping: 25,
                 duration: 0.5,
               }}
-              onClick={() => handleBubbleClick(currentBubble.text)}
             >
-              <div className="px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm transition-all hover:shadow-xl bg-[#001F54]/90 text-white font-semibold border-2 border-white/30 text-sm md:text-base">
+              <div className="px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm bg-[#001F54]/90 text-white font-semibold border-2 border-white/30 text-sm md:text-base">
                 <p className="leading-relaxed">{currentBubble.text}</p>
               </div>
             </motion.div>
