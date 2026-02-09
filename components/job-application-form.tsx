@@ -83,10 +83,17 @@ export function JobApplicationForm({ preselectedRole, onSuccess }: JobApplicatio
     setIsSubmitting(true)
 
     try {
-      // EmailJS configuration - Replace with your actual keys
-      const serviceId = 'YOUR_SERVICE_ID' // Replace with your EmailJS service ID
-      const templateId = 'YOUR_TEMPLATE_ID' // Replace with your EmailJS template ID
-      const publicKey = 'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+      // EmailJS configuration - Use environment variables
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID'
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID'
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+
+      // Check if keys are configured
+      if (serviceId === 'YOUR_SERVICE_ID' || templateId === 'YOUR_TEMPLATE_ID' || publicKey === 'YOUR_PUBLIC_KEY') {
+        alert('Email service is not configured. Please contact the administrator or try again later.')
+        setIsSubmitting(false)
+        return
+      }
 
       const templateParams = {
         to_email: 'applyHireXelence@gmail.com',
