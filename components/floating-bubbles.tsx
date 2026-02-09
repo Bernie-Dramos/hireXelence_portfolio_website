@@ -6,14 +6,13 @@ import { X } from 'lucide-react'
 import { JobApplicationForm } from './job-application-form'
 
 const bubbles = [
-  { id: 1, text: 'Various Positions', large: true },
-  { id: 2, text: 'Business Analyst', large: false },
-  { id: 3, text: 'Web Developer', large: false },
-  { id: 4, text: 'Sales Manager', large: false },
-  { id: 5, text: 'Social Media Manager', large: false },
-  { id: 6, text: 'Data Scientist', large: false },
-  { id: 7, text: 'Marketing Specialist', large: false },
-  { id: 8, text: 'UI/UX Designer', large: false },
+  { id: 1, text: "We're looking for Business Analyst" },
+  { id: 2, text: "We're looking for Web Developer" },
+  { id: 3, text: "We're looking for Sales Manager" },
+  { id: 4, text: "We're looking for Social Media Manager" },
+  { id: 5, text: "We're looking for Data Scientist" },
+  { id: 6, text: "We're looking for Marketing Specialist" },
+  { id: 7, text: "We're looking for UI/UX Designer" },
 ]
 
 export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | null) => void }) {
@@ -34,7 +33,8 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
   const currentBubble = bubbles[currentBubbleIndex]
 
   const handleBubbleClick = (text: string) => {
-    const role = text === 'Various Positions' ? null : text
+    // Extract role name from "We're looking for X"
+    const role = text.replace("We're looking for ", '')
     setSelectedRole(role)
     setModalOpen(true)
   }
@@ -42,40 +42,34 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
   return (
     <>
       {/* SMS-Style Bubble Notification */}
-      <div className="fixed bottom-0 left-0 right-0 pointer-events-none z-30 h-screen flex items-center px-4 md:px-8">
+      <div className={`fixed bottom-20 pointer-events-none z-30 ${fromLeft ? 'left-4 md:left-8' : 'right-4 md:right-8'}`}>
         <AnimatePresence mode="wait">
           {currentBubble && (
             <motion.div
               key={currentBubble.id}
-              className="pointer-events-auto cursor-pointer"
+              className="pointer-events-auto cursor-pointer max-w-xs md:max-w-md"
               initial={{
-                x: fromLeft ? -400 : 400,
-                y: 300,
+                y: 100,
                 opacity: 0,
               }}
               animate={{
-                x: 0,
                 y: 0,
                 opacity: 1,
               }}
               exit={{
-                x: fromLeft ? 400 : -400,
-                y: -300,
+                y: -100,
                 opacity: 0,
               }}
               transition={{
                 type: 'spring',
-                stiffness: 300,
-                damping: 30,
+                stiffness: 200,
+                damping: 25,
+                duration: 0.5,
               }}
               onClick={() => handleBubbleClick(currentBubble.text)}
             >
-              <div className={`px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm transition-all hover:shadow-xl ${
-                currentBubble.large
-                  ? 'bg-[#001F54]/90 text-white font-bold border-2 border-white/30 text-lg'
-                  : 'bg-[#00B140]/80 text-white font-semibold border border-white/20 text-base'
-              }`}>
-                <p className="whitespace-nowrap">{currentBubble.text}</p>
+              <div className="px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm transition-all hover:shadow-xl bg-[#001F54]/90 text-white font-semibold border-2 border-white/30 text-sm md:text-base">
+                <p className="leading-relaxed">{currentBubble.text}</p>
               </div>
             </motion.div>
           )}
