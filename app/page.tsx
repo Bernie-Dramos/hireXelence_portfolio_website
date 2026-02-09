@@ -8,8 +8,7 @@ import Image from 'next/image'
 import { FloatingBubbles } from '@/components/floating-bubbles'
 import { motion, AnimatePresence } from 'framer-motion'
 import { JobApplicationForm } from '@/components/job-application-form'
-// @ts-ignore
-import { FloatingLines } from '@react-bits/FloatingLines-JS-CSS'
+import { FloatingLines } from '@/components/floating-lines' // Import FloatingLines component
 
 export default function HireXelencePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -131,26 +130,12 @@ export default function HireXelencePage() {
 
       {/* Hero Section - Slide 1 & 2 */}
       <section id="home" className="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden min-h-[90vh] flex items-center">
-        {/* FloatingLines Background */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center opacity-30">
-          <div style={{ width: '1080px', height: '1080px', position: 'relative', pointerEvents: 'none' }}>
-            <FloatingLines
-              linesGradient={['#1f07da', '#2F4BC0', '#21fc1d']}
-              animationSpeed={1}
-              interactive={false}
-              bendRadius={5}
-              bendStrength={-0.5}
-              mouseDamping={0.05}
-              parallax
-              parallaxStrength={0.2}
-            />
-          </div>
-        </div>
-
-        {/* Diagonal Gradients */}
+        {/* Animated Background Gradient */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-br from-[#00B140]/30 via-white to-transparent" />
-          <div className="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-tl from-[#001F54]/30 via-white to-transparent" />
+          <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-br from-[#00B140]/20 via-white to-transparent" />
+          <div className="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-tl from-[#001F54]/20 via-white to-transparent" />
+          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-br from-[#2F4BC0]/10 to-transparent rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-gradient-to-tl from-[#21fc1d]/10 to-transparent rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
