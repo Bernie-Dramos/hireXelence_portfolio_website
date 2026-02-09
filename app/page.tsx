@@ -145,6 +145,7 @@ export default function HireXelencePage() {
               <p className="text-lg md:text-xl lg:text-2xl text-[#001F54]/80 mb-8 leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
                 Comprehensive recruitment services tailored to your sector's demands, delivering strategic placements and global support for long-term impact.
               </p>
+            <div className="flex flex-col gap-4">
               <Button
                 onClick={() => window.open('https://wa.me/919022374098', '_blank')}
                 size="lg"
@@ -155,10 +156,11 @@ export default function HireXelencePage() {
               <Button
                 onClick={() => setShowApplicationForm(true)}
                 size="lg"
-                className="mt-4 bg-[#001F54] hover:bg-[#001F54]/90 text-white px-8 py-6 text-lg font-semibold shadow-lg transition-all"
+                className="bg-[#001F54] hover:bg-[#001F54]/90 text-white px-8 py-6 text-lg font-semibold shadow-lg transition-all"
               >
                 Apply For Your Dream Job Now !
               </Button>
+            </div>
             </div>
 
             {/* Right Side - Hero Image */}
