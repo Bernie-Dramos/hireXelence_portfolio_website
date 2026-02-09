@@ -42,7 +42,7 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
   return (
     <>
       {/* SMS-Style Bubble Notification */}
-      <div className={`fixed bottom-20 pointer-events-none z-30 ${fromLeft ? 'left-4 md:left-8' : 'right-4 md:right-8'}`}>
+      <div className={`fixed bottom-1/3 pointer-events-none z-30 ${fromLeft ? 'left-4 md:left-8' : 'right-4 md:right-8'}`}>
         <AnimatePresence mode="wait">
           {currentBubble && (
             <motion.div
