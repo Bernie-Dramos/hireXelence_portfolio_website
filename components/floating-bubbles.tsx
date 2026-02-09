@@ -6,13 +6,13 @@ import { X } from 'lucide-react'
 import { JobApplicationForm } from './job-application-form'
 
 const bubbles = [
-  { id: 1, text: "We're looking for Business Analyst" },
-  { id: 2, text: "We're looking for Web Developer" },
-  { id: 3, text: "We're looking for Sales Manager" },
-  { id: 4, text: "We're looking for Social Media Manager" },
-  { id: 5, text: "We're looking for Data Scientist" },
-  { id: 6, text: "We're looking for Marketing Specialist" },
-  { id: 7, text: "We're looking for UI/UX Designer" },
+  { id: 1, text: "We're looking for a Business Analyst" },
+  { id: 2, text: "We're looking for a Web Developer" },
+  { id: 3, text: "We're looking for a Sales Manager" },
+  { id: 4, text: "We're looking for a Social Media Manager" },
+  { id: 5, text: "We're looking for a Data Scientist" },
+  { id: 6, text: "We're looking for a Marketing Specialist" },
+  { id: 7, text: "We're looking for a UI/UX Designer" },
 ]
 
 export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | null) => void }) {
@@ -25,7 +25,7 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
     const interval = setInterval(() => {
       setCurrentBubbleIndex((prev) => (prev + 1) % bubbles.length)
       setFromLeft((prev) => !prev) // Alternate left and right
-    }, 6000) // 3 seconds visible + 0.5s fade in + 0.5s fade out + buffer
+    }, 3000) // 1.5 seconds visible + 1.5s transition
 
     return () => clearInterval(interval)
   }, [])
@@ -33,8 +33,8 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
   const currentBubble = bubbles[currentBubbleIndex]
 
   const handleBubbleClick = (text: string) => {
-    // Extract role name from "We're looking for X"
-    const role = text.replace("We're looking for ", '')
+    // Extract role name from "We're looking for a X"
+    const role = text.replace("We're looking for a ", '')
     setSelectedRole(role)
     setModalOpen(true)
   }
