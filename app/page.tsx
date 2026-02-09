@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { FloatingBubbles } from '@/components/floating-bubbles'
 import { motion, AnimatePresence } from 'framer-motion'
 import { JobApplicationForm } from '@/components/job-application-form'
+import { ParticlesBackground } from '@/components/particles-background'
 
 export default function HireXelencePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -131,6 +132,7 @@ export default function HireXelencePage() {
       <section id="home" className="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden min-h-[90vh] flex items-center">
         {/* Animated Background Gradient */}
         <div className="absolute inset-0 z-0">
+          <ParticlesBackground />
           <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-br from-[#00B140]/20 via-white to-transparent" />
           <div className="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-tl from-[#001F54]/20 via-white to-transparent" />
           <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-br from-[#2F4BC0]/10 to-transparent rounded-full blur-3xl" />
@@ -147,11 +149,11 @@ export default function HireXelencePage() {
               <p className="text-lg md:text-xl lg:text-2xl text-[#001F54]/80 mb-8 leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
                 Comprehensive recruitment services tailored to your sector's demands, delivering strategic placements and global support for long-term impact.
               </p>
-              <div className="flex flex-col gap-4 w-fit">
+              <div className="flex flex-col gap-4 items-start">
                 <Button
                   onClick={() => window.open('https://wa.me/919022374098', '_blank')}
                   size="lg"
-                  className="bg-[#00B140] text-white px-8 py-6 text-lg font-semibold shadow-lg"
+                  className="bg-[#00B140] text-white px-8 py-6 text-lg font-semibold shadow-lg w-fit"
                 >
                   Schedule a Session <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
@@ -181,7 +183,7 @@ export default function HireXelencePage() {
                 </div>
 
                 {/* Trusted Partner Badge - Left Side */}
-                <div className="absolute -left-8 top-[20%] bg-gradient-to-r from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs">
+                <div className="absolute -left-8 bg-gradient-to-r from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs" style={{ top: 'calc(20% + 200px)' }}>
                   <p className="font-semibold whitespace-nowrap">Trusted Partner</p>
                 </div>
 
