@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { FloatingBubbles } from '@/components/floating-bubbles'
 import { motion, AnimatePresence } from 'framer-motion'
 import { JobApplicationForm } from '@/components/job-application-form'
+import FloatingLines from '@/components/floating-lines' // Import FloatingLines component
 
 export default function HireXelencePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -129,8 +130,24 @@ export default function HireXelencePage() {
 
       {/* Hero Section - Slide 1 & 2 */}
       <section id="home" className="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden min-h-[90vh] flex items-center">
+        {/* FloatingLines Background */}
+        <div className="absolute inset-0 z-0 flex items-center justify-center opacity-30">
+          <div style={{ width: '1080px', height: '1080px', position: 'relative', pointerEvents: 'none' }}>
+            <FloatingLines
+              linesGradient={['#1f07da', '#2F4BC0', '#21fc1d']}
+              animationSpeed={1}
+              interactive={false}
+              bendRadius={5}
+              bendStrength={-0.5}
+              mouseDamping={0.05}
+              parallax
+              parallaxStrength={0.2}
+            />
+          </div>
+        </div>
+
         {/* Diagonal Gradients */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 z-0">
           <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-br from-[#00B140]/30 via-white to-transparent" />
           <div className="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-tl from-[#001F54]/30 via-white to-transparent" />
         </div>
@@ -145,22 +162,22 @@ export default function HireXelencePage() {
               <p className="text-lg md:text-xl lg:text-2xl text-[#001F54]/80 mb-8 leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
                 Comprehensive recruitment services tailored to your sector's demands, delivering strategic placements and global support for long-term impact.
               </p>
-            <div className="flex flex-col gap-4">
-              <Button
-                onClick={() => window.open('https://wa.me/919022374098', '_blank')}
-                size="lg"
-                className="bg-[#00B140] text-white px-8 py-6 text-lg font-semibold shadow-lg"
-              >
-                Schedule a Session <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button
-                onClick={() => setShowApplicationForm(true)}
-                size="lg"
-                className="bg-[#001F54] hover:bg-[#001F54]/90 text-white px-8 py-6 text-lg font-semibold shadow-lg transition-all"
-              >
-                Apply For Your Dream Job Now !
-              </Button>
-            </div>
+              <div className="flex flex-col gap-4 w-fit">
+                <Button
+                  onClick={() => window.open('https://wa.me/919022374098', '_blank')}
+                  size="lg"
+                  className="bg-[#00B140] text-white px-8 py-6 text-lg font-semibold shadow-lg"
+                >
+                  Schedule a Session <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+                <Button
+                  onClick={() => setShowApplicationForm(true)}
+                  size="lg"
+                  className="bg-[#001F54] hover:bg-[#001F54]/90 text-white px-8 py-6 text-lg font-semibold shadow-lg transition-all"
+                >
+                  Apply For Your Dream Job Now !
+                </Button>
+              </div>
             </div>
 
             {/* Right Side - Hero Image */}
@@ -270,7 +287,7 @@ export default function HireXelencePage() {
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#001F54]/5 diagonal-clip" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#001F54] mb-4 text-balance">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00B140] mb-4 text-balance">
               Strategic Differentiators
             </h2>
             <div className="h-1 w-32 bg-[#00B140] mx-auto" />
@@ -337,7 +354,7 @@ export default function HireXelencePage() {
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#001F54] mb-4 text-balance">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00B140] mb-4 text-balance">
               Our Core Strengths
             </h2>
             <div className="h-1 w-32 bg-[#00B140] mx-auto" />
@@ -387,10 +404,10 @@ export default function HireXelencePage() {
                 Why Partner with HireXelence?
               </h2>
               <div className="h-1 w-32 bg-[#00B140]" />
-              <p className="text-lg text-[#001F54] leading-relaxed">
+              <p className="text-lg text-[#00B140] leading-relaxed">
                 Choosing HireXelence means partnering with recruitment technology experts who offer a complete, strategic solution for your human capital needs. Beyond full recruitment enterprise services, we provide specialized advisory in HR Strategy Consulting and HR Automation, supported by HR Service and Payroll Management.
               </p>
-              <p className="text-lg text-[#001F54] leading-relaxed">
+              <p className="text-lg text-[#00B140] leading-relaxed">
                 Our cross-border techno-functional recruitment expertise is backed by a commitment to flexible business models, ensuring a tailored and efficient approach to acquiring top talent and driving your business success.
               </p>
               <Button
@@ -418,7 +435,7 @@ export default function HireXelencePage() {
         <div className="absolute top-0 left-0 w-full h-20 bg-[#00B140] diagonal-clip" />
         <div className="container mx-auto px-4 lg:px-8 pt-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#001F54] mb-4 text-balance">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00B140] mb-4 text-balance">
               Flexible Engagement & Delivery Models
             </h2>
             <div className="h-1 w-32 bg-[#00B140] mx-auto" />
