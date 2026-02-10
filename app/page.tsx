@@ -9,8 +9,6 @@ import { FloatingBubbles } from '@/components/floating-bubbles'
 import { motion, AnimatePresence } from 'framer-motion'
 import { JobApplicationForm } from '@/components/job-application-form'
 import { ParticlesBackground } from '@/components/particles-background'
-// @ts-ignore
-import { FloatingLines } from '@react-bits/FloatingLines-JS-CSS'
 
 export default function HireXelencePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -132,21 +130,14 @@ export default function HireXelencePage() {
 
       {/* Hero Section - Slide 1 & 2 */}
       <section id="home" className="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden min-h-[90vh] flex items-center">
-        {/* FloatingLines Background */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center">
-          <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-            <FloatingLines
-              linesGradient={['#1f07da', '#2F4BC0', '#21fc1d']}
-              animationSpeed={1}
-              interactive
-              bendRadius={5}
-              bendStrength={-0.5}
-              mouseDamping={0.05}
-              parallax
-              parallaxStrength={0.2}
-            />
-          </div>
-        </div>
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          className="absolute inset-0 w-full h-full object-cover opacity-100 z-0"
+          src="/floating-lines-bg.mp4"
+        />
 
         {/* Gradient Overlay - 80% white on left, fading to transparent by 35% mark */}
         <div
