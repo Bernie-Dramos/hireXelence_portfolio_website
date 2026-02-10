@@ -8,7 +8,6 @@ import Image from 'next/image'
 import { FloatingBubbles } from '@/components/floating-bubbles'
 import { motion, AnimatePresence } from 'framer-motion'
 import { JobApplicationForm } from '@/components/job-application-form'
-import { ParticlesBackground } from '@/components/particles-background'
 
 export default function HireXelencePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -146,11 +145,6 @@ export default function HireXelencePage() {
             background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 65%, transparent 100%)'
           }}
         />
-
-        {/* Animated Background Gradient */}
-        <div className="absolute inset-0 z-0">
-          <ParticlesBackground />
-        </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center justify-items-end">
