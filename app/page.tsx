@@ -139,8 +139,13 @@ export default function HireXelencePage() {
           src="/floating-lines-bg.mp4"
         />
 
-        {/* Gradient Overlay - 35% opacity top to 100% opacity bottom */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-white/35 to-white" />
+        {/* Gradient Overlay - starts at 35% from left, transparent to white by 100% */}
+        <div 
+          className="absolute inset-0 z-0" 
+          style={{
+            background: 'linear-gradient(90deg, transparent 0%, transparent 35%, rgba(255, 255, 255, 0.35) 35%, white 100%)'
+          }}
+        />
 
         {/* Animated Background Gradient */}
         <div className="absolute inset-0 z-0">
