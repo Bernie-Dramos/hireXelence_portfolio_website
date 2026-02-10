@@ -135,15 +135,15 @@ export default function HireXelencePage() {
           autoPlay
           muted
           loop
-          className="absolute inset-0 w-full h-full object-cover opacity-75 z-0"
+          className="absolute inset-0 w-full h-full object-cover opacity-100 z-0"
           src="/floating-lines-bg.mp4"
         />
 
-        {/* Gradient Overlay - starts at 35% from left, transparent to white by 100% */}
+        {/* Gradient Overlay - 80% white on left, fading to transparent by 35% mark */}
         <div 
           className="absolute inset-0 z-0" 
           style={{
-            background: 'linear-gradient(90deg, transparent 0%, transparent 35%, rgba(255, 255, 255, 0) 35%, white 100%)'
+            background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 35%, transparent 100%)'
           }}
         />
 
