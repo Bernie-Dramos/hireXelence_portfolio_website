@@ -143,7 +143,7 @@ export default function HireXelencePage() {
         <div 
           className="absolute inset-0 z-0" 
           style={{
-            background: 'linear-gradient(90deg, transparent 0%, transparent 35%, rgba(255, 255, 255, 0.35) 35%, white 100%)'
+            background: 'linear-gradient(90deg, transparent 0%, transparent 35%, rgba(255, 255, 255, 0) 35%, white 100%)'
           }}
         />
 
