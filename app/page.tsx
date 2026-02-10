@@ -139,8 +139,8 @@ export default function HireXelencePage() {
           src="/floating-lines-bg.mp4"
         />
 
-        {/* Unified Background Overlay */}
-        <div className="absolute inset-0 z-0 bg-white/10" />
+        {/* Gradient Overlay - 0% opacity top to 90% opacity bottom */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-white/40 to-white/90" />
 
         {/* Animated Background Gradient */}
         <div className="absolute inset-0 z-0">
