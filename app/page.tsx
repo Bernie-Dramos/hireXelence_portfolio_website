@@ -130,6 +130,15 @@ export default function HireXelencePage() {
 
       {/* Hero Section - Slide 1 & 2 */}
       <section id="home" className="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden min-h-[90vh] flex items-center">
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          className="absolute inset-0 w-full h-full object-cover opacity-50 z-0"
+          src="/floating-lines-bg.mp4"
+        />
+
         {/* Animated Background Gradient */}
         <div className="absolute inset-0 z-0">
           <ParticlesBackground />
