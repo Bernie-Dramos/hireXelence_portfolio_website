@@ -62,7 +62,7 @@ export default function HireXelencePage() {
     <div className="min-h-screen bg-background">
       {/* Floating Bubbles */}
       <FloatingBubbles onOpenForm={() => setShowApplicationForm(true)} />
-      
+
       {/* Fixed Header */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur shadow-md' : 'bg-white'}`}>
         <nav className="container mx-auto px-4 lg:px-8">
@@ -135,17 +135,16 @@ export default function HireXelencePage() {
           autoPlay
           muted
           loop
-          className="absolute inset-0 w-full h-full object-cover opacity-50 z-0"
+          className="absolute inset-0 w-full h-full object-cover opacity-75 z-0"
           src="/floating-lines-bg.mp4"
         />
+
+        {/* Unified Background Overlay */}
+        <div className="absolute inset-0 z-0 bg-white/10" />
 
         {/* Animated Background Gradient */}
         <div className="absolute inset-0 z-0">
           <ParticlesBackground />
-          <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-br from-[#00B140]/20 via-white to-transparent" />
-          <div className="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-tl from-[#001F54]/20 via-white to-transparent" />
-          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-br from-[#2F4BC0]/10 to-transparent rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-gradient-to-tl from-[#21fc1d]/10 to-transparent rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -642,7 +641,7 @@ export default function HireXelencePage() {
               className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
               onClick={() => setShowApplicationForm(false)}
             />
-            
+
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -662,8 +661,8 @@ export default function HireXelencePage() {
                   Job Application Form
                 </h2>
 
-                <JobApplicationForm 
-                  preselectedRole={null} 
+                <JobApplicationForm
+                  preselectedRole={null}
                   onSuccess={() => {
                     setTimeout(() => setShowApplicationForm(false), 2000)
                   }}
