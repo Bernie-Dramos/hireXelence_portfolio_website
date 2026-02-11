@@ -175,7 +175,7 @@ export default function HireXelencePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center justify-items-end">
             {/* Left Side - Text Content */}
             <div className="text-left justify-self-start">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#001F54] mb-6 text-balance animate-fade-in">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#001F54] mb-6 animate-fade-in">
                 Faster, Smarter Talent Acquisition
               </h1>
               <p className="text-lg md:text-xl lg:text-2xl text-[#001F54]/80 mb-8 leading-relaxed animate-fade-in animate-delay-200">
@@ -279,7 +279,7 @@ export default function HireXelencePage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-slide-in-left">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-balance">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold">
                 About The Company
               </h2>
               <div className="h-1 w-32 bg-[#00B140]" />
@@ -347,7 +347,7 @@ export default function HireXelencePage() {
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#001F54]/5 diagonal-clip" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00B140] mb-4 text-balance">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00B140] mb-4">
               Strategic Differentiators
             </h2>
             <div className="h-1 w-32 bg-[#00B140] mx-auto" />
@@ -414,7 +414,7 @@ export default function HireXelencePage() {
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00B140] mb-4 text-balance">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00B140] mb-4">
               Our Core Strengths
             </h2>
             <div className="h-1 w-32 bg-[#00B140] mx-auto" />
@@ -460,7 +460,7 @@ export default function HireXelencePage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-2xl">
             <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#001F54] text-balance">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#001F54]">
                 Why Partner with HireXelence?
               </h2>
               <div className="h-1 w-32 bg-[#00B140]" />
@@ -495,7 +495,7 @@ export default function HireXelencePage() {
         <div className="absolute top-0 left-0 w-full h-20 bg-[#00B140] diagonal-clip" />
         <div className="container mx-auto px-4 lg:px-8 pt-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00B140] mb-4 text-balance">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00B140] mb-4">
               Flexible Engagement & Delivery Models
             </h2>
             <div className="h-1 w-32 bg-[#00B140] mx-auto" />
