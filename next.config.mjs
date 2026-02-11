@@ -6,11 +6,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  experimental: {
-    turbo: {
-      root: '/vercel/share/v0-project',
-    },
-  },
 }
 
 export default nextConfig
