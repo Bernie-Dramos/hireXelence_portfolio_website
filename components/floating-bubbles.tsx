@@ -19,12 +19,10 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedRole, setSelectedRole] = useState<string | null>(null)
   const [currentBubbleIndex, setCurrentBubbleIndex] = useState(0)
-  const [fromLeft, setFromLeft] = useState(true)
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBubbleIndex((prev) => (prev + 1) % bubbles.length)
-      setFromLeft((prev) => !prev) // Alternate left and right
     }, 3000) // 1.5 seconds visible + 1.5s transition
 
     return () => clearInterval(interval)
@@ -41,23 +39,26 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
 
   return (
     <>
-      {/* SMS-Style Bubble Notification */}
-      <div className={`fixed pointer-events-none z-30 ${fromLeft ? 'left-4 md:left-8' : 'right-4 md:right-8'}`} style={{ top: 'calc(33.333% - 150px)' }}>
+      {/* SMS-Style Bubble Notification - Bottom Left */}
+      <div className="fixed left-4 md:left-8 pointer-events-none z-30 bottom-20" style={{ top: 'calc(33.333% - 150px)' }}>
         <AnimatePresence mode="wait">
           {currentBubble && (
             <motion.div
               key={currentBubble.id}
               className="max-w-xs md:max-w-md"
               initial={{
+                x: -200,
                 y: 100,
                 opacity: 0,
               }}
               animate={{
+                x: 0,
                 y: 0,
                 opacity: 1,
               }}
               exit={{
-                y: -100,
+                x: -200,
+                y: 100,
                 opacity: 0,
               }}
               transition={{
