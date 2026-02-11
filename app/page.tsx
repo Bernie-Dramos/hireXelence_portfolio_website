@@ -11,13 +11,13 @@ import { JobApplicationForm } from '@/components/job-application-form'
 import FloatingLines from '@/components/FloatingLines'
 
 const heroMessageBubbles = [
-  { id: 1, text: "We're looking for a Business Analyst" },
-  { id: 2, text: "We're looking for a Web Developer" },
-  { id: 3, text: "We're looking for a Sales Manager" },
-  { id: 4, text: "We're looking for a Social Media Manager" },
-  { id: 5, text: "We're looking for a Data Scientist" },
-  { id: 6, text: "We're looking for a Marketing Specialist" },
-  { id: 7, text: "We're looking for a UI/UX Designer" },
+  { id: 1, text: "We're hiring for Business Analysts" },
+  { id: 2, text: "We're hiring for Web Developers" },
+  { id: 3, text: "We're hiring for Sales Managers" },
+  { id: 4, text: "We're hiring for Social Media Managers" },
+  { id: 5, text: "We're hiring for Data Scientists" },
+  { id: 6, text: "We're hiring for Marketing Specialists" },
+  { id: 7, text: "We're hiring for UI/UX Designers" },
 ]
 
 export default function HireXelencePage() {
@@ -185,7 +185,7 @@ export default function HireXelencePage() {
                 <Button
                   onClick={() => window.open('https://wa.me/919022374098', '_blank')}
                   size="lg"
-                  className="bg-[#00B140] text-white px-8 py-6 text-lg font-semibold shadow-lg w-fit"
+                  className="bg-[#008B2F] text-white px-8 py-6 text-lg font-semibold shadow-lg w-fit"
                 >
                   Schedule a Session <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
@@ -199,43 +199,27 @@ export default function HireXelencePage() {
 
                 {/* Message Bubble - Below Buttons */}
                 <div className="mt-8">
-                  <AnimatePresence mode="wait">
-                    {heroMessageBubbles[currentMessageIndex] && (
-                      <motion.div
-                        key={heroMessageBubbles[currentMessageIndex].id}
-                        initial={{
-                          x: -200,
-                          y: 100,
-                          opacity: 0,
-                        }}
-                        animate={{
-                          x: 0,
-                          y: 0,
-                          opacity: 1,
-                        }}
-                        exit={{
-                          x: -200,
-                          y: 100,
-                          opacity: 0,
-                        }}
-                        transition={{
-                          type: 'spring',
-                          stiffness: 200,
-                          damping: 25,
-                          duration: 0.5,
-                        }}
-                        className="max-w-xs md:max-w-md"
-                      >
-                        <div className="px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm bg-[#00B140]/90 text-white font-semibold border-2 border-white/30 text-sm md:text-base cursor-pointer hover:shadow-xl transition-shadow"
-                          onClick={() => setShowApplicationForm(true)}>
-                          <div className="flex items-center gap-2">
-                            <p className="leading-relaxed">{heroMessageBubbles[currentMessageIndex].text}</p>
-                            <ArrowUp className="w-5 h-5 ml-2 flex-shrink-0" />
-                          </div>
+                  {heroMessageBubbles[currentMessageIndex] && (
+                    <motion.div
+                      key={heroMessageBubbles[currentMessageIndex].id}
+                      initial={{ rotateY: 90 }}
+                      animate={{ rotateY: 0 }}
+                      transition={{
+                        duration: 0.5,
+                        ease: 'easeInOut',
+                      }}
+                      className="max-w-xs md:max-w-md"
+                      style={{ perspective: 500 }}
+                    >
+                      <div className="px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm bg-[#008B2F]/90 text-white font-semibold border-2 border-white/30 text-sm md:text-base cursor-pointer hover:shadow-xl transition-shadow"
+                        onClick={() => setShowApplicationForm(true)}>
+                        <div className="flex items-center gap-2">
+                          <p className="leading-relaxed">{heroMessageBubbles[currentMessageIndex].text}</p>
+                          <ArrowUp className="w-5 h-5 ml-2 flex-shrink-0" />
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                      </div>
+                    </motion.div>
+                  )}
                 </div>
               </div>
             </div>
@@ -350,13 +334,13 @@ export default function HireXelencePage() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00B140] mb-4">
               Strategic Differentiators
             </h2>
-            <div className="h-1 w-32 bg-[#00B140] mx-auto" />
+            <div className="h-1 w-32 bg-[#008B2F] mx-auto" />
           </div>
 
           <div className="max-w-3xl mx-auto space-y-6">
-            <Card className="bg-[#00B140] text-white border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+            <Card className="bg-[#008B2F] text-white border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
               <CardContent className="p-8 md:p-10 flex gap-6 items-start">
-                <div className="w-16 h-16 bg-[#00B140] rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-16 h-16 bg-[#008B2F] rounded-full flex items-center justify-center flex-shrink-0">
                   <Rocket className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -368,9 +352,9 @@ export default function HireXelencePage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-[#00B140] text-white border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+            <Card className="bg-[#008B2F] text-white border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
               <CardContent className="p-8 md:p-10 flex gap-6 items-start">
-                <div className="w-16 h-16 bg-[#00B140] rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-16 h-16 bg-[#008B2F] rounded-full flex items-center justify-center flex-shrink-0">
                   <Handshake className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -382,9 +366,9 @@ export default function HireXelencePage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-[#00B140] text-white border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+            <Card className="bg-[#008B2F] text-white border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
               <CardContent className="p-8 md:p-10 flex gap-6 items-start">
-                <div className="w-16 h-16 bg-[#00B140] rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-16 h-16 bg-[#008B2F] rounded-full flex items-center justify-center flex-shrink-0">
                   <Globe className="w-8 h-8 text-white" />
                 </div>
                 <div>
