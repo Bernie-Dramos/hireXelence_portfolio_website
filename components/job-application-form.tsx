@@ -24,7 +24,7 @@ const formSchema = z.object({
   phone: z.string().min(5, 'Phone number must be at least 5 digits'),
   dateOfBirth: z.string().min(1, 'Date of birth is required'),
   areaOfInterest: z.string().min(1, 'Please select an area of interest'),
-  specificRole: z.string().min(1, 'Please select a specific role'),
+  specificRole: z.string().min(1, 'Please select or enter a specific role'),
 })
 
 type FormData = z.infer<typeof formSchema>
@@ -60,6 +60,7 @@ export function JobApplicationForm({ preselectedRole, onSuccess }: JobApplicatio
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [selectedArea, setSelectedArea] = useState<string>('')
+  const [isCustomRole, setIsCustomRole] = useState(false)
 
   const {
     register,
@@ -214,6 +215,7 @@ export function JobApplicationForm({ preselectedRole, onSuccess }: JobApplicatio
             setValue('areaOfInterest', value)
             setValue('specificRole', '')
             setSelectedArea(value)
+            setIsCustomRole(value === 'Other')
           }}
         >
           <SelectTrigger className="mt-1">
@@ -232,25 +234,36 @@ export function JobApplicationForm({ preselectedRole, onSuccess }: JobApplicatio
         )}
       </div>
 
-      {/* Specific Role */}
+      {/* Specific Role - Conditional */}
       <div>
         <Label htmlFor="specificRole">Specific Role</Label>
-        <Select
-          disabled={!watchArea}
-          onValueChange={(value) => setValue('specificRole', value)}
-          defaultValue={preselectedRole || ''}
-        >
-          <SelectTrigger className="mt-1">
-            <SelectValue placeholder={watchArea ? "Select a role" : "Select area first"} />
-          </SelectTrigger>
-          <SelectContent>
-            {availableRoles.map((role) => (
-              <SelectItem key={role} value={role}>
-                {role}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        {isCustomRole ? (
+          <>
+            <Input
+              id="specificRole"
+              {...register('specificRole')}
+              placeholder="Enter your desired role"
+              className="mt-1"
+            />
+          </>
+        ) : (
+          <Select
+            disabled={!watchArea}
+            onValueChange={(value) => setValue('specificRole', value)}
+            defaultValue={preselectedRole || ''}
+          >
+            <SelectTrigger className="mt-1">
+              <SelectValue placeholder={watchArea ? "Select a role" : "Select area first"} />
+            </SelectTrigger>
+            <SelectContent>
+              {availableRoles.map((role) => (
+                <SelectItem key={role} value={role}>
+                  {role}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
         {errors.specificRole && (
           <p className="text-sm text-red-600 mt-1">{errors.specificRole.message}</p>
         )}

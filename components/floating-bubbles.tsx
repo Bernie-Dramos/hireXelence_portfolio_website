@@ -13,6 +13,9 @@ const bubbles = [
   { id: 5, text: "We're looking for a Data Scientist" },
   { id: 6, text: "We're looking for a Marketing Specialist" },
   { id: 7, text: "We're looking for a UI/UX Designer" },
+  { id: 8, text: "We're looking for a Mechanical Engineer" },
+  { id: 9, text: "We're looking for a Supply Chain Manager" },
+  { id: 10, text: "We're looking for a Accountant" },
 ]
 
 export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | null) => void }) {
@@ -23,7 +26,7 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBubbleIndex((prev) => (prev + 1) % bubbles.length)
-    }, 3000) // 1.5 seconds visible + 1.5s transition
+    }, 1000) // 1.5 seconds visible + 1.5s transition
 
     return () => clearInterval(interval)
   }, [])
@@ -39,43 +42,6 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
 
   return (
     <>
-      {/* SMS-Style Bubble Notification - Bottom Left */}
-      <div className="fixed left-4 md:left-8 pointer-events-none z-30 bottom-20" style={{ top: 'calc(75% - 150px)' }}>
-        <AnimatePresence mode="wait">
-          {currentBubble && (
-            <motion.div
-              key={currentBubble.id}
-              className="max-w-xs md:max-w-md"
-              initial={{
-                x: -200,
-                y: 100,
-                opacity: 0,
-              }}
-              animate={{
-                x: 0,
-                y: 0,
-                opacity: 1,
-              }}
-              exit={{
-                x: -200,
-                y: 100,
-                opacity: 0,
-              }}
-              transition={{
-                type: 'spring',
-                stiffness: 200,
-                damping: 25,
-                duration: 0.5,
-              }}
-            >
-              <div className="px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm bg-[#001F54]/90 text-white font-semibold border-2 border-white/30 text-sm md:text-base">
-                <p className="leading-relaxed">{currentBubble.text}</p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
       {/* Application Form Modal */}
       <AnimatePresence>
         {modalOpen && (
