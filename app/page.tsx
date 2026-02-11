@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { FloatingBubbles } from '@/components/floating-bubbles'
 import { motion, AnimatePresence } from 'framer-motion'
 import { JobApplicationForm } from '@/components/job-application-form'
+import FloatingLines from '@/components/FloatingLines'
 
 const heroMessageBubbles = [
   { id: 1, text: "We're looking for a Business Analyst" },
@@ -149,22 +150,26 @@ export default function HireXelencePage() {
 
       {/* Hero Section - Slide 1 & 2 */}
       <section id="home" className="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden min-h-[90vh] flex items-center">
-        {/* Video Background */}
-        <video
-          autoPlay
-          muted
-          loop
-          className="absolute inset-0 w-full h-full object-cover opacity-100 z-0"
-          src="/floating-lines-bg.mp4"
-        />
+        {/* Floating Lines Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="w-full h-full relative">
+            <FloatingLines
+              linesGradient={['#285cd7', '#4a9ba5', '#38c41c']}
+              topWavePosition={{ x: 10.0, y: 0.5, rotate: -0.4 }}
+              middleWavePosition={{ x: 5.0, y: 0.0, rotate: 0.2 }}
+              animationSpeed={1}
+              interactive
+              bendRadius={5}
+              bendStrength={-0.5}
+              mouseDamping={0.05}
+              parallax
+              parallaxStrength={0.2}
+            />
+          </div>
+        </div>
 
         {/* Gradient Overlay - 80% white on left, fading to transparent by 35% mark */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 65%, transparent 100%)'
-          }}
-        />
+        <div className="absolute inset-0 z-0 hero-gradient-overlay" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center justify-items-end">
@@ -173,7 +178,7 @@ export default function HireXelencePage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#001F54] mb-6 text-balance animate-fade-in">
                 Faster, Smarter Talent Acquisition
               </h1>
-              <p className="text-lg md:text-xl lg:text-2xl text-[#001F54]/80 mb-8 leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <p className="text-lg md:text-xl lg:text-2xl text-[#001F54]/80 mb-8 leading-relaxed animate-fade-in animate-delay-200">
                 Comprehensive recruitment services tailored to your sector's demands, delivering strategic placements and global support for long-term impact.
               </p>
               <div className="flex flex-col gap-4 items-start">
@@ -236,7 +241,7 @@ export default function HireXelencePage() {
             </div>
 
             {/* Right Side - Hero Image */}
-            <div className="relative animate-fade-in justify-self-end" style={{ animationDelay: '0.3s' }}>
+            <div className="relative animate-fade-in animate-delay-300 justify-self-end">
               {/* Light Green Background Container */}
               <div className="relative w-[420px] h-[380px] rounded-2xl overflow-visible bg-[#00B140]/10 shadow-2xl">
                 <div className="absolute inset-0 rounded-2xl overflow-hidden">
@@ -251,12 +256,12 @@ export default function HireXelencePage() {
                 </div>
 
                 {/* Trusted Partner Badge - Left Side */}
-                <div className="absolute -left-8 bg-gradient-to-r from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs" style={{ top: 'calc(20% + 200px)' }}>
+                <div className="absolute -left-8 top-[calc(20%+200px)] bg-gradient-to-r from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs">
                   <p className="font-semibold whitespace-nowrap">Trusted Partner</p>
                 </div>
 
                 {/* Reliable Excellence Badge - Right Side */}
-                <div className="absolute -right-8 top-1/3 bg-gradient-to-r from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs" style={{ animationDelay: '0.4s' }}>
+                <div className="absolute -right-8 top-1/3 bg-gradient-to-r from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow animate-delay-400 text-xs">
                   <p className="font-semibold whitespace-nowrap">Reliable Excellence</p>
                 </div>
               </div>
@@ -713,6 +718,8 @@ export default function HireXelencePage() {
                 <button
                   onClick={() => setShowApplicationForm(false)}
                   className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+                  aria-label="Close application form"
+                  title="Close"
                 >
                   <X className="w-5 h-5 text-gray-600" />
                 </button>
