@@ -13,6 +13,9 @@ const bubbles = [
   { id: 5, text: "We're looking for a Data Scientist" },
   { id: 6, text: "We're looking for a Marketing Specialist" },
   { id: 7, text: "We're looking for a UI/UX Designer" },
+  { id: 8, text: "We're looking for a Mechanical Engineer" },
+  { id: 9, text: "We're looking for a Supply Chain Manager" },
+  { id: 10, text: "We're looking for a Accountant" },
 ]
 
 export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | null) => void }) {

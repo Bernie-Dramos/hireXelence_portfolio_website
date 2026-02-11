@@ -1,0 +1,8 @@
+# Ignore build cache
+.next
+node_modules
+dist
+build
+*.log
+.env
+.env.local
