@@ -221,7 +221,8 @@ export default function HireXelencePage() {
                         }}
                         className="max-w-xs md:max-w-md"
                       >
-                        <div className="px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm bg-[#00B140]/90 text-white font-semibold border-2 border-white/30 text-sm md:text-base">
+                        <div className="px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm bg-[#00B140]/90 text-white font-semibold border-2 border-white/30 text-sm md:text-base cursor-pointer hover:shadow-xl transition-shadow"
+                          onClick={() => setShowApplicationForm(true)}>
                           <div className="flex items-center gap-2">
                             <p className="leading-relaxed">{heroMessageBubbles[currentMessageIndex].text}</p>
                             <ArrowUp className="w-5 h-5 ml-2 flex-shrink-0" />
