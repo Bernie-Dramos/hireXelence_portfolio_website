@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Menu, X, Phone, Mail, MessageCircle, Rocket, Target, Globe, ArrowRight, TrendingUp, Users2, Handshake } from 'lucide-react'
+import { Menu, X, Phone, Mail, MessageCircle, Rocket, Target, Globe, ArrowRight, TrendingUp, Users2, Handshake, ArrowUp } from 'lucide-react'
 import Image from 'next/image'
 import { FloatingBubbles } from '@/components/floating-bubbles'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -222,7 +222,10 @@ export default function HireXelencePage() {
                         className="max-w-xs md:max-w-md"
                       >
                         <div className="px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm bg-[#00B140]/90 text-white font-semibold border-2 border-white/30 text-sm md:text-base">
-                          <p className="leading-relaxed">{heroMessageBubbles[currentMessageIndex].text}</p>
+                          <div className="flex items-center gap-2">
+                            <p className="leading-relaxed">{heroMessageBubbles[currentMessageIndex].text}</p>
+                            <ArrowUp className="w-5 h-5 ml-2 flex-shrink-0" />
+                          </div>
                         </div>
                       </motion.div>
                     )}

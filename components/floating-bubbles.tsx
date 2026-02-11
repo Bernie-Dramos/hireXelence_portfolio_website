@@ -23,7 +23,7 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBubbleIndex((prev) => (prev + 1) % bubbles.length)
-    }, 3000) // 1.5 seconds visible + 1.5s transition
+    }, 2000) // 1.5 seconds visible + 1.5s transition
 
     return () => clearInterval(interval)
   }, [])
