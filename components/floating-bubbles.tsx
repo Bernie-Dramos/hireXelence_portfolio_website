@@ -39,8 +39,8 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
 
   return (
     <>
-      {/* SMS-Style Bubble Notification - Bottom Left */}
-      <div className="fixed left-4 md:left-8 pointer-events-none z-30 bottom-20" style={{ top: 'calc(75% - 150px)' }}>
+      {/* SMS-Style Bubble Notification - Below Apply Button */}
+      <div className="fixed left-4 md:left-8 pointer-events-none z-30" style={{ top: 'calc(78% + 30px)' }}>
         <AnimatePresence mode="wait">
           {currentBubble && (
             <motion.div
@@ -68,7 +68,7 @@ export function FloatingBubbles({ onOpenForm }: { onOpenForm?: (role: string | n
                 duration: 0.5,
               }}
             >
-              <div className="px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm bg-[#001F54]/90 text-white font-semibold border-2 border-white/30 text-sm md:text-base">
+              <div className="px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm bg-[#00B140]/90 text-white font-semibold border-2 border-white/30 text-sm md:text-base">
                 <p className="leading-relaxed">{currentBubble.text}</p>
               </div>
             </motion.div>
