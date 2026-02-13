@@ -2,11 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-feature-settings: 'cv11', 'ss01';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Premium Typography Scale */
+@layer base {
+  html {
+    @apply antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    text-rendering: optimizeLegibility;
+  }
+  
+  body {
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Optimized heading sizes for better visual hierarchy */
+  h1 {
+    @apply tracking-tight;
+    font-weight: 700;
+    line-height: 1.05;
+  }
+  
+  h2 {
+    @apply tracking-tight;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  
+  h3 {
+    @apply tracking-tight;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+  
+  /* Premium text rendering for body text */
+  p {
+    font-feature-settings: 'kern', 'liga';
+    text-rendering: optimizeLegibility;
+  }
 }
 
 @layer utilities {
@@ -158,5 +192,48 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Performance Optimizations & Accessibility */
+@layer utilities {
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  .smooth-transition {
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  /* Optimize animations for 60fps */
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-smooth {
+      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  }
+  
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Premium focus states for accessibility */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--emerald-primary));
+    outline-offset: 3px;
+    border-radius: 0.25rem;
+  }
+  
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid hsl(var(--emerald-primary));
+    outline-offset: 3px;
   }
 }

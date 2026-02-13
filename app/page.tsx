@@ -6,8 +6,10 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Menu, X, Phone, Mail, MessageCircle, Rocket, Target, Globe, ArrowRight, TrendingUp, Users2, Handshake, ArrowUp } from 'lucide-react'
 import Image from 'next/image'
 import { FloatingBubbles } from '@/components/floating-bubbles'
+import { ScrollProgress } from '@/components/scroll-progress'
+import { SectionDivider } from '@/components/section-divider'
 import { motion, AnimatePresence } from 'framer-motion'
-import { JobApplicationForm } from '@/components/job-application-form'
+import { JobApplicationDialog } from '@/components/job-application-dialog'
 
 const heroMessageBubbles = [
   { id: 1, text: "We're looking for a Business Analyst" },
@@ -79,6 +81,9 @@ export default function HireXelencePage() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Scroll Progress Indicator */}
+      <ScrollProgress />
+      
       {/* Floating Bubbles */}
       <FloatingBubbles onOpenForm={() => setShowApplicationForm(true)} />
 
@@ -562,6 +567,9 @@ export default function HireXelencePage() {
         </div>
       </section>
 
+      {/* Elegant Section Divider */}
+      <SectionDivider variant="gradient" className="my-8" />
+
       {/* Premium Key Differentiators Section */}
       <section id="differentiators" className="py-32 md:py-40 bg-navy-deep text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
@@ -642,6 +650,9 @@ export default function HireXelencePage() {
           </div>
         </div>
       </section>
+
+      {/* Elegant Section Divider */}
+      <SectionDivider variant="dots" className="my-12" />
 
       {/* Premium Core Strengths Section */}
       <section id="strengths" className="py-32 md:py-40 bg-gradient-to-br from-slate-50 via-white to-slate-50/50 relative overflow-hidden">
@@ -797,6 +808,9 @@ export default function HireXelencePage() {
           </div>
         </div>
       </section>
+
+      {/* Elegant Section Divider */}
+      <SectionDivider variant="gradient" className="my-8" />
 
       {/* Premium Engagement Models Section */}
       <section id="engagement" className="py-32 md:py-40 bg-gradient-to-br from-slate-50 via-white to-slate-50/50 relative overflow-hidden">
@@ -1000,57 +1014,11 @@ export default function HireXelencePage() {
         </div>
       </footer>
 
-
-
-
-
-
-
-
-
-
-      {/* Application Form Modal */}
-      <AnimatePresence>
-        {showApplicationForm && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
-              onClick={() => setShowApplicationForm(false)}
-            />
-
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-                className="w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-white rounded-2xl shadow-2xl pointer-events-auto p-6 md:p-8 relative"
-              >
-                <button
-                  onClick={() => setShowApplicationForm(false)}
-                  className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
-                >
-                  <X className="w-5 h-5 text-gray-600" />
-                </button>
-
-                <h2 className="text-2xl md:text-3xl font-bold text-[#001F54] mb-6">
-                  Job Application Form
-                </h2>
-
-                <JobApplicationForm
-                  preselectedRole={null}
-                  onSuccess={() => {
-                    setTimeout(() => setShowApplicationForm(false), 2000)
-                  }}
-                />
-              </motion.div>
-            </div>
-          </>
-        )}
-      </AnimatePresence>
+      {/* Premium Job Application Dialog */}
+      <JobApplicationDialog
+        isOpen={showApplicationForm}
+        onClose={() => setShowApplicationForm(false)}
+      />
     </div>
   )
 }
