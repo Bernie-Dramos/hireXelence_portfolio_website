@@ -191,47 +191,6 @@ export default function HireXelencePage() {
                 >
                   Apply For Your Dream Job Now !
                 </Button>
-
-                {/* Message Bubble - Below Buttons */}
-                <div className="mt-8">
-                  <AnimatePresence mode="wait">
-                    {heroMessageBubbles[currentMessageIndex] && (
-                      <motion.div
-                        key={heroMessageBubbles[currentMessageIndex].id}
-                        initial={{
-                          x: -200,
-                          y: 100,
-                          opacity: 0,
-                        }}
-                        animate={{
-                          x: 0,
-                          y: 0,
-                          opacity: 1,
-                        }}
-                        exit={{
-                          x: -200,
-                          y: 100,
-                          opacity: 0,
-                        }}
-                        transition={{
-                          type: 'spring',
-                          stiffness: 200,
-                          damping: 25,
-                          duration: 0.5,
-                        }}
-                        className="max-w-xs md:max-w-md"
-                      >
-                        <div className="px-6 py-4 rounded-3xl shadow-2xl backdrop-blur-sm bg-[#00B140]/90 text-white font-semibold border-2 border-white/30 text-sm md:text-base cursor-pointer hover:shadow-xl transition-shadow"
-                          onClick={() => setShowApplicationForm(true)}>
-                          <div className="flex items-center gap-2">
-                            <p className="leading-relaxed">{heroMessageBubbles[currentMessageIndex].text}</p>
-                            <ArrowUp className="w-5 h-5 ml-2 flex-shrink-0" />
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
               </div>
             </div>
 
