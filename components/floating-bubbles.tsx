@@ -33,7 +33,7 @@ export function FloatingBubbles({ onOpenForm }: FloatingBubblesProps) {
   ]
 
   return (
-    <div className="fixed right-0 bottom-0 z-40 pointer-events-none">
+    <div className="fixed right-0 bottom-0 z-40 pointer-events-none hidden md:block">
       <div className="relative pointer-events-auto">
         {bubbles.map((bubble, index) => (
           <motion.button

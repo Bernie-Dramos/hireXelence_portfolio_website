@@ -248,7 +248,7 @@ export default function HireXelencePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               >
-                <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-navy-deep leading-[1.05] tracking-tight">
+                <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-navy-deep leading-[1.05] tracking-tight">
                   <motion.span
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -288,7 +288,7 @@ export default function HireXelencePage() {
               </motion.div>
 
               <motion.p 
-                className="text-xl md:text-2xl text-navy-light/90 leading-relaxed max-w-2xl font-light tracking-wide"
+                className="text-lg sm:text-xl md:text-2xl text-navy-light/90 leading-relaxed max-w-2xl font-light tracking-wide"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 1 }}
@@ -306,7 +306,7 @@ export default function HireXelencePage() {
                   <Button
                     onClick={() => window.open('https://wa.me/919022374098', '_blank')}
                     size="lg"
-                    className="group relative bg-gradient-to-r from-emerald-primary to-emerald-light text-white px-9 py-8 text-lg font-semibold shadow-2xl shadow-emerald-primary/30 hover:shadow-emerald-primary/50 transition-all duration-500 w-fit overflow-hidden rounded-2xl"
+                    className="group relative bg-gradient-to-r from-emerald-primary to-emerald-light text-white px-6 sm:px-9 py-6 sm:py-8 text-base sm:text-lg font-semibold shadow-2xl shadow-emerald-primary/30 hover:shadow-emerald-primary/50 transition-all duration-500 w-full sm:w-fit overflow-hidden rounded-2xl"
                   >
                     {/* Shine effect */}
                     <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -321,7 +321,7 @@ export default function HireXelencePage() {
                   <Button
                     onClick={() => setShowApplicationForm(true)}
                     size="lg"
-                    className="group relative bg-white hover:bg-navy-deep text-navy-deep hover:text-white px-9 py-8 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-navy-deep/10 hover:border-navy-deep rounded-2xl overflow-hidden"
+                    className="group relative bg-white hover:bg-navy-deep text-navy-deep hover:text-white px-6 sm:px-9 py-6 sm:py-8 text-base sm:text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-navy-deep/10 hover:border-navy-deep rounded-2xl overflow-hidden w-full sm:w-fit"
                   >
                     {/* Slide up background */}
                     <span className="absolute inset-0 bg-navy-deep translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
@@ -441,7 +441,7 @@ export default function HireXelencePage() {
               className="space-y-10"
             >
               <div className="space-y-6">
-                <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
                   About The Company
                 </h2>
                 <div className="flex items-center gap-3">
@@ -505,7 +505,7 @@ export default function HireXelencePage() {
             viewport={{ once: true }}
             className="text-center mb-20 max-w-4xl mx-auto space-y-8"
           >
-            <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-navy-deep">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-navy-deep">
               The Mission
             </h2>
             <div className="flex items-center justify-center gap-3">
@@ -542,7 +542,7 @@ export default function HireXelencePage() {
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 viewport={{ once: true, margin: "-100px" }}
                 whileHover={{ y: -8 }}
-                className="group relative bg-white rounded-3xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-200/60 hover:border-emerald-primary/30"
+                className="group relative bg-white rounded-3xl p-6 sm:p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-200/60 hover:border-emerald-primary/30"
               >
                 {/* Gradient overlay on hover */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-emerald-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -555,7 +555,7 @@ export default function HireXelencePage() {
                   >
                     <item.icon className="w-12 h-12 text-emerald-primary" strokeWidth={1.5} />
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-navy-deep mb-5 group-hover:text-emerald-primary transition-colors duration-300">{item.title}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-navy-deep mb-5 group-hover:text-emerald-primary transition-colors duration-300">{item.title}</h3>
                   <p className="text-navy-light/80 leading-relaxed text-lg font-light">{item.description}</p>
                 </div>
                 
@@ -587,7 +587,7 @@ export default function HireXelencePage() {
             viewport={{ once: true }}
             className="text-center mb-20 max-w-4xl mx-auto space-y-8"
           >
-            <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold">
               Key Differentiators
             </h2>
             <div className="flex items-center justify-center gap-3">
@@ -673,7 +673,7 @@ export default function HireXelencePage() {
               className="lg:sticky lg:top-32 space-y-10"
             >
               <div className="space-y-6">
-                <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-navy-deep leading-tight">
+                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-navy-deep leading-tight">
                   Our Core Strengths
                 </h2>
                 <div className="flex items-center gap-3">
@@ -758,7 +758,7 @@ export default function HireXelencePage() {
             viewport={{ once: true }}
             className="text-center mb-20 max-w-4xl mx-auto space-y-8"
           >
-            <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold">
               Why Choose HireXelence
             </h2>
             <div className="flex items-center justify-center gap-3">
@@ -829,7 +829,7 @@ export default function HireXelencePage() {
             viewport={{ once: true }}
             className="text-center mb-20 max-w-4xl mx-auto space-y-8"
           >
-            <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-navy-deep">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-navy-deep">
               Engagement Models
             </h2>
             <div className="flex items-center justify-center gap-3">
@@ -921,7 +921,7 @@ export default function HireXelencePage() {
             viewport={{ once: true }}
             className="text-center mb-20 max-w-4xl mx-auto space-y-8"
           >
-            <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold">
               Get In Touch
             </h2>
             <div className="flex items-center justify-center gap-3">
