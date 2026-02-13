@@ -82,34 +82,43 @@ export default function HireXelencePage() {
       {/* Floating Bubbles */}
       <FloatingBubbles onOpenForm={() => setShowApplicationForm(true)} />
 
-      {/* Fixed Header */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur shadow-md' : 'bg-white'}`}>
-        <nav className="container mx-auto px-4 lg:px-8">
+      {/* Premium Floating Header */}
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4 ${scrolled ? 'py-3' : 'py-6'}`}>
+        <nav className={`container mx-auto max-w-7xl rounded-2xl transition-all duration-500 ${scrolled
+          ? 'bg-white/80 backdrop-blur-xl shadow-2xl shadow-navy-deep/5 border border-slate-200/50'
+          : 'bg-white/70 backdrop-blur-md border border-white/30'
+          } px-6 lg:px-8`}>
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <div className="flex items-center cursor-pointer" onClick={() => scrollToSection('home')}>
+            <div className="flex items-center cursor-pointer group" onClick={() => scrollToSection('home')}>
               <Image
                 src="/images/hirexelence-logo.png"
                 alt="HireXelence - Specialised in Hiring Excellence"
                 width={220}
                 height={60}
-                className="h-12 w-auto"
+                className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
                 priority
               />
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden md:flex items-center gap-2">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-md ${activeSection === item.id
-                    ? 'text-[#00B140] bg-[#00B140]/10'
-                    : 'text-[#001F54]/70 hover:text-[#001F54] hover:bg-gray-100'
+                  className={`relative px-5 py-2.5 text-sm font-semibold transition-all duration-300 rounded-xl group overflow-hidden ${activeSection === item.id
+                    ? 'text-white'
+                    : 'text-navy-medium hover:text-navy-deep'
                     }`}
                 >
-                  {item.label}
+                  {activeSection === item.id && (
+                    <span className="absolute inset-0 bg-gradient-to-r from-emerald-primary to-emerald-light shadow-lg shadow-emerald-primary/30" />
+                  )}
+                  <span className="relative z-10">{item.label}</span>
+                  {activeSection !== item.id && (
+                    <span className="absolute inset-0 bg-slate-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  )}
                 </button>
               ))}
             </div>
@@ -117,32 +126,36 @@ export default function HireXelencePage() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-[#00B140] hover:bg-[#00B140]/10 rounded-lg transition-colors"
+              className="md:hidden p-2.5 text-navy-deep hover:bg-slate-100 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
 
           {/* Mobile Menu Dropdown */}
           {mobileMenuOpen && (
-            <div className="md:hidden py-4 border-t bg-gradient-to-br from-[#00B140] to-[#001F54] relative overflow-hidden">
-              <div className="absolute inset-0 bg-[#001F54] opacity-40 diagonal-clip" />
-              <div className="flex flex-col gap-2 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="md:hidden py-6 border-t border-slate-200/50 bg-gradient-to-br from-slate-50 to-white"
+            >
+              <div className="flex flex-col gap-2">
                 {navItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`px-4 py-3 text-left text-base font-medium transition-colors rounded-md ${activeSection === item.id
-                      ? 'text-white bg-white/20'
-                      : 'text-white/90 hover:text-white hover:bg-white/10'
+                    className={`px-5 py-3.5 text-left text-base font-semibold transition-all duration-300 rounded-xl ${activeSection === item.id
+                      ? 'text-white bg-gradient-to-r from-emerald-primary to-emerald-light shadow-lg shadow-emerald-primary/20'
+                      : 'text-navy-medium hover:text-navy-deep hover:bg-slate-100'
                       }`}
                   >
                     {item.label}
                   </button>
                 ))}
               </div>
-            </div>
+            </motion.div>
           )}
         </nav>
       </header>
