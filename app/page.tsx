@@ -160,115 +160,231 @@ export default function HireXelencePage() {
         </nav>
       </header>
 
-      {/* Hero Section - Slide 1 & 2 */}
-      <section id="home" className="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden min-h-[90vh] flex items-center">
-        {/* Video Background */}
+      {/* Premium Hero Section */}
+      <section id="home" className="pt-32 pb-32 md:pt-48 md:pb-48 relative overflow-hidden min-h-screen flex items-center">
+        {/* Video Background with Premium Overlay */}
         <video
           autoPlay
           muted
           loop
-          className="absolute inset-0 w-full h-full object-cover opacity-100 z-0"
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-30 z-0"
           src="/floating-lines-bg.mp4"
         />
 
-        {/* Gradient Overlay - 80% white on left, fading to transparent by 35% mark */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 65%, transparent 100%)'
-          }}
-        />
+        {/* Sophisticated Multi-layer Gradient */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-white via-slate-50/98 to-white" />
+        
+        {/* Subtle Mesh Pattern */}
+        <div className="absolute inset-0 z-0 opacity-[0.02]" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--navy-deep)) 1px, transparent 0)',
+          backgroundSize: '48px 48px'
+        }} />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center justify-items-end">
-            {/* Left Side - Text Content */}
-            <div className="text-left justify-self-start">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#001F54] mb-6 text-balance animate-fade-in">
-                Faster, Smarter Talent Acquisition
-              </h1>
-              <p className="text-lg md:text-xl lg:text-2xl text-[#001F54]/80 mb-8 leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Left Content - Premium Typography */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="space-y-12"
+            >
+              <div className="space-y-8">
+                <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-navy-deep leading-[1.05] tracking-tight">
+                  Faster,{' '}
+                  <span className="bg-gradient-to-r from-emerald-primary via-emerald-light to-emerald-primary bg-clip-text text-transparent">
+                    Smarter
+                  </span>
+                  <br />
+                  Talent Acquisition
+                </h1>
+                
+                <div className="flex items-center gap-4">
+                  <div className="h-1.5 w-24 bg-gradient-to-r from-emerald-primary to-transparent rounded-full" />
+                  <div className="h-1.5 w-16 bg-gradient-to-r from-emerald-light to-transparent rounded-full opacity-60" />
+                </div>
+              </div>
+
+              <p className="text-xl md:text-2xl text-navy-light/90 leading-relaxed max-w-2xl font-light tracking-wide">
                 Comprehensive recruitment services tailored to your sector's demands, delivering strategic placements and global support for long-term impact.
               </p>
-              <div className="flex flex-col gap-4 items-start">
+
+              <div className="flex flex-col sm:flex-row gap-5 items-start pt-4">
                 <Button
                   onClick={() => window.open('https://wa.me/919022374098', '_blank')}
                   size="lg"
-                  className="bg-[#00B140] text-white px-8 py-6 text-lg font-semibold shadow-lg w-fit"
+                  className="group relative bg-gradient-to-r from-emerald-primary to-emerald-light text-white px-9 py-8 text-lg font-semibold shadow-2xl shadow-emerald-primary/30 hover:shadow-emerald-primary/50 transition-all duration-500 hover:scale-[1.03] w-fit overflow-hidden rounded-2xl"
                 >
-                  Schedule a Session <ArrowRight className="ml-2 w-5 h-5" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-emerald-light to-emerald-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <span className="relative flex items-center gap-3">
+                    Schedule a Session 
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
+                  </span>
                 </Button>
                 <Button
                   onClick={() => setShowApplicationForm(true)}
                   size="lg"
-                  className="bg-[#001F54] hover:bg-[#001F54]/90 text-white px-8 py-6 text-lg font-semibold shadow-lg transition-all"
+                  className="group bg-white hover:bg-navy-deep text-navy-deep hover:text-white px-9 py-8 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] border-2 border-navy-deep/10 hover:border-navy-deep rounded-2xl"
                 >
-                  Apply For Your Dream Job Now !
+                  <span className="flex items-center gap-3">
+                    Apply For Your Dream Job
+                    <ArrowUp className="w-5 h-5 group-hover:-translate-y-2 transition-transform duration-500" />
+                  </span>
                 </Button>
               </div>
-            </div>
 
-            {/* Right Side - Hero Image */}
-            <div className="relative animate-fade-in justify-self-end" style={{ animationDelay: '0.3s' }}>
-              {/* Light Green Background Container */}
-              <div className="relative w-[420px] h-[380px] rounded-2xl overflow-visible bg-[#00B140]/10 shadow-2xl">
-                <div className="absolute inset-0 rounded-2xl overflow-hidden">
-                  <Image
-                    src="/images/hero-talent-acquisition.jpg"
-                    alt="Talent acquisition technology"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#001F54]/20 to-transparent" />
-                </div>
-
-                {/* Trusted Partner Badge - Left Side */}
-                <div className="absolute -left-8 bg-gradient-to-r from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs" style={{ top: 'calc(20% + 200px)' }}>
-                  <p className="font-semibold whitespace-nowrap">Trusted Partner</p>
-                </div>
-
-                {/* Reliable Excellence Badge - Right Side */}
-                <div className="absolute -right-8 top-1/3 bg-gradient-to-r from-[#00B140] to-black text-white px-4 py-2 rounded-full shadow-lg z-20 animate-pulse-slow text-xs" style={{ animationDelay: '0.4s' }}>
-                  <p className="font-semibold whitespace-nowrap">Reliable Excellence</p>
-                </div>
+              {/* Premium Message Bubble */}
+              <div className="pt-8">
+                <AnimatePresence mode="wait">
+                  {heroMessageBubbles[currentMessageIndex] && (
+                    <motion.div
+                      key={heroMessageBubbles[currentMessageIndex].id}
+                      initial={{ x: -120, opacity: 0, scale: 0.9 }}
+                      animate={{ x: 0, opacity: 1, scale: 1 }}
+                      exit={{ x: -120, opacity: 0, scale: 0.9 }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 300,
+                        damping: 25,
+                      }}
+                      className="max-w-md"
+                    >
+                      <div 
+                        className="group px-8 py-6 rounded-2xl bg-white/90 backdrop-blur-xl shadow-lg shadow-slate-200/50 border border-slate-200/60 text-navy-deep font-semibold text-base cursor-pointer hover:shadow-xl hover:shadow-emerald-primary/20 hover:scale-[1.02] hover:border-emerald-primary/30 transition-all duration-500"
+                        onClick={() => setShowApplicationForm(true)}
+                      >
+                        <div className="flex items-center justify-between gap-6">
+                          <p className="leading-relaxed">{heroMessageBubbles[currentMessageIndex].text}</p>
+                          <ArrowUp className="w-6 h-6 flex-shrink-0 text-emerald-primary group-hover:-translate-y-2 transition-transform duration-500" />
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
+            </motion.div>
 
-              {/* Decorative Element */}
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#00B140] rounded-full opacity-20 blur-3xl" />
-              <div className="absolute -top-8 -left-4 w-24 h-24 bg-[#00B140] rounded-full opacity-20 blur-2xl" />
-            </div>
+            {/* Right Image - Premium Card */}
+            <motion.div 
+              initial={{ opacity: 0, x: 40, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="relative lg:ml-auto max-w-xl hidden lg:block"
+            >
+              <div className="relative z-10 group">
+                {/* Main Image Card */}
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-slate-200/50 group-hover:shadow-[0_30px_90px_-15px_rgba(0,0,0,0.2)] transition-all duration-700">
+                  <div className="aspect-[4/5] relative">
+                    <Image
+                      src="/images/hero-talent-acquisition.jpg"
+                      alt="Talent acquisition technology"
+                      width={600}
+                      height={750}
+                      className="w-full h-full object-cover"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/30 via-transparent to-transparent" />
+                  </div>
+                </div>
+
+                {/* Premium Floating Badges */}
+                <motion.div 
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
+                  className="absolute -left-8 top-1/2 -translate-y-1/2 z-20"
+                >
+                  <div className="bg-white/95 backdrop-blur-xl px-7 py-4 rounded-2xl shadow-xl shadow-slate-300/40 border border-slate-200/60 hover:shadow-2xl hover:shadow-emerald-primary/20 transition-all duration-500">
+                    <p className="font-bold text-sm text-navy-deep whitespace-nowrap">Trusted Partner</p>
+                    <div className="mt-2 h-1 w-16 bg-gradient-to-r from-emerald-primary to-emerald-light rounded-full" />
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1, duration: 0.6 }}
+                  className="absolute -right-8 top-32 z-20"
+                >
+                  <div className="bg-white/95 backdrop-blur-xl px-7 py-4 rounded-2xl shadow-xl shadow-slate-300/40 border border-slate-200/60 hover:shadow-2xl hover:shadow-emerald-primary/20 transition-all duration-500">
+                    <p className="font-bold text-sm text-navy-deep whitespace-nowrap">Reliable Excellence</p>
+                    <div className="mt-2 h-1 w-16 bg-gradient-to-r from-emerald-light to-emerald-primary rounded-full" />
+                  </div>
+                </motion.div>
+
+                {/* Decorative Gradient Blurs */}
+                <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-gradient-to-br from-emerald-primary/20 to-transparent rounded-full blur-3xl opacity-60 -z-10" />
+                <div className="absolute -top-8 -left-8 w-48 h-48 bg-gradient-to-br from-navy-deep/10 to-transparent rounded-full blur-3xl opacity-60 -z-10" />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* About Section - Slide 2 */}
-      <section id="about" className="py-20 md:py-28 bg-[#001F54] text-white relative overflow-hidden diagonal-clip">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 animate-slide-in-left">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-balance">
-                About The Company
-              </h2>
-              <div className="h-1 w-32 bg-[#00B140]" />
-              <p className="text-xl font-semibold text-[#00B140] mb-4">
+      {/* Premium About Section */}
+      <section id="about" className="py-32 md:py-40 bg-navy-deep text-white relative overflow-hidden">
+        {/* Elegant Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+            backgroundSize: '64px 64px'
+          }} />
+        </div>
+
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="space-y-10"
+            >
+              <div className="space-y-6">
+                <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                  About The Company
+                </h2>
+                <div className="flex items-center gap-3">
+                  <div className="h-1.5 w-24 bg-gradient-to-r from-emerald-primary to-transparent rounded-full" />
+                  <div className="h-1.5 w-16 bg-gradient-to-r from-emerald-light to-transparent rounded-full opacity-60" />
+                </div>
+              </div>
+
+              <p className="text-2xl font-bold text-emerald-light">
                 The Foundation
               </p>
-              <p className="text-lg text-white/90 leading-relaxed">
-                HireXelence is a trusted human resource partner, specialized in connecting top talent with leading companies across various industries. We provide comprehensive recruitment services specifically tailored to the dynamic needs of organizations and different sectors.
-              </p>
-              <p className="text-lg text-white/90 leading-relaxed">
-                Our expertise is rooted in a deep understanding of evolving industry demands, allowing us to deliver highly qualified professionals. We are dedicated to helping businesses achieve their goals, acting as a strategic partner in their organizational growth.
-              </p>
-            </div>
-            <div className="relative h-[450px] rounded-2xl overflow-hidden shadow-2xl animate-slide-in-right">
-              <Image
-                src="/images/business-team-presentation.jpg"
-                alt="Business team presentation"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#001F54]/60 via-transparent to-transparent" />
-            </div>
+
+              <div className="space-y-6 text-lg text-white/85 leading-relaxed font-light">
+                <p>
+                  HireXelence is a trusted human resource partner, specialized in connecting top talent with leading companies across various industries. We provide comprehensive recruitment services specifically tailored to the dynamic needs of organizations and different sectors.
+                </p>
+                <p>
+                  Our expertise is rooted in a deep understanding of evolving industry demands, allowing us to deliver highly qualified professionals. We are dedicated to helping businesses achieve their goals, acting as a strategic partner in their organizational growth.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="relative group"
+            >
+              <div className="relative h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10 group-hover:shadow-[0_30px_90px_-15px_rgba(0,177,64,0.3)] transition-all duration-700">
+                <Image
+                  src="/images/business-team-presentation.jpg"
+                  alt="Business team presentation"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-navy-deep/20 to-transparent" />
+              </div>
+              
+              {/* Decorative Blur */}
+              <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-gradient-to-br from-emerald-primary/30 to-transparent rounded-full blur-3xl -z-10" />
+            </motion.div>
           </div>
         </div>
       </section>
