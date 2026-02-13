@@ -83,81 +83,133 @@ export default function HireXelencePage() {
       <FloatingBubbles onOpenForm={() => setShowApplicationForm(true)} />
 
       {/* Premium Floating Header */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4 ${scrolled ? 'py-3' : 'py-6'}`}>
-        <nav className={`container mx-auto max-w-7xl rounded-2xl transition-all duration-500 ${scrolled
-          ? 'bg-white/80 backdrop-blur-xl shadow-2xl shadow-navy-deep/5 border border-slate-200/50'
-          : 'bg-white/70 backdrop-blur-md border border-white/30'
-          } px-6 lg:px-8`}>
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <div className="flex items-center cursor-pointer group" onClick={() => scrollToSection('home')}>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out px-4 ${scrolled ? 'py-2.5' : 'py-6'}`}>
+        <motion.nav 
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className={`container mx-auto max-w-7xl rounded-2xl transition-all duration-700 ${scrolled
+            ? 'bg-white/90 backdrop-blur-2xl shadow-2xl shadow-navy-deep/10 border border-slate-200/60 py-3'
+            : 'bg-white/60 backdrop-blur-lg border border-white/40 py-4'
+          } px-6 lg:px-10`}
+        >
+          <div className="flex items-center justify-between">
+            {/* Logo with Premium Animation */}
+            <motion.div 
+              className="flex items-center cursor-pointer group"
+              onClick={() => scrollToSection('home')}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+            >
               <Image
                 src="/images/hirexelence-logo.png"
                 alt="HireXelence - Specialised in Hiring Excellence"
                 width={220}
                 height={60}
-                className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+                className={`transition-all duration-500 ${scrolled ? 'h-10' : 'h-12'} w-auto`}
                 priority
               />
-            </div>
+            </motion.div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-2">
-              {navItems.map((item) => (
-                <button
+            {/* Desktop Navigation with Premium Interactions */}
+            <div className="hidden md:flex items-center gap-1.5">
+              {navItems.map((item, index) => (
+                <motion.button
                   key={item.id}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative px-5 py-2.5 text-sm font-semibold transition-all duration-300 rounded-xl group overflow-hidden ${activeSection === item.id
-                    ? 'text-white'
-                    : 'text-navy-medium hover:text-navy-deep'
-                    }`}
+                  className="relative px-6 py-3 text-sm font-semibold transition-all duration-500 rounded-xl group overflow-hidden"
                 >
                   {activeSection === item.id && (
-                    <span className="absolute inset-0 bg-gradient-to-r from-emerald-primary to-emerald-light shadow-lg shadow-emerald-primary/30" />
+                    <motion.span 
+                      layoutId="activeSection"
+                      className="absolute inset-0 bg-gradient-to-r from-emerald-primary to-emerald-light shadow-lg shadow-emerald-primary/30"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
                   )}
-                  <span className="relative z-10">{item.label}</span>
+                  <span className={`relative z-10 transition-colors duration-300 ${
+                    activeSection === item.id ? 'text-white' : 'text-navy-medium group-hover:text-navy-deep'
+                  }`}>
+                    {item.label}
+                  </span>
                   {activeSection !== item.id && (
-                    <span className="absolute inset-0 bg-slate-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="absolute inset-0 bg-slate-100 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl" />
                   )}
-                </button>
+                  {activeSection !== item.id && (
+                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-emerald-primary to-emerald-light group-hover:w-8 transition-all duration-300" />
+                  )}
+                </motion.button>
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
+            {/* Mobile Menu Button with Premium Animation */}
+            <motion.button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 text-navy-deep hover:bg-slate-100 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="md:hidden p-3 text-navy-deep hover:bg-slate-100 rounded-xl transition-all duration-300 backdrop-blur-sm"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              <AnimatePresence mode="wait">
+                {mobileMenuOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X size={24} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu size={24} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
           </div>
 
-          {/* Mobile Menu Dropdown */}
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="md:hidden py-6 border-t border-slate-200/50 bg-gradient-to-br from-slate-50 to-white"
-            >
-              <div className="flex flex-col gap-2">
-                {navItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`px-5 py-3.5 text-left text-base font-semibold transition-all duration-300 rounded-xl ${activeSection === item.id
-                      ? 'text-white bg-gradient-to-r from-emerald-primary to-emerald-light shadow-lg shadow-emerald-primary/20'
-                      : 'text-navy-medium hover:text-navy-deep hover:bg-slate-100'
+          {/* Premium Mobile Menu Dropdown */}
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="md:hidden overflow-hidden border-t border-slate-200/50 mt-4"
+              >
+                <div className="py-6 flex flex-col gap-2">
+                  {navItems.map((item, index) => (
+                    <motion.button
+                      key={item.id}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      onClick={() => scrollToSection(item.id)}
+                      className={`px-6 py-4 text-left text-base font-semibold transition-all duration-300 rounded-xl ${activeSection === item.id
+                        ? 'text-white bg-gradient-to-r from-emerald-primary to-emerald-light shadow-lg shadow-emerald-primary/20'
+                        : 'text-navy-medium hover:text-navy-deep hover:bg-slate-100 active:scale-98'
                       }`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </nav>
+                    >
+                      {item.label}
+                    </motion.button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.nav>
       </header>
 
       {/* Premium Hero Section */}
@@ -183,56 +235,98 @@ export default function HireXelencePage() {
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            {/* Left Content - Premium Typography */}
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-12"
-            >
-              <div className="space-y-8">
+            {/* Left Content - Premium Typography with Stagger */}
+            <div className="space-y-12">
+              <motion.div 
+                className="space-y-8"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-navy-deep leading-[1.05] tracking-tight">
-                  Faster,{' '}
-                  <span className="bg-gradient-to-r from-emerald-primary via-emerald-light to-emerald-primary bg-clip-text text-transparent">
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="inline-block"
+                  >
+                    Faster,{' '}
+                  </motion.span>
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.4, type: 'spring', stiffness: 200 }}
+                    className="inline-block bg-gradient-to-r from-emerald-primary via-emerald-light to-emerald-primary bg-clip-text text-transparent"
+                  >
                     Smarter
-                  </span>
+                  </motion.span>
                   <br />
-                  Talent Acquisition
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    className="inline-block"
+                  >
+                    Talent Acquisition
+                  </motion.span>
                 </h1>
                 
-                <div className="flex items-center gap-4">
+                <motion.div 
+                  className="flex items-center gap-4"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                >
                   <div className="h-1.5 w-24 bg-gradient-to-r from-emerald-primary to-transparent rounded-full" />
                   <div className="h-1.5 w-16 bg-gradient-to-r from-emerald-light to-transparent rounded-full opacity-60" />
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
-              <p className="text-xl md:text-2xl text-navy-light/90 leading-relaxed max-w-2xl font-light tracking-wide">
+              <motion.p 
+                className="text-xl md:text-2xl text-navy-light/90 leading-relaxed max-w-2xl font-light tracking-wide"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 1 }}
+              >
                 Comprehensive recruitment services tailored to your sector's demands, delivering strategic placements and global support for long-term impact.
-              </p>
+              </motion.p>
 
-              <div className="flex flex-col sm:flex-row gap-5 items-start pt-4">
-                <Button
-                  onClick={() => window.open('https://wa.me/919022374098', '_blank')}
-                  size="lg"
-                  className="group relative bg-gradient-to-r from-emerald-primary to-emerald-light text-white px-9 py-8 text-lg font-semibold shadow-2xl shadow-emerald-primary/30 hover:shadow-emerald-primary/50 transition-all duration-500 hover:scale-[1.03] w-fit overflow-hidden rounded-2xl"
-                >
-                  <span className="absolute inset-0 bg-gradient-to-r from-emerald-light to-emerald-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <span className="relative flex items-center gap-3">
-                    Schedule a Session 
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
-                  </span>
-                </Button>
-                <Button
-                  onClick={() => setShowApplicationForm(true)}
-                  size="lg"
-                  className="group bg-white hover:bg-navy-deep text-navy-deep hover:text-white px-9 py-8 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] border-2 border-navy-deep/10 hover:border-navy-deep rounded-2xl"
-                >
-                  <span className="flex items-center gap-3">
-                    Apply For Your Dream Job
-                    <ArrowUp className="w-5 h-5 group-hover:-translate-y-2 transition-transform duration-500" />
-                  </span>
-                </Button>
-              </div>
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-5 items-start pt-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 1.2 }}
+              >
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                  <Button
+                    onClick={() => window.open('https://wa.me/919022374098', '_blank')}
+                    size="lg"
+                    className="group relative bg-gradient-to-r from-emerald-primary to-emerald-light text-white px-9 py-8 text-lg font-semibold shadow-2xl shadow-emerald-primary/30 hover:shadow-emerald-primary/50 transition-all duration-500 w-fit overflow-hidden rounded-2xl"
+                  >
+                    {/* Shine effect */}
+                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                    <span className="absolute inset-0 bg-gradient-to-r from-emerald-light to-emerald-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <span className="relative flex items-center gap-3">
+                      Schedule a Session 
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
+                    </span>
+                  </Button>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                  <Button
+                    onClick={() => setShowApplicationForm(true)}
+                    size="lg"
+                    className="group relative bg-white hover:bg-navy-deep text-navy-deep hover:text-white px-9 py-8 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-navy-deep/10 hover:border-navy-deep rounded-2xl overflow-hidden"
+                  >
+                    {/* Slide up background */}
+                    <span className="absolute inset-0 bg-navy-deep translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                    <span className="relative flex items-center gap-3 z-10">
+                      Apply For Your Dream Job
+                      <ArrowUp className="w-5 h-5 group-hover:-translate-y-2 transition-transform duration-500" />
+                    </span>
+                  </Button>
+                </motion.div>
+              </motion.div>
 
               {/* Premium Message Bubble */}
               <div className="pt-8">
@@ -261,9 +355,9 @@ export default function HireXelencePage() {
                       </div>
                     </motion.div>
                   )}
-                </AnimatePresence>
+                  </AnimatePresence>
+                </div>
               </div>
-            </motion.div>
 
             {/* Right Image - Premium Card */}
             <motion.div 
@@ -441,14 +535,26 @@ export default function HireXelencePage() {
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                viewport={{ once: true }}
-                className="group relative bg-white rounded-3xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-200/60 hover:border-emerald-primary/30 hover:scale-[1.02]"
+                viewport={{ once: true, margin: "-100px" }}
+                whileHover={{ y: -8 }}
+                className="group relative bg-white rounded-3xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-200/60 hover:border-emerald-primary/30"
               >
-                <div className="mb-8 inline-flex p-5 bg-gradient-to-br from-emerald-primary/10 to-navy-deep/5 rounded-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                  <item.icon className="w-12 h-12 text-emerald-primary" strokeWidth={1.5} />
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-emerald-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="relative z-10">
+                  <motion.div 
+                    className="mb-8 inline-flex p-5 bg-gradient-to-br from-emerald-primary/10 to-navy-deep/5 rounded-2xl"
+                    whileHover={{ scale: 1.1, rotate: 3 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                  >
+                    <item.icon className="w-12 h-12 text-emerald-primary" strokeWidth={1.5} />
+                  </motion.div>
+                  <h3 className="text-2xl font-bold text-navy-deep mb-5 group-hover:text-emerald-primary transition-colors duration-300">{item.title}</h3>
+                  <p className="text-navy-light/80 leading-relaxed text-lg font-light">{item.description}</p>
                 </div>
-                <h3 className="text-2xl font-bold text-navy-deep mb-5 group-hover:text-emerald-primary transition-colors duration-300">{item.title}</h3>
-                <p className="text-navy-light/80 leading-relaxed text-lg font-light">{item.description}</p>
+                
+                {/* Bottom accent bar */}
                 <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-primary via-emerald-light to-emerald-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-3xl" />
               </motion.div>
             ))}
@@ -513,14 +619,24 @@ export default function HireXelencePage() {
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="group bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-emerald-primary/40 hover:bg-white/10 transition-all duration-500 hover:scale-[1.03]"
+                viewport={{ once: true, margin: "-100px" }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-emerald-primary/40 transition-all duration-500 overflow-hidden"
               >
-                <div className="mb-7 inline-flex p-5 bg-emerald-primary/15 rounded-2xl group-hover:scale-110 group-hover:bg-emerald-primary/25 group-hover:rotate-3 transition-all duration-500">
-                  <item.icon className="w-11 h-11 text-emerald-light" strokeWidth={1.5} />
+                {/* Gradient glow on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="relative z-10">
+                  <motion.div 
+                    className="mb-7 inline-flex p-5 bg-emerald-primary/15 rounded-2xl"
+                    whileHover={{ scale: 1.1, rotate: 3 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                  >
+                    <item.icon className="w-11 h-11 text-emerald-light" strokeWidth={1.5} />
+                  </motion.div>
+                  <h3 className="text-2xl font-bold mb-5 group-hover:text-emerald-light transition-colors duration-300">{item.title}</h3>
+                  <p className="text-white/75 leading-relaxed text-base font-light">{item.description}</p>
                 </div>
-                <h3 className="text-2xl font-bold mb-5 group-hover:text-emerald-light transition-colors duration-300">{item.title}</h3>
-                <p className="text-white/75 leading-relaxed text-base font-light">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -587,11 +703,19 @@ export default function HireXelencePage() {
                   initial={{ opacity: 0, x: 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-200/60 hover:border-emerald-primary/40 hover:scale-[1.02]"
+                  viewport={{ once: true, margin: "-50px" }}
+                  whileHover={{ x: 8 }}
+                  className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-200/60 hover:border-emerald-primary/40 overflow-hidden"
                 >
-                  <div className="flex items-start gap-5">
-                    <div className="flex-shrink-0 w-2 h-2 mt-3 rounded-full bg-emerald-primary group-hover:scale-150 transition-transform duration-500" />
+                  {/* Side accent bar */}
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-primary to-emerald-light transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500" />
+                  
+                  <div className="flex items-start gap-5 relative z-10">
+                    <motion.div 
+                      className="flex-shrink-0 w-2 h-2 mt-3 rounded-full bg-emerald-primary"
+                      whileHover={{ scale: 2 }}
+                      transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                    />
                     <div className="space-y-3">
                       <h3 className="text-2xl font-bold text-navy-deep group-hover:text-emerald-primary transition-colors duration-300">
                         {item.title}
@@ -649,15 +773,23 @@ export default function HireXelencePage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                viewport={{ once: true }}
-                className="group bg-white/5 backdrop-blur-xl rounded-2xl p-7 border border-white/10 hover:border-emerald-primary/40 hover:bg-white/10 transition-all duration-500 hover:scale-[1.03]"
+                viewport={{ once: true, margin: "-100px" }}
+                whileHover={{ scale: 1.05, y: -4 }}
+                className="group relative bg-white/5 backdrop-blur-xl rounded-2xl p-7 border border-white/10 hover:border-emerald-primary/40 transition-all duration-500 overflow-hidden"
               >
-                <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-primary to-emerald-light flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                {/* Gradient glow on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="flex items-start gap-5 relative z-10">
+                  <motion.div 
+                    className="flex-shrink-0 w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-primary to-emerald-light flex items-center justify-center"
+                    whileHover={{ scale: 1.15, rotate: 6 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                  >
                     <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
-                  </div>
+                  </motion.div>
                   <p className="text-lg leading-relaxed font-light text-white/90 group-hover:text-white transition-colors duration-300">{item}</p>
                 </div>
               </motion.div>
@@ -710,13 +842,18 @@ export default function HireXelencePage() {
             ].map((model, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-200/60 hover:border-emerald-primary/40 hover:scale-[1.02]"
+                initial={{ opacity: 0, y: 40, rotateY: index === 0 ? -10 : 10 }}
+                whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+                transition={{ duration: 0.7, delay: index * 0.2 }}
+                viewport={{ once: true, margin: "-100px" }}
+                whileHover={{ y: -8 }}
+                style={{ perspective: 1000 }}
+                className="group relative bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-200/60 hover:border-emerald-primary/40 overflow-hidden"
               >
-                <div className="space-y-7">
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="space-y-7 relative z-10">
                   <h3 className="text-3xl font-bold text-navy-deep group-hover:text-emerald-primary transition-colors duration-300">
                     {model.title}
                   </h3>
@@ -725,14 +862,25 @@ export default function HireXelencePage() {
                   </p>
                   <div className="pt-4 space-y-4">
                     {model.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-4">
-                        <div className="flex-shrink-0 w-7 h-7 rounded-xl bg-gradient-to-br from-emerald-primary to-emerald-light flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <motion.div 
+                        key={idx} 
+                        className="flex items-center gap-4"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.1 }}
+                        viewport={{ once: true }}
+                      >
+                        <motion.div 
+                          className="flex-shrink-0 w-7 h-7 rounded-xl bg-gradient-to-br from-emerald-primary to-emerald-light flex items-center justify-center"
+                          whileHover={{ scale: 1.2, rotate: 10 }}
+                          transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                        >
                           <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                           </svg>
-                        </div>
+                        </motion.div>
                         <span className="text-lg text-navy-medium font-medium">{feature}</span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
@@ -797,17 +945,31 @@ export default function HireXelencePage() {
                 href={contact.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                viewport={{ once: true }}
-                className="group bg-white/5 backdrop-blur-xl rounded-3xl p-10 border border-white/10 hover:border-emerald-primary/40 hover:bg-white/10 transition-all duration-500 text-center hover:scale-[1.05]"
+                viewport={{ once: true, margin: "-100px" }}
+                whileHover={{ y: -12, scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative bg-white/5 backdrop-blur-xl rounded-3xl p-10 border border-white/10 hover:border-emerald-primary/40 transition-all duration-500 text-center overflow-hidden"
               >
-                <div className="inline-flex p-6 bg-gradient-to-br from-emerald-primary/20 to-transparent rounded-2xl mb-7 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                  <contact.icon className="w-12 h-12 text-emerald-light" strokeWidth={1.5} />
+                {/* Pulse ring on hover */}
+                <div className="absolute inset-0 rounded-3xl border-2 border-emerald-primary/30 scale-100 opacity-0 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700" />
+                
+                {/* Gradient glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="relative z-10">
+                  <motion.div 
+                    className="inline-flex p-6 bg-gradient-to-br from-emerald-primary/20 to-transparent rounded-2xl mb-7"
+                    whileHover={{ scale: 1.15, rotate: 5 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                  >
+                    <contact.icon className="w-12 h-12 text-emerald-light" strokeWidth={1.5} />
+                  </motion.div>
+                  <h3 className="text-2xl font-bold mb-4 group-hover:text-emerald-light transition-colors duration-300">{contact.title}</h3>
+                  <p className="text-white/75 text-lg font-light group-hover:text-white transition-colors duration-300">{contact.value}</p>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 group-hover:text-emerald-light transition-colors duration-300">{contact.title}</h3>
-                <p className="text-white/75 text-lg font-light">{contact.value}</p>
               </motion.a>
             ))}
           </div>
