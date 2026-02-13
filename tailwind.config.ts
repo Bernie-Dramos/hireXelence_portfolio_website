@@ -10,6 +10,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-playfair)', 'Playfair Display', 'Georgia', 'serif'],
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -60,6 +64,21 @@ const config: Config = {
           'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
+        },
+        navy: {
+          deep: 'hsl(var(--navy-deep))',
+          medium: 'hsl(var(--navy-medium))',
+          light: 'hsl(var(--navy-light))',
+        },
+        slate: {
+          50: 'hsl(var(--slate-50))',
+          100: 'hsl(var(--slate-100))',
+          200: 'hsl(var(--slate-200))',
+          300: 'hsl(var(--slate-300))',
+        },
+        emerald: {
+          primary: 'hsl(var(--emerald-primary))',
+          light: 'hsl(var(--emerald-light))',
         },
       },
       borderRadius: {

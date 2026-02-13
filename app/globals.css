@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer utilities {
@@ -76,73 +79,76 @@ body {
 
 @layer base {
   :root {
-    --background: 210 20% 97%;
-    --foreground: 210 50% 15%;
+    /* Premium Light Theme */
+    --background: 0 0% 98%;
+    --foreground: 215 25% 15%;
     --card: 0 0% 100%;
-    --card-foreground: 210 50% 15%;
+    --card-foreground: 215 25% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 210 50% 15%;
-    --primary: 210 100% 17%;
+    --popover-foreground: 215 25% 15%;
+    --primary: 215 40% 20%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 142 100% 35%;
+    --secondary: 160 60% 45%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 210 20% 90%;
-    --muted-foreground: 210 20% 40%;
-    --accent: 142 100% 35%;
+    --muted: 220 15% 92%;
+    --muted-foreground: 215 15% 45%;
+    --accent: 160 60% 45%;
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 20% 85%;
-    --input: 210 20% 85%;
-    --ring: 142 100% 35%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 160 60% 45%;
+    --radius: 0.75rem;
+    
+    /* Custom Premium Tokens */
+    --navy-deep: 215 40% 20%;
+    --navy-medium: 215 35% 30%;
+    --navy-light: 215 30% 45%;
+    --slate-50: 220 15% 96%;
+    --slate-100: 220 15% 92%;
+    --slate-200: 220 13% 88%;
+    --slate-300: 220 12% 80%;
+    --emerald-primary: 160 60% 45%;
+    --emerald-light: 160 50% 55%;
+    --glass-bg: 0 0% 100% / 0.7;
+    --glass-border: 0 0% 100% / 0.2;
   }
+  
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
+    /* Premium Dark Theme */
+    --background: 215 30% 8%;
+    --foreground: 0 0% 96%;
+    --card: 215 25% 12%;
+    --card-foreground: 0 0% 96%;
+    --popover: 215 25% 12%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 0 0% 96%;
+    --primary-foreground: 215 30% 10%;
+    --secondary: 160 50% 45%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
+    --muted: 215 20% 18%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 160 50% 45%;
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 215 20% 20%;
+    --input: 215 20% 20%;
+    --ring: 160 50% 45%;
+    
+    /* Custom Premium Tokens Dark */
+    --navy-deep: 215 30% 10%;
+    --navy-medium: 215 25% 15%;
+    --navy-light: 215 20% 25%;
+    --slate-50: 215 20% 18%;
+    --slate-100: 215 20% 20%;
+    --slate-200: 215 18% 25%;
+    --slate-300: 215 15% 35%;
+    --emerald-primary: 160 50% 45%;
+    --emerald-light: 160 45% 55%;
+    --glass-bg: 215 25% 12% / 0.7;
+    --glass-border: 0 0% 100% / 0.1;
   }
 }
 
