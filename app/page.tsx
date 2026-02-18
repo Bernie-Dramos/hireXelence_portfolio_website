@@ -77,7 +77,7 @@ export default function HireXelencePage() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${scrolled ? 'top-2' : 'top-4'
+        className={`fixed top-4 left-1/3 -translate-x-1/2 z-50 transition-all duration-500 ${scrolled ? 'top-2' : 'top-4'
           }`}
       >
         <nav className={`glass-dark rounded-full px-6 py-3 transition-all duration-500 ${scrolled ? 'shadow-2xl scale-95' : 'shadow-xl'
