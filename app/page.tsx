@@ -87,6 +87,8 @@ export default function HireXelencePage() {
             <button
               onClick={() => scrollToSection('home')}
               className="flex items-center cursor-pointer transition-transform hover:scale-105"
+              aria-label="Go to Home section"
+              title="Go to Home section"
             >
               <Image
                 src="/images/hirexelence-logo.png"
