@@ -45,6 +45,20 @@ html {
     border: 1px solid rgba(16, 185, 129, 0.2);
   }
 
+  /* 3D Carousel Utilities */
+  .carousel-perspective {
+    perspective: 1200px;
+    perspective-origin: center center;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .text-shadow-strong {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  }
+
   /* Gradient Mesh Backgrounds */
   .gradient-mesh {
     background:

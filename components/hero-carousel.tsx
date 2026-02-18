@@ -85,9 +85,9 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
         <section id="home" className="pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-16 sm:pb-20 md:pb-32 bg-white relative w-screen -mx-[calc((100vw-100%)/2)] min-h-screen flex items-center">
             <div className="w-full px-4 md:px-6 lg:px-8 relative">
                 {/* OSMO-style 3D Carousel Container */}
-                <div className="relative w-full" style={{ perspective: '1200px', perspectiveOrigin: 'center center' }}>
-                    <div className="relative w-full min-h-[65vh]" style={{ transformStyle: 'preserve-3d' }}>
-                        <div className="flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
+                <div className="relative w-full carousel-perspective">
+                    <div className="relative w-full min-h-[65vh] preserve-3d">
+                        <div className="flex items-center justify-center preserve-3d">
                             {/* Far Previous Slide (Far Left) */}
                             <motion.div
                                 key={`far-prev-${currentSlide}`}
@@ -199,8 +199,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                                 initial={{ y: 20, opacity: 0 }}
                                                 animate={{ y: 0, opacity: 1 }}
                                                 transition={{ delay: 0.1, duration: 0.6 }}
-                                                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center px-6 lg:px-12 leading-tight"
-                                                style={{ textShadow: '0 4px 24px rgba(0,0,0,0.5)' }}
+                                                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center px-6 lg:px-12 leading-tight text-shadow-strong"
                                             >
                                                 {carouselSlides[currentSlide].title}
                                             </motion.h1>
@@ -213,7 +212,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                             transition={{ delay: 0.2, duration: 0.6 }}
                                             className="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 z-30"
                                         >
-                                            <p className="text-white text-xs sm:text-sm font-medium tracking-wide" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.6)' }}>
+                                            <p className="text-white text-xs sm:text-sm font-medium tracking-wide text-shadow-strong">
                                                 {carouselSlides[currentSlide].bottomLeft}
                                             </p>
                                         </motion.div>
@@ -226,7 +225,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                             whileHover={{ x: 4 }}
                                             className="absolute bottom-6 sm:bottom-8 right-6 sm:right-8 z-30 cursor-pointer"
                                         >
-                                            <p className="text-white text-xs sm:text-sm font-medium tracking-wide" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.6)' }}>
+                                            <p className="text-white text-xs sm:text-sm font-medium tracking-wide text-shadow-strong">
                                                 {carouselSlides[currentSlide].bottomRight}
                                             </p>
                                         </motion.div>
