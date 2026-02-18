@@ -96,7 +96,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                     className="relative flex-1 min-w-0 z-20"
                                 >
                                     {/* Image Container with Rounded Corners */}
-                                    <div className="relative ml-[-180px] h-[550px] md:h-[650px] lg:h-[800px] rounded-3xl overflow-hidden shadow-2xl" style={{ width: 'calc(100vw * 0.7)' }}>
+                                    <div className="relative ml-[-180px] h-[550px] md:h-[650px] lg:h-[800px] rounded-3xl overflow-hidden shadow-2xl w-[70vw]">
                                         <Image
                                             src={carouselSlides[currentSlide].image}
                                             alt={carouselSlides[currentSlide].title}
