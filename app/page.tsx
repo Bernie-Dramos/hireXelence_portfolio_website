@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Menu, X, Phone, Mail, MessageCircle, Rocket, Target, Globe, ArrowRight, TrendingUp, Users2, Handshake, ArrowUp } from 'lucide-react'
+import { Menu, X, Phone, Mail, MessageCircle, Rocket, Target, Globe, ArrowRight, TrendingUp, Users2, Handshake, ArrowUp, ChevronLeft, ChevronRight, ArrowDown } from 'lucide-react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { JobApplicationForm } from '@/components/job-application-form'
@@ -11,6 +11,7 @@ import FloatingLines from '@/components/FloatingLines'
 import { ScrollProgress } from '@/components/scroll-progress'
 import { MagneticButton } from '@/components/magnetic-button'
 import { useMagneticHover } from '@/hooks/use-mouse-position'
+import { HeroCarousel } from '@/components/hero-carousel'
 
 
 export default function HireXelencePage() {
@@ -19,6 +20,7 @@ export default function HireXelencePage() {
   const [scrolled, setScrolled] = useState(false)
   const [showApplicationForm, setShowApplicationForm] = useState(false)
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0)
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,7 +82,7 @@ export default function HireXelencePage() {
       >
         <nav className={`glass-dark rounded-full px-6 py-3 transition-all duration-500 ${scrolled ? 'shadow-2xl scale-95' : 'shadow-xl'
           }`}>
-          <div className="flex items-center gap-8">
+          <div className="flex items-center justify-center gap-4 lg:gap-8">
             {/* Logo */}
             <button
               onClick={() => scrollToSection('home')}
@@ -187,178 +189,8 @@ export default function HireXelencePage() {
         )}
       </AnimatePresence>
 
-      {/* Hero Section - Slide 1 & 2 */}
-      <section id="home" className="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden min-h-[90vh] flex items-center">
-        {/* Floating Lines Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="w-full h-full relative">
-            <FloatingLines
-              linesGradient={['#285cd7', '#4a9ba5', '#38c41c']}
-              topWavePosition={{ x: 10.0, y: 0.5, rotate: -0.4 }}
-              middleWavePosition={{ x: 5.0, y: 0.0, rotate: 0.2 }}
-              animationSpeed={1}
-              interactive
-              bendRadius={5}
-              bendStrength={-0.5}
-              mouseDamping={0.05}
-              parallax
-              parallaxStrength={0.2}
-            />
-          </div>
-        </div>
-
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 z-0 hero-gradient-overlay" />
-
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center justify-items-end">
-            {/* Left Side - Text Content */}
-            <div className="text-left justify-self-start space-y-8">
-              {/* Massive Typography with Word Reveals */}
-              <h1 className="text-fluid-5xl md:text-fluid-6xl lg:text-fluid-7xl font-bold text-navy leading-tight perspective-1000">
-                <div className="flex flex-wrap gap-x-4 gap-y-2">
-                  {['Faster,', 'Smarter'].map((word, index) => (
-                    <motion.span
-                      key={word}
-                      initial={{ opacity: 0, y: 30, rotateX: -90 }}
-                      animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                      transition={{
-                        duration: 0.8,
-                        delay: index * 0.2,
-                        ease: [0.4, 0, 0.2, 1]
-                      }}
-                      className="inline-block preserve-3d"
-                    >
-                      {word}
-                    </motion.span>
-                  ))}
-                </div>
-                <motion.div
-                  initial={{ opacity: 0, y: 30, rotateX: -90 }}
-                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: 0.4,
-                    ease: [0.4, 0, 0.2, 1]
-                  }}
-                  className="text-gradient-green inline-block preserve-3d"
-                >
-                  Talent Acquisition
-                </motion.div>
-              </h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className="text-fluid-lg md:text-fluid-xl text-navy/80 leading-relaxed max-w-2xl"
-              >
-                Comprehensive recruitment services tailored to your sector's demands, delivering strategic placements and global support for long-term impact.
-              </motion.p>
-
-              {/* Animated Stats Ticker */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="flex gap-8 flex-wrap"
-              >
-                {[
-                  { value: '500+', label: 'Placements' },
-                  { value: '98%', label: 'Retention' },
-                  { value: '24/7', label: 'Support' }
-                ].map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{
-                      delay: 1 + index * 0.1,
-                      type: 'spring',
-                      stiffness: 200,
-                      damping: 15
-                    }}
-                    className="text-center"
-                  >
-                    <div className="text-3xl md:text-4xl font-bold text-green-primary">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-navy/60 font-medium">
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* Magnetic CTAs */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.6 }}
-                className="flex flex-col gap-4 items-start"
-              >
-                <MagneticButton
-                  onClick={() => window.open('https://wa.me/919022374098', '_blank')}
-                  className="bg-green-primary hover:bg-green-600 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-2xl transition-all"
-                >
-                  Schedule a Session <ArrowRight className="ml-2 w-5 h-5" />
-                </MagneticButton>
-                <MagneticButton
-                  onClick={() => setShowApplicationForm(true)}
-                  className="bg-navy hover:bg-navy-800 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-2xl transition-all"
-                >
-                  Apply For Your Dream Job Now !
-                </MagneticButton>
-              </motion.div>
-            </div>
-
-            {/* Right Side - Hero Image with 3D Perspective */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="relative justify-self-end perspective-1000"
-            >
-              {/* Light Green Background Container */}
-              <div className="relative w-[420px] h-[380px] rounded-2xl overflow-visible bg-green-primary/10 shadow-2xl preserve-3d">
-                <div className="absolute inset-0 rounded-2xl overflow-hidden">
-                  <Image
-                    src="/images/hero-talent-acquisition.jpg"
-                    alt="Talent acquisition technology"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent" />
-                </div>
-
-                {/* Floating Badges with Animation */}
-                <motion.div
-                  initial={{ x: -50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.8, duration: 0.6 }}
-                  className="absolute -left-8 top-[calc(20%+200px)] bg-gradient-to-r from-green-primary to-navy text-white px-4 py-2 rounded-full shadow-lg z-20 animate-float text-xs"
-                >
-                  <p className="font-semibold whitespace-nowrap">Trusted Partner</p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ x: 50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 1, duration: 0.6 }}
-                  className="absolute -right-8 top-1/3 bg-gradient-to-r from-green-primary to-navy text-white px-4 py-2 rounded-full shadow-lg z-20 animate-float-slow text-xs"
-                >
-                  <p className="font-semibold whitespace-nowrap">Reliable Excellence</p>
-                </motion.div>
-              </div>
-
-              {/* Decorative Elements */}
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-green-primary rounded-full opacity-20 blur-3xl animate-pulse-slow" />
-              <div className="absolute -top-8 -left-4 w-24 h-24 bg-green-primary rounded-full opacity-20 blur-2xl animate-pulse-slow" />
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Carousel Section */}
+      <HeroCarousel currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
 
       {/* About Section - Horizontal Scroll Gallery */}
       <section id="about" className="py-20 md:py-28 bg-navy text-white relative overflow-hidden diagonal-clip">
