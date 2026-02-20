@@ -65,7 +65,7 @@ export default function HireXelencePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Scroll Progress Bar */}
       <ScrollProgress />
 
@@ -195,7 +195,7 @@ export default function HireXelencePage() {
       <HeroCarousel currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
 
       {/* About Section - Horizontal Scroll Gallery */}
-      <section id="about" className="py-20 md:py-28 bg-navy text-white relative overflow-hidden diagonal-clip">
+      <section id="about" className="py-20 md:py-28 bg-navy text-white relative overflow-x-hidden diagonal-clip">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Pinned Left - Text Content */}
@@ -223,10 +223,13 @@ export default function HireXelencePage() {
                   The Foundation
                 </p>
                 <p className="text-fluid-base text-white/90 leading-relaxed">
-                  HireXelence is a trusted human resource partner, specialized in connecting top talent with leading companies across various industries. We provide comprehensive recruitment services specifically tailored to the dynamic needs of organizations and different sectors.
+                  Hirexelence is a strategic human resource solutions partner focused on enabling organizations to build resilient, high-performing, and future-ready workforces. We provide customized recruitment and workforce solutions designed to align talent acquisition with business strategy, operational efficiency, and long-term growth.
                 </p>
                 <p className="text-fluid-base text-white/90 leading-relaxed">
-                  Our expertise is rooted in a deep understanding of evolving industry demands, allowing us to deliver highly qualified professionals. We are dedicated to helping businesses achieve their goals, acting as a strategic partner in their organizational growth.
+                  Our approach integrates market intelligence, structured evaluation frameworks, and scalable delivery models to ensure consistent hiring quality and measurable outcomes. With cross-industry expertise and access to specialized talent networks, we support organizations in addressing complex workforce challenges, expanding capabilities, and optimizing team performance.
+                </p>
+                <p className="text-fluid-base text-white/90 leading-relaxed">
+                  By connecting organizations with highly qualified professionals who deliver tangible business impact, we help clients strengthen competitiveness, accelerate transformation, and achieve sustainable success.
                 </p>
               </motion.div>
 
@@ -244,8 +247,8 @@ export default function HireXelencePage() {
             </div>
 
             {/* Right - Horizontal Scrolling Cards */}
-            <div className="relative">
-              <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide lg:pr-8">
+            <div className="relative py-6 mt-8">
+              <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide px-2">
                 {[
                   {
                     title: 'Our Culture',
@@ -287,16 +290,16 @@ export default function HireXelencePage() {
                       </div>
 
                       {/* Content */}
-                      <div className="p-6 space-y-4">
-                        <h3 className="text-2xl font-bold text-white group-hover:text-green-primary transition-colors">
+                      <div className="p-6 flex flex-col h-[calc(100%-12rem)]">
+                        <h3 className="text-2xl font-bold text-white group-hover:text-green-primary transition-colors mb-3">
                           {card.title}
                         </h3>
-                        <p className="text-white/70 leading-relaxed">
+                        <p className="text-white/70 leading-relaxed text-sm flex-grow">
                           {card.description}
                         </p>
 
                         {/* Stats Badge */}
-                        <div className="absolute bottom-6 left-6 right-6">
+                        <div className="mt-4">
                           <div className="glass-green rounded-xl p-4 flex items-center justify-between">
                             <span className="text-sm text-white/70">{card.stats.label}</span>
                             <span className="text-2xl font-bold text-green-primary">{card.stats.value}</span>
@@ -354,7 +357,7 @@ export default function HireXelencePage() {
                   Our Mission
                 </h3>
                 <p className="text-fluid-base text-white/95 leading-relaxed">
-                  To empower organizations by connecting them with exceptional talent. We are committed to delivering tailored recruitment solutions that help businesses thrive in today's dynamic environment. Through integrity, innovation, and industry understanding, we aim to bridge the gap between employers and top-tier professionals, fostering growth and success.
+                  To empower organizations by connecting them with exceptional talent through customized recruitment and comprehensive HR solutions that support sustainable growth, operational excellence, and long-term business success. We are committed to delivering strategic workforce solutions that enhance organizational capability, improve hiring effectiveness, and enable businesses to adapt confidently to evolving market demands. Through innovation, integrity, and a partnership-driven approach, we strive to create measurable value for our clients while building resilient, high-performing teams.
                 </p>
               </motion.div>
 
@@ -370,7 +373,7 @@ export default function HireXelencePage() {
                   Our Vision
                 </h3>
                 <p className="text-fluid-base leading-relaxed">
-                  To be the leading human resource solutions provider, recognized globally for our ability to transform organizations through the strategic acquisition of talent. We aim to set new standards in excellence recruitment, making us the strategic partner for companies seeking to build a diverse, skilled, and future-ready workforce.
+                  To be recognized globally as a trusted leader in strategic talent acquisition and workforce transformation, setting new benchmarks in recruitment quality, service excellence, and organizational impact. We aspire to shape the future of work by enabling businesses to build agile, future-ready workforces that drive innovation, competitiveness, and sustainable growth. Through continuous improvement, global capability development, and client-centric solutions, we aim to become the preferred partner for organizations seeking to strengthen their talent strategy and achieve long-term success.
                 </p>
               </motion.div>
             </div>
@@ -492,20 +495,91 @@ export default function HireXelencePage() {
                   <div className="grid grid-cols-3 gap-6 text-center">
                     <div>
                       <div className="text-4xl font-bold text-green-primary mb-2">15+</div>
-                      <div className="text-sm text-white/70">Years Experience</div>
+                      <div className="text-sm text-black/70">Years Experience</div>
                     </div>
                     <div>
                       <div className="text-4xl font-bold text-green-primary mb-2">95%</div>
-                      <div className="text-sm text-white/70">Success Rate</div>
+                      <div className="text-sm text-black/70">Success Rate</div>
                     </div>
                     <div>
                       <div className="text-4xl font-bold text-green-primary mb-2">24/7</div>
-                      <div className="text-sm text-white/70">Availability</div>
+                      <div className="text-sm text-black/70">Availability</div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Services Section */}
+      <section id="services" className="py-20 md:py-28 bg-navy text-white relative overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-fluid-4xl md:text-fluid-5xl lg:text-fluid-6xl font-bold mb-4">
+              Our Core Services
+            </h2>
+            <div className="h-1 w-32 bg-green-primary mx-auto mb-6" />
+            <p className="text-fluid-base text-white/80 max-w-3xl mx-auto leading-relaxed">
+              We deliver comprehensive workforce solutions designed to support organizations at every stage of their talent lifecycle. Our services are structured to enhance hiring effectiveness, strengthen workforce capability, and enable scalable business growth.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {[
+              {
+                title: 'End-to-End Talent Acquisition',
+                description: 'Comprehensive recruitment solutions covering permanent hiring, contract staffing, and executive search. Our structured sourcing, screening, and evaluation processes ensure organizations secure professionals who align with both technical requirements and organizational culture.'
+              },
+              {
+                title: 'Project-Based & Volume Hiring',
+                description: 'Scalable recruitment support designed for rapid workforce expansion, transformation initiatives, and high-demand hiring environments. We enable efficient deployment of qualified talent to meet time-sensitive business objectives.'
+              },
+              {
+                title: 'HR Strategy & Workforce Planning',
+                description: 'Advisory services that align talent strategy with organizational goals. We support workforce structuring, talent pipeline development, capability planning, and long-term human capital optimization.'
+              },
+              {
+                title: 'HR Automation & Digital Transformation',
+                description: 'Technology-enabled HR solutions that streamline recruitment workflows, improve operational efficiency, and enhance data-driven decision-making across the employee lifecycle.'
+              },
+              {
+                title: 'Payroll & HR Operations Management',
+                description: 'Reliable workforce administration services ensuring compliance, accuracy, and operational continuity across payroll, documentation, and HR support functions.'
+              },
+              {
+                title: 'Global Recruitment Support',
+                description: 'Cross-border talent delivery through onsite, offshore, and hybrid engagement models, enabling organizations to access global talent pools and support operations across multiple regions and time zones.'
+              }
+            ].map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card className="h-full bg-white/5 backdrop-blur-sm border border-white/10 hover:border-green-primary/50 hover:shadow-2xl hover:shadow-green-primary/20 hover:-translate-y-2 transition-all duration-500 group">
+                  <CardContent className="p-8 flex flex-col h-full">
+                    <div className="w-12 h-12 bg-green-primary/20 rounded-xl flex items-center justify-center mb-4 group-hover:bg-green-primary transition-colors">
+                      <div className="w-6 h-6 bg-green-primary rounded group-hover:bg-white transition-colors" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-4 text-white group-hover:text-green-primary transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-white/70 leading-relaxed flex-grow">
+                      {service.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -541,18 +615,18 @@ export default function HireXelencePage() {
             {[
               {
                 icon: <Target className="w-8 h-8" />,
-                title: 'Enterprise Solutions',
-                description: 'HireXelence provides comprehensive, on-demand talent acquisition solutions designed to support your most critical enterprise projects.'
+                title: 'On-Demand Enterprise Solutions',
+                description: 'Hirexelence delivers comprehensive, on-demand talent acquisition solutions designed to support mission-critical enterprise initiatives with speed, precision, and scalability. Our approach ensures organizations gain access to highly qualified professionals who align with project objectives, technical requirements, and long-term business goals.'
               },
               {
                 icon: <Users2 className="w-8 h-8" />,
                 title: 'Multi-Vertical Expertise',
-                description: 'We specialize in sourcing highly skilled professionals across multiple business verticals, delivering talent aligned with both technical requirements and industry-specific needs.'
+                description: 'We specialize in sourcing highly skilled professionals across multiple business verticals, delivering talent that aligns with both technical requirements and industry-specific demands. Our structured sourcing methodology, rigorous evaluation process, and deep market insight enable us to identify candidates who not only meet role expectations but also contribute to long-term organizational performance.'
               },
               {
                 icon: <TrendingUp className="w-8 h-8" />,
-                title: 'Future-Ready Talent',
-                description: 'Our expertise is hyper-focused on delivering the talent required to support tomorrow\'s rapidly evolving technology landscapes.'
+                title: 'Future-Ready Technology Talent',
+                description: 'Our expertise is focused on delivering the specialized talent required to support tomorrow\'s rapidly evolving technology landscape. We continuously monitor industry trends, emerging technologies, and evolving skill demands to ensure organizations gain access to professionals equipped to drive innovation, digital transformation, and operational advancement.'
               }
             ].map((strength, index) => (
               <motion.div
@@ -660,7 +734,7 @@ export default function HireXelencePage() {
                   transition={{ duration: 0.6, delay: 0.5 }}
                   className="text-fluid-base text-navy/80 leading-relaxed"
                 >
-                  Choosing HireXelence means partnering with recruitment technology experts who offer a complete, strategic solution for your human capital needs. Beyond full recruitment enterprise services, we provide specialized advisory in HR Strategy Consulting and HR Automation, supported by HR Service and Payroll Management.
+                  Partnering with Hirexelence means engaging with a strategic workforce solutions provider committed to strengthening your organization's human capital capabilities. We combine recruitment expertise, industry insight, and technology-enabled processes to deliver comprehensive talent solutions aligned with your business objectives, operational priorities, and long-term growth strategy.
                 </motion.p>
 
                 <motion.p
@@ -670,7 +744,27 @@ export default function HireXelencePage() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="text-fluid-base text-navy/80 leading-relaxed"
                 >
-                  Our cross-border techno-functional recruitment expertise is backed by a commitment to flexible business models, ensuring a tailored and efficient approach to acquiring top talent and driving your business success.
+                  Beyond end-to-end enterprise recruitment services, we provide specialized advisory support in HR Strategy Consulting and HR Automation, complemented by reliable HR Services and Payroll Management. Our integrated approach ensures seamless workforce planning, efficient hiring execution, and optimized HR operations across the talent lifecycle.
+                </motion.p>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                  className="text-fluid-base text-navy/80 leading-relaxed"
+                >
+                  With cross-border techno-functional recruitment expertise, we support organizations in accessing global talent pools and deploying professionals across diverse markets and time zones. Our flexible engagement models adapt to varying business needs, project scopes, and organizational structures, enabling a customized, scalable, and cost-effective approach to talent acquisition.
+                </motion.p>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                  className="text-fluid-base text-navy/80 leading-relaxed"
+                >
+                  Through a partnership-driven methodology, structured evaluation frameworks, and a strong commitment to quality and performance, we help organizations secure high-impact professionals who contribute to innovation, operational efficiency, and sustained business success.
                 </motion.p>
 
                 {/* CTA Buttons */}
@@ -713,7 +807,10 @@ export default function HireXelencePage() {
             <h2 className="text-fluid-4xl md:text-fluid-5xl lg:text-fluid-6xl font-bold text-green-primary mb-4">
               Flexible Engagement & Delivery Models
             </h2>
-            <div className="h-1 w-32 bg-green-primary mx-auto" />
+            <div className="h-1 w-32 bg-green-primary mx-auto mb-6" />
+            <p className="text-fluid-base text-navy/80 max-w-4xl mx-auto leading-relaxed">
+              Hirexelence offers flexible, transparent, and scalable engagement models designed to align precisely with your project structure, operational priorities, budget parameters, and preferred level of workforce control. Our delivery frameworks are built to adapt to evolving business needs, enabling organizations to scale resources efficiently, manage costs effectively, and maintain full visibility across the hiring lifecycle.
+            </p>
           </motion.div>
 
           {/* Vertical Timeline */}
@@ -732,17 +829,17 @@ export default function HireXelencePage() {
                 {
                   icon: <Rocket className="w-6 h-6" />,
                   title: 'Tailored Solutions',
-                  description: 'HireXelence offers highly flexible and transparent engagement models designed to align perfectly with your project structure, budget, and desired level of control.'
+                  description: 'Hirexelence offers highly flexible and transparent engagement models designed to align perfectly with your project structure, budget parameters, and desired level of workforce control. Our delivery frameworks ensure maximum adaptability to support both short-term initiatives and long-term strategic programs.'
                 },
                 {
                   icon: <Target className="w-6 h-6" />,
                   title: 'Maximum Flexibility',
-                  description: 'Provides maximum flexibility and control over resources as needs change, ensuring you can scale up or down seamlessly.'
+                  description: 'Our engagement approach provides maximum flexibility in workforce deployment, allowing organizations to adjust talent capacity, skill composition, and delivery structure as business requirements change. This ensures continuity, agility, and optimized resource utilization across all project phases while maintaining full visibility and control.'
                 },
                 {
                   icon: <TrendingUp className="w-6 h-6" />,
-                  title: 'Full Spectrum Expertise',
-                  description: 'HireXelence consistently supplies specialized talent across the critical roles driving modern Information Technology (IT) and Digital Transformation. Our expertise covers the full spectrum, ensuring we can staff your projects from the foundational infrastructure layers to the most advanced AI and Data Science initiatives.'
+                  title: 'Comprehensive Talent Coverage',
+                  description: 'We consistently supply specialized professionals across the critical roles driving modern Information Technology (IT) and Digital Transformation. Our talent capability spans the full technology spectrum from foundational infrastructure and enterprise systems to advanced domains such as cloud technologies, cybersecurity, data engineering, artificial intelligence, and analytics. Through structured workforce planning, consultative engagement, and scalable delivery models, we ensure organizations gain timely access to the right expertise required to support innovation, transformation initiatives, and sustained operational performance.'
                 }
               ].map((item, index) => (
                 <motion.div
