@@ -84,7 +84,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
     return (
         <section id="home" className="pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-16 sm:pb-20 md:pb-32 bg-white relative w-screen -mx-[calc((100vw-100%)/2)] min-h-screen flex items-center">
             <div className="w-full px-4 md:px-6 lg:px-8 relative">
-                {/* OSMO-style 3D Carousel Container */}
+                {/* 3D Carousel Container */}
                 <div className="relative w-full carousel-perspective">
                     <div className="relative w-full min-h-[65vh] preserve-3d">
                         <div className="flex items-center justify-center preserve-3d">
@@ -117,7 +117,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                 </div>
                             </motion.div>
 
-                            {/* Previous Slide (Left) - OSMO style */}
+                            {/* Previous Slide (Left) */}
                             <motion.div
                                 key={`prev-${currentSlide}`}
                                 initial={{ opacity: 0 }}
@@ -152,32 +152,36 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                     key={currentSlide}
                                     drag="x"
                                     dragConstraints={{ left: 0, right: 0 }}
-                                    dragElastic={0.2}
+                                    dragElastic={0.1}
                                     onDragEnd={handleDragEnd}
                                     initial={{ 
-                                        opacity: 0, 
-                                        scale: 0.85,
-                                        rotateY: 35
+                                        opacity: 0,
+                                        x: '100%',
+                                        z: 0
                                     }}
                                     animate={{ 
-                                        opacity: 1, 
-                                        scale: 1,
-                                        rotateY: 0,
-                                        x: 0
+                                        opacity: 1,
+                                        x: 0,
+                                        z: 0
                                     }}
                                     exit={{ 
-                                        opacity: 0, 
-                                        scale: 0.85,
-                                        rotateY: -35
+                                        opacity: 0,
+                                        x: '-100%',
+                                        z: 0
                                     }}
                                     transition={{ 
-                                        duration: 0.7, 
-                                        ease: [0.4, 0, 0.2, 1]
+                                        x: {
+                                            duration: 0.4, 
+                                            ease: [0.25, 1, 0.5, 1]
+                                        },
+                                        opacity: {
+                                            duration: 0.4,
+                                            ease: "easeInOut"
+                                        }
                                     }}
                                     className="relative w-[90vw] md:w-[75vw] lg:w-[68vw] xl:w-[70vw] max-w-7xl z-[10] cursor-grab active:cursor-grabbing"
                                     style={{ 
-                                        transformStyle: 'preserve-3d',
-                                        transform: 'translateZ(0)'
+                                        transformStyle: 'preserve-3d'
                                     }}
                                 >
                                     {/* Image Container */}
@@ -198,7 +202,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                             <motion.h1
                                                 initial={{ y: 20, opacity: 0 }}
                                                 animate={{ y: 0, opacity: 1 }}
-                                                transition={{ delay: 0.1, duration: 0.6 }}
+                                                transition={{ duration: 0.4 }}
                                                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center px-6 lg:px-12 leading-tight text-shadow-strong"
                                             >
                                                 {carouselSlides[currentSlide].title}
@@ -209,7 +213,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                         <motion.div
                                             initial={{ y: 10, opacity: 0 }}
                                             animate={{ y: 0, opacity: 1 }}
-                                            transition={{ delay: 0.2, duration: 0.6 }}
+                                            transition={{ duration: 0.5 }}
                                             className="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 z-30"
                                         >
                                             <p className="text-white text-xs sm:text-sm font-medium tracking-wide text-shadow-strong">
@@ -221,7 +225,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                         <motion.div
                                             initial={{ y: 10, opacity: 0 }}
                                             animate={{ y: 0, opacity: 1 }}
-                                            transition={{ delay: 0.2, duration: 0.6 }}
+                                            transition={{ duration: 0.5 }}
                                             whileHover={{ x: 4 }}
                                             className="absolute bottom-6 sm:bottom-8 right-6 sm:right-8 z-30 cursor-pointer"
                                         >
@@ -249,7 +253,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                 </motion.div>
                             </AnimatePresence>
 
-                            {/* Navigation Arrows - OSMO style */}
+                            {/* Navigation Arrows */}
                             <motion.button
                                 onClick={prevSlide}
                                 whileHover={{ scale: 1.1, backgroundColor: '#f3f4f6' }}
@@ -270,7 +274,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                 <ChevronRight className="w-6 h-6 text-gray-800" />
                             </motion.button>
 
-                            {/* Next Slide (Right) - OSMO style */}
+                            {/* Next Slide (Right) */}
                             <motion.div
                                 key={`next-${currentSlide}`}
                                 initial={{ opacity: 0 }}
