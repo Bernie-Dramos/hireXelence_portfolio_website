@@ -130,11 +130,11 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
     }
 
     return (
-        <section id="home" className="pt-14 sm:pt-20 md:pt-24 lg:pt-28 pb-8 sm:pb-16 md:pb-32 bg-white relative w-screen -mx-[calc((100vw-100%)/2)] min-h-screen flex items-center overflow-hidden">
-            <div className="w-full px-0 md:px-6 lg:px-8 relative">
+        <section id="home" className="pt-14 xs:pt-16 sm:pt-20 md:pt-24 lg:pt-24 xl:pt-28 2xl:pt-32 pb-8 xs:pb-12 sm:pb-16 md:pb-24 lg:pb-28 xl:pb-32 2xl:pb-36 bg-white relative w-screen -mx-[calc((100vw-100%)/2)] min-h-screen flex items-center overflow-hidden">
+            <div className="w-full px-0 md:px-4 lg:px-6 xl:px-8 2xl:px-10 relative">
                 {/* Cover Flow Carousel Container */}
-                <div className="relative w-full carousel-3d-perspective">
-                    <div className="relative w-full min-h-[55vh] sm:min-h-[65vh] md:min-h-[75vh] lg:min-h-[80vh] flex items-center justify-center">
+                <div className="relative w-full carousel-perspective">
+                    <div className="relative w-full min-h-[50vh] xs:min-h-[55vh] sm:min-h-[60vh] md:min-h-[66vh] lg:min-h-[72vh] xl:min-h-[78vh] 2xl:min-h-[82vh] 3xl:min-h-[85vh] flex items-center justify-center">
                         
                         {/* Render all slides with their positions */}
                         {carouselSlides.map((slide, index) => {
@@ -158,16 +158,16 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                         duration: isMobile ? 0.4 : 0.8,
                                         ease: [0.4, 0, 0.2, 1]
                                     }}
-                                    className={`absolute ${isCenter ? 'z-10' : 'z-[5]'} touch-pan-y`}
+                                    className={`absolute ${isCenter ? 'z-10' : 'z-[5]'} touch-pan-y ${
+                                        isCenter
+                                            ? 'w-screen xs:w-[98vw] sm:w-[96vw] md:w-[95vw] lg:w-[95vw] xl:w-[93vw] 2xl:w-[90vw] 3xl:w-[85vw] max-w-none lg:max-w-[1080px] xl:max-w-[1350px] 2xl:max-w-[1440px] 3xl:max-w-[1640px]'
+                                            : 'w-[86vw] sm:w-[85vw] xl:w-[83vw] 2xl:w-[80vw] 3xl:w-[75vw] max-w-none lg:max-w-[900px] xl:max-w-[1050px] 2xl:max-w-[1200px] 3xl:max-w-[1400px]'
+                                    }`}
                                     style={{
                                         transformStyle: 'preserve-3d',
-                                        width: isCenter
-                                            ? isMobile ? '100vw' : '95vw'
-                                            : '85vw',
-                                        maxWidth: isCenter ? '1350px' : '1050px'
                                     }}
                                 >
-                                    <div className={`relative w-full aspect-[4/3] sm:aspect-[4/3] lg:aspect-[16/9] rounded-2xl sm:rounded-[28px] lg:rounded-[36px] overflow-hidden ${
+                                    <div className={`relative w-full aspect-[4/3] md:aspect-[4/3] lg:aspect-[16/9] rounded-2xl xs:rounded-[22px] sm:rounded-[26px] md:rounded-[28px] lg:rounded-[32px] xl:rounded-[36px] 2xl:rounded-[40px] overflow-hidden ${
                                         isCenter ? 'shadow-2xl' : 'shadow-lg'
                                     }`}>
                                         <Image
@@ -201,7 +201,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                                             initial={{ y: 20, opacity: 0 }}
                                                             animate={{ y: 0, opacity: 1 }}
                                                             transition={{ duration: 0.4, delay: 0.2 }}
-                                                            className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold text-white text-center px-4 sm:px-9 lg:px-[4.5rem] leading-tight text-shadow-strong"
+                                                            className="text-2xl xs:text-3xl sm:text-4xl md:text-[2.75rem] lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl font-bold text-white text-center px-4 xs:px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-20 leading-tight text-shadow-strong"
                                                         >
                                                             {slide.title}
                                                         </motion.h1>
@@ -212,9 +212,9 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                                         initial={{ y: 10, opacity: 0 }}
                                                         animate={{ y: 0, opacity: 1 }}
                                                         transition={{ duration: 0.5, delay: 0.3 }}
-                                                        className="absolute bottom-4 sm:bottom-9 md:bottom-12 left-4 sm:left-9 md:left-12 z-30"
+                                                        className="absolute bottom-3 xs:bottom-4 sm:bottom-6 md:bottom-8 lg:bottom-9 xl:bottom-11 2xl:bottom-14 left-3 xs:left-4 sm:left-7 md:left-9 lg:left-11 xl:left-13 2xl:left-16 z-30"
                                                     >
-                                                        <p className="text-white text-xs sm:text-sm md:text-base font-medium tracking-wide text-shadow-strong">
+                                                        <p className="text-white text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl font-medium tracking-wide text-shadow-strong">
                                                             {slide.bottomLeft}
                                                         </p>
                                                     </motion.div>
@@ -225,15 +225,15 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                                         animate={{ y: 0, opacity: 1 }}
                                                         transition={{ duration: 0.5, delay: 0.3 }}
                                                         whileHover={{ x: 4 }}
-                                                        className="absolute bottom-4 sm:bottom-9 md:bottom-12 right-4 sm:right-9 md:right-12 z-30 cursor-pointer"
+                                                        className="absolute bottom-3 xs:bottom-4 sm:bottom-6 md:bottom-8 lg:bottom-9 xl:bottom-11 2xl:bottom-14 right-3 xs:right-4 sm:right-7 md:right-9 lg:right-11 xl:right-13 2xl:right-16 z-30 cursor-pointer"
                                                     >
-                                                        <p className="text-white text-xs sm:text-sm md:text-base font-medium tracking-wide text-shadow-strong">
+                                                        <p className="text-white text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl font-medium tracking-wide text-shadow-strong">
                                                             {slide.bottomRight}
                                                         </p>
                                                     </motion.div>
 
                                                     {/* Pagination Dots */}
-                                                    <div className="absolute bottom-3 sm:bottom-6 md:bottom-9 left-1/2 -translate-x-1/2 flex justify-center gap-2 sm:gap-3 z-30">
+                                                    <div className="absolute bottom-2 xs:bottom-3 sm:bottom-5 md:bottom-6 lg:bottom-7 xl:bottom-9 2xl:bottom-11 left-1/2 -translate-x-1/2 flex justify-center gap-1.5 sm:gap-2 md:gap-3 z-30">
                                                         {carouselSlides.map((_, dotIndex) => (
                                                             <button
                                                                 key={dotIndex}
@@ -243,8 +243,8 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                                                 }}
                                                                 className={`transition-all duration-300 rounded-full ${
                                                                     dotIndex === currentSlide
-                                                                        ? 'w-3 h-3 bg-white scale-125'
-                                                                        : 'w-3 h-3 bg-white/40 hover:bg-white/60'
+                                                                        ? 'w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 2xl:w-3.5 2xl:h-3.5 bg-white scale-125'
+                                                                        : 'w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 2xl:w-3.5 2xl:h-3.5 bg-white/40 hover:bg-white/60'
                                                                 }`}
                                                                 aria-label={`Go to slide ${dotIndex + 1}`}
                                                             />
@@ -263,20 +263,20 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                             onClick={prevSlide}
                             whileHover={{ scale: 1.1, backgroundColor: '#f3f4f6' }}
                             whileTap={{ scale: 0.95 }}
-                            className="absolute left-2 sm:left-4 md:left-8 lg:left-12 top-1/2 -translate-y-1/2 z-[15] w-9 h-9 sm:w-12 sm:h-12 md:w-[72px] md:h-[72px] lg:w-[84px] lg:h-[84px] rounded-full bg-white/90 sm:bg-white shadow-lg sm:shadow-xl flex items-center justify-center transition-colors"
+                            className="absolute left-2 xs:left-3 sm:left-4 md:left-6 lg:left-8 xl:left-10 2xl:left-12 3xl:left-16 top-1/2 -translate-y-1/2 z-[15] w-9 h-9 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-[68px] lg:h-[68px] xl:w-[80px] xl:h-[80px] 2xl:w-[92px] 2xl:h-[92px] 3xl:w-[104px] 3xl:h-[104px] rounded-full bg-white/90 sm:bg-white shadow-lg sm:shadow-xl flex items-center justify-center transition-colors"
                             aria-label="Previous slide"
                         >
-                            <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6 md:w-9 md:h-9 text-gray-800" />
+                            <ChevronLeft className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-11 2xl:h-11 3xl:w-12 3xl:h-12 text-gray-800" />
                         </motion.button>
 
                         <motion.button
                             onClick={nextSlide}
                             whileHover={{ scale: 1.1, backgroundColor: '#f3f4f6' }}
                             whileTap={{ scale: 0.95 }}
-                            className="absolute right-2 sm:right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-[15] w-9 h-9 sm:w-12 sm:h-12 md:w-[72px] md:h-[72px] lg:w-[84px] lg:h-[84px] rounded-full bg-white/90 sm:bg-white shadow-lg sm:shadow-xl flex items-center justify-center transition-colors"
+                            className="absolute right-2 xs:right-3 sm:right-4 md:right-6 lg:right-8 xl:right-10 2xl:right-12 3xl:right-16 top-1/2 -translate-y-1/2 z-[15] w-9 h-9 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-[68px] lg:h-[68px] xl:w-[80px] xl:h-[80px] 2xl:w-[92px] 2xl:h-[92px] 3xl:w-[104px] 3xl:h-[104px] rounded-full bg-white/90 sm:bg-white shadow-lg sm:shadow-xl flex items-center justify-center transition-colors"
                             aria-label="Next slide"
                         >
-                            <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 md:w-9 md:h-9 text-gray-800" />
+                            <ChevronRight className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-11 2xl:h-11 3xl:w-12 3xl:h-12 text-gray-800" />
                         </motion.button>
                     </div>
                 </div>
