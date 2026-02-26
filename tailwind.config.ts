@@ -10,6 +10,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // Custom screen breakpoints
+      // xs: large phones/phablets (480px)
+      // sm: small tablets / landscape phones (640px) [Tailwind default]
+      // md: tablets (768px) [Tailwind default]
+      // lg: small 13" laptops (1024px) [Tailwind default]
+      // xl: standard 15.6" laptops (1280px) [Tailwind default]
+      // 2xl: large laptops / small desktop monitors (1536px) [Tailwind default]
+      // 3xl: full HD monitors and above (1920px)
+      screens: {
+        'xs': '480px',
+        '3xl': '1920px',
+      },
       colors: {
         // Brand Colors - Updated to premium palette
         'green-primary': {
