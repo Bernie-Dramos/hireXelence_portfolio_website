@@ -12,6 +12,7 @@ import { ScrollProgress } from '@/components/scroll-progress'
 import { MagneticButton } from '@/components/magnetic-button'
 import { useMagneticHover } from '@/hooks/use-mouse-position'
 import { HeroCarousel } from '@/components/hero-carousel'
+import { useIsMobile } from '@/hooks/use-mobile'
 
 
 export default function HireXelencePage() {
@@ -21,6 +22,8 @@ export default function HireXelencePage() {
   const [showApplicationForm, setShowApplicationForm] = useState(false)
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0)
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [activeStrength, setActiveStrength] = useState<number | null>(null)
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -199,7 +202,7 @@ export default function HireXelencePage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Pinned Left - Text Content */}
-            <div className="lg:sticky lg:top-32 space-y-6">
+            <div className="lg:sticky lg:top-32 space-y-6 min-w-0">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -247,7 +250,7 @@ export default function HireXelencePage() {
             </div>
 
             {/* Right - Horizontal Scrolling Cards */}
-            <div className="relative py-6 mt-8">
+            <div className="relative py-6 mt-8 min-w-0">
               <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide px-2">
                 {[
                   {
@@ -635,36 +638,65 @@ export default function HireXelencePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ flex: 2 }}
+                {...(!isMobile ? { whileHover: { flex: 2 } } : {})}
+                onClick={() => {
+                  if (isMobile) setActiveStrength(activeStrength === index ? null : index)
+                }}
                 className="group relative flex-1 bg-green-primary text-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer"
               >
-                <div className="p-8 h-full flex flex-col justify-between">
+                <div className="p-8 flex flex-col gap-4 md:gap-0 md:h-full md:justify-between">
                   {/* Icon - Always Visible */}
                   <motion.div
-                    className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center"
+                    {...(!isMobile ? { whileHover: { scale: 1.1, rotate: 5 } } : {})}
                   >
                     {strength.icon}
                   </motion.div>
 
                   {/* Title - Always Visible */}
-                  <h3 className="text-2xl font-bold mb-4">
+                  <h3 className="text-2xl font-bold">
                     {strength.title}
                   </h3>
 
-                  {/* Description - Reveals on Hover */}
-                  <motion.p
-                    initial={{ opacity: 0, height: 0 }}
-                    whileHover={{ opacity: 1, height: 'auto' }}
-                    className="text-white/90 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  >
-                    {strength.description}
-                  </motion.p>
+                  {/* Description - Hover on desktop, tap-to-expand on mobile */}
+                  {isMobile ? (
+                    <AnimatePresence initial={false}>
+                      {activeStrength === index && (
+                        <motion.p
+                          key={`desc-${index}`}
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: 'easeInOut' }}
+                          className="text-white/90 leading-relaxed overflow-hidden"
+                        >
+                          {strength.description}
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  ) : (
+                    <motion.p
+                      initial={{ opacity: 0, height: 0 }}
+                      whileHover={{ opacity: 1, height: 'auto' }}
+                      className="text-white/90 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    >
+                      {strength.description}
+                    </motion.p>
+                  )}
 
                   {/* Expand Indicator */}
-                  <div className="mt-4 flex items-center gap-2 text-white/70 group-hover:text-white transition-colors">
-                    <span className="text-sm font-medium">Hover to expand</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <div className="flex items-center gap-2 text-white/70 group-hover:text-white transition-colors">
+                    <span className="text-sm font-medium">
+                      {isMobile
+                        ? (activeStrength === index ? 'Tap to close' : 'Tap to expand')
+                        : 'Hover to expand'}
+                    </span>
+                    <motion.span
+                      animate={{ rotate: isMobile && activeStrength === index ? 90 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.span>
                   </div>
                 </div>
               </motion.div>
@@ -895,8 +927,8 @@ export default function HireXelencePage() {
 
       {/* Contact Section - Split Animated Layout */}
       <section id="contact" className="py-20 md:py-28 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/95 to-white/50" />
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-white/90 diagonal-clip" />
+        <div className="absolute inset-0 bg-navy lg:bg-gradient-to-r lg:from-navy lg:via-navy/95 lg:to-white/50" />
+        <div className="hidden lg:block absolute top-0 right-0 w-1/2 h-full bg-white/90 diagonal-clip" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12">
