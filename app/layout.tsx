@@ -19,7 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <div className="overflow-x-hidden w-full">
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
