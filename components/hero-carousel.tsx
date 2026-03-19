@@ -167,7 +167,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                         transformStyle: 'preserve-3d',
                                     }}
                                 >
-                                    <div className={`relative w-full aspect-[8/9] lg:aspect-[16/9] rounded-2xl xs:rounded-[22px] sm:rounded-[26px] md:rounded-[28px] lg:rounded-[32px] xl:rounded-[36px] 2xl:rounded-[40px] overflow-hidden ${
+                                    <div className={`relative w-full aspect-[20/27] lg:aspect-[16/9] rounded-2xl xs:rounded-[22px] sm:rounded-[26px] md:rounded-[28px] lg:rounded-[32px] xl:rounded-[36px] 2xl:rounded-[40px] overflow-hidden ${
                                         isCenter ? 'shadow-2xl' : 'shadow-lg'
                                     }`}>
                                         <Image
