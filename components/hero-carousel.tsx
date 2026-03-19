@@ -167,7 +167,7 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                                         transformStyle: 'preserve-3d',
                                     }}
                                 >
-                                    <div className={`relative w-full aspect-[4/3] md:aspect-[4/3] lg:aspect-[16/9] rounded-2xl xs:rounded-[22px] sm:rounded-[26px] md:rounded-[28px] lg:rounded-[32px] xl:rounded-[36px] 2xl:rounded-[40px] overflow-hidden ${
+                                    <div className={`relative w-full aspect-[8/9] lg:aspect-[16/9] rounded-2xl xs:rounded-[22px] sm:rounded-[26px] md:rounded-[28px] lg:rounded-[32px] xl:rounded-[36px] 2xl:rounded-[40px] overflow-hidden ${
                                         isCenter ? 'shadow-2xl' : 'shadow-lg'
                                     }`}>
                                         <Image
@@ -263,20 +263,20 @@ export function HeroCarousel({ currentSlide, setCurrentSlide }: HeroCarouselProp
                             onClick={prevSlide}
                             whileHover={{ scale: 1.1, backgroundColor: '#f3f4f6' }}
                             whileTap={{ scale: 0.95 }}
-                            className="absolute left-2 xs:left-3 sm:left-4 md:left-6 lg:left-8 xl:left-10 2xl:left-12 3xl:left-16 top-1/2 -translate-y-1/2 z-[15] w-9 h-9 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-[68px] lg:h-[68px] xl:w-[80px] xl:h-[80px] 2xl:w-[92px] 2xl:h-[92px] 3xl:w-[104px] 3xl:h-[104px] rounded-full bg-white/90 sm:bg-white shadow-lg sm:shadow-xl flex items-center justify-center transition-colors"
+                            className="hidden lg:flex absolute left-8 xl:left-10 2xl:left-12 3xl:left-16 top-1/2 -translate-y-1/2 z-[15] lg:w-[68px] lg:h-[68px] xl:w-[80px] xl:h-[80px] 2xl:w-[92px] 2xl:h-[92px] 3xl:w-[104px] 3xl:h-[104px] rounded-full bg-white shadow-xl items-center justify-center transition-colors"
                             aria-label="Previous slide"
                         >
-                            <ChevronLeft className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-11 2xl:h-11 3xl:w-12 3xl:h-12 text-gray-800" />
+                            <ChevronLeft className="lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-11 2xl:h-11 3xl:w-12 3xl:h-12 text-gray-800" />
                         </motion.button>
 
                         <motion.button
                             onClick={nextSlide}
                             whileHover={{ scale: 1.1, backgroundColor: '#f3f4f6' }}
                             whileTap={{ scale: 0.95 }}
-                            className="absolute right-2 xs:right-3 sm:right-4 md:right-6 lg:right-8 xl:right-10 2xl:right-12 3xl:right-16 top-1/2 -translate-y-1/2 z-[15] w-9 h-9 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-[68px] lg:h-[68px] xl:w-[80px] xl:h-[80px] 2xl:w-[92px] 2xl:h-[92px] 3xl:w-[104px] 3xl:h-[104px] rounded-full bg-white/90 sm:bg-white shadow-lg sm:shadow-xl flex items-center justify-center transition-colors"
+                            className="hidden lg:flex absolute right-8 xl:right-10 2xl:right-12 3xl:right-16 top-1/2 -translate-y-1/2 z-[15] lg:w-[68px] lg:h-[68px] xl:w-[80px] xl:h-[80px] 2xl:w-[92px] 2xl:h-[92px] 3xl:w-[104px] 3xl:h-[104px] rounded-full bg-white shadow-xl items-center justify-center transition-colors"
                             aria-label="Next slide"
                         >
-                            <ChevronRight className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-11 2xl:h-11 3xl:w-12 3xl:h-12 text-gray-800" />
+                            <ChevronRight className="lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-11 2xl:h-11 3xl:w-12 3xl:h-12 text-gray-800" />
                         </motion.button>
                     </div>
                 </div>
