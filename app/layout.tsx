@@ -10,6 +10,11 @@ const _geistMono = Geist_Mono({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'HireXelence - Specialised in Hiring Excellence',
   description: 'HireXelence is a trusted human resource partner, connecting top talent with leading companies across various industries. Expert recruitment services for your business growth.',
+  icons: {
+    icon: '/images/hirexelence-logo.png',
+    shortcut: '/images/hirexelence-logo.png',
+    apple: '/images/hirexelence-logo.png',
+  },
 }
 
 export default function RootLayout({
